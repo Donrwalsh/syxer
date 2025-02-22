@@ -77,6 +77,11 @@ Note that alt-shift-F works in the GAS interface, nice. Ok, so I built a pretty 
 
 And now the main event: `obtainGannonData()`. So I need to get to the website that's in this image... Ok, brief side quest to handle images in readmes since I want to be able to do that.
 
-![alt text][gannon-example]
+![Gannon Buhr Stats Example][gannon-example]
+
+Neat! That was pretty straightforward - even works in the vsCode preview, dope. Ok, so I'm working off this concept that the highlighted data from the image above drives the updates showcased in the image below:
+
+![Gannon Buhr Scorecard Population Example][gannon-scorecard-example]
 
 [gannon-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonexample.png "Gannon Example"
+[gannon-scorecard-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonscorecardexample.png "Gannon Scorecard Example"
