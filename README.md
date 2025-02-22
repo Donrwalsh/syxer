@@ -74,3 +74,9 @@ I'll go in order. `updateGannonStats()` is just an enhanced version of `updateAl
 Note that alt-shift-F works in the GAS interface, nice. Ok, so I built a pretty version of the explicit stat writer. Now each of the cells is called out and I can work with them just through the GAS interface in some ways. Next I'm going to make the `resetGannonStats()` function which is the same as the last one but just zeroes out all the fields. I don't know enough about the data pipeline and such to know how I might make a single function that performs both these tasks so I'll just copy the last one and manually change the values. Time to turn on some music! That was easy and works like a charm. Gonna save both these functions to the repo and commit them.
 
 (Do Ctrl+K then Ctrl+Shift+S to save without formatting because VsCode hates the pretty comment title marker things that I'm using. It's called style, look it up)
+
+And now the main event: `obtainGannonData()`. So I need to get to the website that's in this image... Ok, brief side quest to handle images in readmes since I want to be able to do that.
+
+![alt text][gannon-example]
+
+[gannon-example]: https://github.com/Donrwalsh/syxer/raw/master/images/gannonexample.png "Gannon Example"
