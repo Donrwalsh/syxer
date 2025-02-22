@@ -1,0 +1,122 @@
+[
+  {
+    "statId": 1,
+    "statCount": 15,
+    "statOpportunityCount": 18,
+    "statValue": 83.33
+  },
+  {
+    "statId": 2,
+    "statCount": 12,
+    "statOpportunityCount": 18,
+    "statValue": 66.67
+  },
+  {
+    "statId": 3,
+    "statCount": 14,
+    "statOpportunityCount": 18,
+    "statValue": 77.78
+  },
+  {
+    "statId": 4,
+    "statCount": 1,
+    "statOpportunityCount": 18,
+    "statValue": 5.56
+  },
+  {
+    "statId": 5,
+    "statCount": 0,
+    "statOpportunityCount": 2,
+    "statValue": 0
+  },
+  {
+    "statId": 6,
+    "statCount": 17,
+    "statOpportunityCount": 20,
+    "statValue": 85
+  },
+  {
+    "statId": 7,
+    "statCount": 12,
+    "statOpportunityCount": 15,
+    "statValue": 80
+  },
+  {
+    "statId": 8,
+    "statCount": 1,
+    "statOpportunityCount": 3,
+    "statValue": 33.33
+  },
+  {
+    "statId": 9,
+    "statCount": 3,
+    "statOpportunityCount": 18,
+    "statValue": 16.67
+  },
+  {
+    "statId": 10,
+    "statCount": 11,
+    "statOpportunityCount": 18,
+    "statValue": 61.11
+  },
+  {
+    "statId": 11,
+    "statCount": 1,
+    "statOpportunityCount": 18,
+    "statValue": 5.56
+  },
+  {
+    "statId": 12,
+    "statCount": 1,
+    "statOpportunityCount": 18,
+    "statValue": 5.56
+  },
+  {
+    "statId": 13,
+    "statCount": 5,
+    "statOpportunityCount": 18,
+    "statValue": 27.78
+  },
+  {
+    "statId": 14,
+    "statCount": 11,
+    "statOpportunityCount": 18,
+    "statValue": 61.11
+  },
+  {
+    "statId": 15,
+    "statCount": 0,
+    "statOpportunityCount": 18,
+    "statValue": 0
+  },
+  {
+    "statId": 16,
+    "statCount": 321,
+    "statOpportunityCount": 18,
+    "statValue": 321
+  },
+  {
+    "statId": 17,
+    "statCount": null,
+    "statOpportunityCount": 18,
+    "statValue": 49
+  },
+  {
+    "statId": 18,
+    "statCount": null,
+    "statOpportunityCount": 18,
+    "statValue": 17.83
+  },
+  {
+    "statId": 21,
+    "statCount": 3,
+    "statOpportunityCount": 18,
+    "statValue": 3
+  },
+  {
+    "statId": 22,
+    "statCount": 2,
+    "statOpportunityCount": 18,
+    "statValue": 11.11
+  }
+]

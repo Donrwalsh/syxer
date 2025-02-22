@@ -1,0 +1,1098 @@
+{
+  "data": {
+    "DateRange": "Jan 16-19, 2025",
+    "EndDate": "2025-01-19",
+    "Country": "United States",
+    "Location": "Scottsdale, Arizona",
+    "LocationShort": "Scottsdale, AZ",
+    "Divisions": [
+      {
+        "DivisionID": 100,
+        "Division": "MPO",
+        "DivisionName": "Mixed Pro Open",
+        "Players": 83,
+        "IsPro": true,
+        "ShortName": "Mixed Pro Open",
+        "AbbreviatedName": "Mixed Pro Open",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 105,
+        "Division": "FPO",
+        "DivisionName": "Women's Pro Open",
+        "Players": 16,
+        "IsPro": true,
+        "ShortName": "Women's Pro Open",
+        "AbbreviatedName": "Women's Pro Open",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 111,
+        "Division": "MP40",
+        "DivisionName": "Mixed Pro 40+",
+        "Players": 20,
+        "IsPro": true,
+        "ShortName": "Mixed Pro 40+",
+        "AbbreviatedName": "Mixed Pro 40+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 116,
+        "Division": "FP40",
+        "DivisionName": "Women's Pro 40+",
+        "Players": 1,
+        "IsPro": true,
+        "ShortName": "Women's Pro 40+",
+        "AbbreviatedName": "Women's Pro 40+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 121,
+        "Division": "MP50",
+        "DivisionName": "Mixed Pro 50+",
+        "Players": 20,
+        "IsPro": true,
+        "ShortName": "Mixed Pro 50+",
+        "AbbreviatedName": "Mixed Pro 50+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 126,
+        "Division": "FP50",
+        "DivisionName": "Women's Pro 50+",
+        "Players": 7,
+        "IsPro": true,
+        "ShortName": "Women's Pro 50+",
+        "AbbreviatedName": "Women's Pro 50+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 141,
+        "Division": "MP60",
+        "DivisionName": "Mixed Pro 60+",
+        "Players": 20,
+        "IsPro": true,
+        "ShortName": "Mixed Pro 60+",
+        "AbbreviatedName": "Mixed Pro 60+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 146,
+        "Division": "FP60",
+        "DivisionName": "Women's Pro 60+",
+        "Players": 1,
+        "IsPro": true,
+        "ShortName": "Women's Pro 60+",
+        "AbbreviatedName": "Women's Pro 60+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 161,
+        "Division": "MP70",
+        "DivisionName": "Mixed Pro 70+",
+        "Players": 7,
+        "IsPro": true,
+        "ShortName": "Mixed Pro 70+",
+        "AbbreviatedName": "Mixed Pro 70+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 400,
+        "Division": "MA1",
+        "DivisionName": "Mixed Amateur 1",
+        "Players": 75,
+        "IsPro": false,
+        "ShortName": "Mixed Amateur 1",
+        "AbbreviatedName": "Mixed Am 1",
+        "LatestRound": 3
+      },
+      {
+        "DivisionID": 411,
+        "Division": "MA40",
+        "DivisionName": "Mixed Amateur 40+",
+        "Players": 35,
+        "IsPro": false,
+        "ShortName": "Mixed Amateur 40+",
+        "AbbreviatedName": "Mixed Am 40+",
+        "LatestRound": 3
+      },
+      {
+        "DivisionID": 416,
+        "Division": "FA40",
+        "DivisionName": "Women's Amateur 40+",
+        "Players": 4,
+        "IsPro": false,
+        "ShortName": "Women's Amateur 40+",
+        "AbbreviatedName": "Women's Am 40+",
+        "LatestRound": 3
+      },
+      {
+        "DivisionID": 421,
+        "Division": "MA50",
+        "DivisionName": "Mixed Amateur 50+",
+        "Players": 26,
+        "IsPro": false,
+        "ShortName": "Mixed Amateur 50+",
+        "AbbreviatedName": "Mixed Am 50+",
+        "LatestRound": 12
+      },
+      {
+        "DivisionID": 441,
+        "Division": "MA60",
+        "DivisionName": "Mixed Amateur 60+",
+        "Players": 27,
+        "IsPro": false,
+        "ShortName": "Mixed Amateur 60+",
+        "AbbreviatedName": "Mixed Am 60+",
+        "LatestRound": 3
+      }
+    ],
+    "Finals": "yes",
+    "HighestCompletedRound": 12,
+    "LatestRound": 12,
+    "FinalRound": 12,
+    "Layouts": [
+      {
+        "LayoutID": 692329,
+        "CourseID": null,
+        "CourseName": "",
+        "Name": "Default Layout",
+        "Holes": 18,
+        "Par": 54,
+        "Length": null,
+        "Units": null,
+        "Accuracy": null,
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": null
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": null
+          }
+        ]
+      },
+      {
+        "LayoutID": 697152,
+        "CourseID": 24730,
+        "CourseName": "Vista del Camino Park",
+        "Name": "AM MEN-Vista XL 2025 Memorial",
+        "Holes": 18,
+        "Par": 60,
+        "Length": 8430,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 284
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 3,
+            "Length": 415
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 381
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": 386
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 4,
+            "Length": 783
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 4,
+            "Length": 645
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 420
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 4,
+            "Length": 651
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 4,
+            "Length": 759
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 282
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 405
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 4,
+            "Length": 605
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 4,
+            "Length": 741
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 380
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 243
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 330
+          }
+        ]
+      },
+      {
+        "LayoutID": 697153,
+        "CourseID": 24730,
+        "CourseName": "Vista del Camino Park",
+        "Name": "PRO MEN-Vista XL 2025 Memorial",
+        "Holes": 18,
+        "Par": 60,
+        "Length": 8637,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 284
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 3,
+            "Length": 415
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 381
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": 386
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 4,
+            "Length": 783
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 4,
+            "Length": 645
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 482
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 4,
+            "Length": 651
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 4,
+            "Length": 759
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 427
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 405
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 4,
+            "Length": 605
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 4,
+            "Length": 741
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 380
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 243
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 330
+          }
+        ]
+      },
+      {
+        "LayoutID": 697154,
+        "CourseID": 24730,
+        "CourseName": "Vista del Camino Park",
+        "Name": "WOMEN-Vista XL 2025 Memorial",
+        "Holes": 18,
+        "Par": 65,
+        "Length": 7827,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 284
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 3,
+            "Length": 415
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 381
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 4,
+            "Length": 386
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 5,
+            "Length": 783
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 5,
+            "Length": 645
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 3,
+            "Length": 360
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 324
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 5,
+            "Length": 651
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 4,
+            "Length": 543
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 282
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 405
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 5,
+            "Length": 605
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 4,
+            "Length": 450
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 380
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 243
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 330
+          }
+        ]
+      },
+      {
+        "LayoutID": 697155,
+        "CourseID": 24727,
+        "CourseName": "Fountain Hills",
+        "Name": "AM MEN-Fountain Championship 2025",
+        "Holes": 18,
+        "Par": 56,
+        "Length": 6666,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 318
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 4,
+            "Length": 703
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 294
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 250
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": 463
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 3,
+            "Length": 233
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 3,
+            "Length": 210
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 4,
+            "Length": 570
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 406
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 3,
+            "Length": 310
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 3,
+            "Length": 368
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 290
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 255
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 3,
+            "Length": 375
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 3,
+            "Length": 426
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 327
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 468
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 400
+          }
+        ]
+      },
+      {
+        "LayoutID": 697156,
+        "CourseID": 24727,
+        "CourseName": "Fountain Hills",
+        "Name": "PRO MEN-Fountain Championship 2025",
+        "Holes": 18,
+        "Par": 56,
+        "Length": 6741,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 393
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 4,
+            "Length": 703
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 294
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 250
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": 463
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 3,
+            "Length": 233
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 3,
+            "Length": 210
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 4,
+            "Length": 570
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 406
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 3,
+            "Length": 310
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 3,
+            "Length": 368
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 290
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 255
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 3,
+            "Length": 375
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 3,
+            "Length": 426
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 327
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 468
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 400
+          }
+        ]
+      },
+      {
+        "LayoutID": 697157,
+        "CourseID": 24727,
+        "CourseName": "Fountain Hills",
+        "Name": "WOMEN-Fountain Championship 2025",
+        "Holes": 18,
+        "Par": 57,
+        "Length": 6535,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "1",
+            "Par": 3,
+            "Length": 318
+          },
+          {
+            "Hole": "H2",
+            "Label": "2",
+            "Par": 5,
+            "Length": 703
+          },
+          {
+            "Hole": "H3",
+            "Label": "3",
+            "Par": 3,
+            "Length": 294
+          },
+          {
+            "Hole": "H4",
+            "Label": "4",
+            "Par": 3,
+            "Length": 250
+          },
+          {
+            "Hole": "H5",
+            "Label": "5",
+            "Par": 3,
+            "Length": 463
+          },
+          {
+            "Hole": "H6",
+            "Label": "6",
+            "Par": 3,
+            "Length": 233
+          },
+          {
+            "Hole": "H7",
+            "Label": "7",
+            "Par": 3,
+            "Length": 210
+          },
+          {
+            "Hole": "H8",
+            "Label": "8",
+            "Par": 4,
+            "Length": 570
+          },
+          {
+            "Hole": "H9",
+            "Label": "9",
+            "Par": 3,
+            "Length": 275
+          },
+          {
+            "Hole": "H10",
+            "Label": "10",
+            "Par": 3,
+            "Length": 310
+          },
+          {
+            "Hole": "H11",
+            "Label": "11",
+            "Par": 3,
+            "Length": 368
+          },
+          {
+            "Hole": "H12",
+            "Label": "12",
+            "Par": 3,
+            "Length": 290
+          },
+          {
+            "Hole": "H13",
+            "Label": "13",
+            "Par": 3,
+            "Length": 255
+          },
+          {
+            "Hole": "H14",
+            "Label": "14",
+            "Par": 3,
+            "Length": 375
+          },
+          {
+            "Hole": "H15",
+            "Label": "15",
+            "Par": 3,
+            "Length": 426
+          },
+          {
+            "Hole": "H16",
+            "Label": "16",
+            "Par": 3,
+            "Length": 327
+          },
+          {
+            "Hole": "H17",
+            "Label": "17",
+            "Par": 3,
+            "Length": 468
+          },
+          {
+            "Hole": "H18",
+            "Label": "18",
+            "Par": 3,
+            "Length": 400
+          }
+        ]
+      },
+      {
+        "LayoutID": 697462,
+        "CourseID": 24727,
+        "CourseName": "Fountain Hills",
+        "Name": "Aggregate Playoff",
+        "Holes": 3,
+        "Par": 9,
+        "Length": 1195,
+        "Units": "Feet",
+        "Accuracy": "M",
+        "Details": [
+          {
+            "Hole": "H1",
+            "Label": "16",
+            "Par": 3,
+            "Length": 327
+          },
+          {
+            "Hole": "H2",
+            "Label": "17",
+            "Par": 3,
+            "Length": 468
+          },
+          {
+            "Hole": "H3",
+            "Label": "18",
+            "Par": 3,
+            "Length": 400
+          }
+        ]
+      }
+    ],
+    "Name": "Memorial Championship presented by Discraft",
+    "NameHtml": "Memorial Championship presented by Discraft",
+    "MultiLineName": {
+      "pre": "",
+      "main": "Memorial Championship",
+      "post": "presented by Discraft"
+    },
+    "MultiLineNameHtml": " <span class=\"event-name-main\">Memorial Championship</span> <span class=\"event-name-post\">presented by Discraft</span>",
+    "RawTier": "A",
+    "Rounds": 3,
+    "RoundsList": {
+      "1": {
+        "Number": 1,
+        "Label": "Round 1",
+        "LabelAbbreviated": "Rd 1",
+        "Date": "2025-01-19",
+        "DateAbbreviated": "Jan 19",
+        "ShowDate": false
+      },
+      "2": {
+        "Number": 2,
+        "Label": "Round 2",
+        "LabelAbbreviated": "Rd 2",
+        "Date": "2025-01-19",
+        "DateAbbreviated": "Jan 19",
+        "ShowDate": false
+      },
+      "3": {
+        "Number": 3,
+        "Label": "Round 3",
+        "LabelAbbreviated": "Rd 3",
+        "Date": "2025-01-19",
+        "DateAbbreviated": "Jan 19",
+        "ShowDate": false
+      },
+      "12": {
+        "Number": 12,
+        "Label": "Finals",
+        "LabelAbbreviated": "F",
+        "Date": "2025-01-19",
+        "DateAbbreviated": "Jan 19",
+        "ShowDate": false
+      }
+    },
+    "Semis": "no",
+    "SimpleName": "Memorial Championship",
+    "StartDate": "2025-01-16",
+    "TDName": "Keith Murray",
+    "TDPDGANum": 15668,
+    "Tier": "A",
+    "FormattedTier": "A-Tier",
+    "FormattedLongTier": "A-Tier",
+    "TierPro": "A",
+    "TierAm": "A",
+    "TierX": false,
+    "TotalPlayers": 342,
+    "TournamentId": "86522",
+    "International": true,
+    "FullStats": true,
+    "TimeZone": null,
+    "AdditionalEventInfo": null,
+    "EventVideo": null
+  },
+  "hash": "bcf518f466a6c62de58b07aead34ab89"
+}

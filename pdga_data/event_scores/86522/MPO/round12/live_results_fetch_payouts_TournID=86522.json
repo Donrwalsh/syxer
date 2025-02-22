@@ -1,0 +1,927 @@
+{
+  "data": {
+    "purseTotal": "$0",
+    "purseTotalValue": 0,
+    "divisions": {
+      "MPO": {
+        "playerCount": 83,
+        "cashLine": 34,
+        "purse": "$30,450",
+        "purseValue": 30450,
+        "entryFeesTotal": "$19,754",
+        "entryFeesTotalValue": 19754,
+        "entryFeePercentage": 166,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$5,500",
+            "payoutValue": 5500
+          },
+          {
+            "place": 2,
+            "payout": "$4,000",
+            "payoutValue": 4000
+          },
+          {
+            "place": 3,
+            "payout": "$2,600",
+            "payoutValue": 2600
+          },
+          {
+            "place": 4,
+            "payout": "$2,000",
+            "payoutValue": 2000
+          },
+          {
+            "place": 5,
+            "payout": "$1,700",
+            "payoutValue": 1700
+          },
+          {
+            "place": 6,
+            "payout": "$1,400",
+            "payoutValue": 1400
+          },
+          {
+            "place": 7,
+            "payout": "$1,200",
+            "payoutValue": 1200
+          },
+          {
+            "place": 8,
+            "payout": "$1,000",
+            "payoutValue": 1000
+          },
+          {
+            "place": 9,
+            "payout": "$900",
+            "payoutValue": 900
+          },
+          {
+            "place": 10,
+            "payout": "$800",
+            "payoutValue": 800
+          },
+          {
+            "place": 11,
+            "payout": "$700",
+            "payoutValue": 700
+          },
+          {
+            "place": 12,
+            "payout": "$640",
+            "payoutValue": 640
+          },
+          {
+            "place": 13,
+            "payout": "$600",
+            "payoutValue": 600
+          },
+          {
+            "place": 14,
+            "payout": "$560",
+            "payoutValue": 560
+          },
+          {
+            "place": 15,
+            "payout": "$520",
+            "payoutValue": 520
+          },
+          {
+            "place": 16,
+            "payout": "$480",
+            "payoutValue": 480
+          },
+          {
+            "place": 17,
+            "payout": "$460",
+            "payoutValue": 460
+          },
+          {
+            "place": 18,
+            "payout": "$440",
+            "payoutValue": 440
+          },
+          {
+            "place": 19,
+            "payout": "$420",
+            "payoutValue": 420
+          },
+          {
+            "place": 20,
+            "payout": "$400",
+            "payoutValue": 400
+          },
+          {
+            "place": 21,
+            "payout": "$380",
+            "payoutValue": 380
+          },
+          {
+            "place": 22,
+            "payout": "$360",
+            "payoutValue": 360
+          },
+          {
+            "place": 23,
+            "payout": "$340",
+            "payoutValue": 340
+          },
+          {
+            "place": 24,
+            "payout": "$320",
+            "payoutValue": 320
+          },
+          {
+            "place": 25,
+            "payout": "$300",
+            "payoutValue": 300
+          },
+          {
+            "place": 26,
+            "payout": "$290",
+            "payoutValue": 290
+          },
+          {
+            "place": 27,
+            "payout": "$285",
+            "payoutValue": 285
+          },
+          {
+            "place": 28,
+            "payout": "$280",
+            "payoutValue": 280
+          },
+          {
+            "place": 29,
+            "payout": "$275",
+            "payoutValue": 275
+          },
+          {
+            "place": 30,
+            "payout": "$270",
+            "payoutValue": 270
+          },
+          {
+            "place": 31,
+            "payout": "$265",
+            "payoutValue": 265
+          },
+          {
+            "place": 32,
+            "payout": "$260",
+            "payoutValue": 260
+          },
+          {
+            "place": 33,
+            "payout": "$255",
+            "payoutValue": 255
+          },
+          {
+            "place": 34,
+            "payout": "$250",
+            "payoutValue": 250
+          }
+        ]
+      },
+      "FPO": {
+        "playerCount": 16,
+        "cashLine": 7,
+        "purse": "$4,750",
+        "purseValue": 4750,
+        "entryFeesTotal": "$3,008",
+        "entryFeesTotalValue": 3008,
+        "entryFeePercentage": 231,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$1,425",
+            "payoutValue": 1425
+          },
+          {
+            "place": 2,
+            "payout": "$1,000",
+            "payoutValue": 1000
+          },
+          {
+            "place": 3,
+            "payout": "$715",
+            "payoutValue": 715
+          },
+          {
+            "place": 4,
+            "payout": "$525",
+            "payoutValue": 525
+          },
+          {
+            "place": 5,
+            "payout": "$450",
+            "payoutValue": 450
+          },
+          {
+            "place": 6,
+            "payout": "$355",
+            "payoutValue": 355
+          },
+          {
+            "place": 7,
+            "payout": "$280",
+            "payoutValue": 280
+          }
+        ]
+      },
+      "MP40": {
+        "playerCount": 20,
+        "cashLine": 8,
+        "purse": "$5,760",
+        "purseValue": 5760,
+        "entryFeesTotal": "$3,760",
+        "entryFeesTotalValue": 3760,
+        "entryFeePercentage": 191,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$1,615",
+            "payoutValue": 1615
+          },
+          {
+            "place": 2,
+            "payout": "$1,095",
+            "payoutValue": 1095
+          },
+          {
+            "place": 3,
+            "payout": "$835",
+            "payoutValue": 835
+          },
+          {
+            "place": 4,
+            "payout": "$660",
+            "payoutValue": 660
+          },
+          {
+            "place": 5,
+            "payout": "$520",
+            "payoutValue": 520
+          },
+          {
+            "place": 6,
+            "payout": "$405",
+            "payoutValue": 405
+          },
+          {
+            "place": 7,
+            "payout": "$345",
+            "payoutValue": 345
+          },
+          {
+            "place": 8,
+            "payout": "$285",
+            "payoutValue": 285
+          }
+        ]
+      },
+      "FP40": {
+        "playerCount": 1,
+        "cashLine": 1,
+        "purse": "$250",
+        "purseValue": 250,
+        "entryFeesTotal": "$163",
+        "entryFeesTotalValue": 163,
+        "entryFeePercentage": 153,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$250",
+            "payoutValue": 250
+          }
+        ]
+      },
+      "MP50": {
+        "playerCount": 20,
+        "cashLine": 8,
+        "purse": "$5,760",
+        "purseValue": 5760,
+        "entryFeesTotal": "$3,760",
+        "entryFeesTotalValue": 3760,
+        "entryFeePercentage": 191,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$1,615",
+            "payoutValue": 1615
+          },
+          {
+            "place": 2,
+            "payout": "$1,095",
+            "payoutValue": 1095
+          },
+          {
+            "place": 3,
+            "payout": "$835",
+            "payoutValue": 835
+          },
+          {
+            "place": 4,
+            "payout": "$660",
+            "payoutValue": 660
+          },
+          {
+            "place": 5,
+            "payout": "$520",
+            "payoutValue": 520
+          },
+          {
+            "place": 6,
+            "payout": "$405",
+            "payoutValue": 405
+          },
+          {
+            "place": 7,
+            "payout": "$345",
+            "payoutValue": 345
+          },
+          {
+            "place": 8,
+            "payout": "$285",
+            "payoutValue": 285
+          }
+        ]
+      },
+      "FP50": {
+        "playerCount": 7,
+        "cashLine": 3,
+        "purse": "$1,815",
+        "purseValue": 1815,
+        "entryFeesTotal": "$1,141",
+        "entryFeesTotalValue": 1141,
+        "entryFeePercentage": 284,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$865",
+            "payoutValue": 865
+          },
+          {
+            "place": 2,
+            "payout": "$545",
+            "payoutValue": 545
+          },
+          {
+            "place": 3,
+            "payout": "$405",
+            "payoutValue": 405
+          }
+        ]
+      },
+      "MP60": {
+        "playerCount": 20,
+        "cashLine": 8,
+        "purse": "$5,760",
+        "purseValue": 5760,
+        "entryFeesTotal": "$3,760",
+        "entryFeesTotalValue": 3760,
+        "entryFeePercentage": 191,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$1,615",
+            "payoutValue": 1615
+          },
+          {
+            "place": 2,
+            "payout": "$1,095",
+            "payoutValue": 1095
+          },
+          {
+            "place": 3,
+            "payout": "$835",
+            "payoutValue": 835
+          },
+          {
+            "place": 4,
+            "payout": "$660",
+            "payoutValue": 660
+          },
+          {
+            "place": 5,
+            "payout": "$520",
+            "payoutValue": 520
+          },
+          {
+            "place": 6,
+            "payout": "$405",
+            "payoutValue": 405
+          },
+          {
+            "place": 7,
+            "payout": "$345",
+            "payoutValue": 345
+          },
+          {
+            "place": 8,
+            "payout": "$285",
+            "payoutValue": 285
+          }
+        ]
+      },
+      "FP60": {
+        "playerCount": 1,
+        "cashLine": 1,
+        "purse": "$250",
+        "purseValue": 250,
+        "entryFeesTotal": "$163",
+        "entryFeesTotalValue": 163,
+        "entryFeePercentage": 153,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$250",
+            "payoutValue": 250
+          }
+        ]
+      },
+      "MP70": {
+        "playerCount": 7,
+        "cashLine": 3,
+        "purse": "$2,015",
+        "purseValue": 2015,
+        "entryFeesTotal": "$1,316",
+        "entryFeesTotalValue": 1316,
+        "entryFeePercentage": 261,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$960",
+            "payoutValue": 960
+          },
+          {
+            "place": 2,
+            "payout": "$605",
+            "payoutValue": 605
+          },
+          {
+            "place": 3,
+            "payout": "$450",
+            "payoutValue": 450
+          }
+        ]
+      },
+      "MA1": {
+        "playerCount": 75,
+        "cashLine": 34,
+        "purse": "$0",
+        "purseValue": 0,
+        "entryFeesTotal": "$12,225",
+        "entryFeesTotalValue": 12225,
+        "entryFeePercentage": 134,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 2,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 3,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 4,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 5,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 6,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 7,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 8,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 9,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 10,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 11,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 12,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 13,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 14,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 15,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 16,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 17,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 18,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 19,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 20,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 21,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 22,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 23,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 24,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 25,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 26,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 27,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 28,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 29,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 30,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 31,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 32,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 33,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 34,
+            "payout": "$0",
+            "payoutValue": 0
+          }
+        ]
+      },
+      "MA40": {
+        "playerCount": 35,
+        "cashLine": 16,
+        "purse": "$0",
+        "purseValue": 0,
+        "entryFeesTotal": "$5,705",
+        "entryFeesTotalValue": 5705,
+        "entryFeePercentage": 134,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 2,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 3,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 4,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 5,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 6,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 7,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 8,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 9,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 10,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 11,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 12,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 13,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 14,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 15,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 16,
+            "payout": "$0",
+            "payoutValue": 0
+          }
+        ]
+      },
+      "FA40": {
+        "playerCount": 4,
+        "cashLine": 2,
+        "purse": "$0",
+        "purseValue": 0,
+        "entryFeesTotal": "$552",
+        "entryFeesTotalValue": 552,
+        "entryFeePercentage": 168,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 2,
+            "payout": "$0",
+            "payoutValue": 0
+          }
+        ]
+      },
+      "MA50": {
+        "playerCount": 26,
+        "cashLine": 12,
+        "purse": "$0",
+        "purseValue": 0,
+        "entryFeesTotal": "$4,238",
+        "entryFeesTotalValue": 4238,
+        "entryFeePercentage": 135,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 2,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 3,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 4,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 5,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 6,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 7,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 8,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 9,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 10,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 11,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 12,
+            "payout": "$0",
+            "payoutValue": 0
+          }
+        ]
+      },
+      "MA60": {
+        "playerCount": 27,
+        "cashLine": 13,
+        "purse": "$0",
+        "purseValue": 0,
+        "entryFeesTotal": "$4,401",
+        "entryFeesTotalValue": 4401,
+        "entryFeePercentage": 135,
+        "currency": "USD",
+        "payouts": [
+          {
+            "place": 1,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 2,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 3,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 4,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 5,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 6,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 7,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 8,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 9,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 10,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 11,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 12,
+            "payout": "$0",
+            "payoutValue": 0
+          },
+          {
+            "place": 13,
+            "payout": "$0",
+            "payoutValue": 0
+          }
+        ]
+      }
+    }
+  },
+  "hash": "2a10760b5bafc5c7a6edf0685499a96a"
+}

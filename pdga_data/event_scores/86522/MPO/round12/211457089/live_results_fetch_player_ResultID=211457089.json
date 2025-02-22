@@ -1,0 +1,603 @@
+{
+  "data": {
+    "TournID": 86522,
+    "ResultID": 211457089,
+    "FirstName": "Gannon",
+    "LastName": "Buhr",
+    "PDGANum": 75412,
+    "Division": "MPO",
+    "Pool": "",
+    "Place": 1,
+    "PlaceRank": 4,
+    "ToPar": -42,
+    "Tied": false,
+    "Prize": "$5,500",
+    "DNF": false,
+    "Total": 190,
+    "Name": "Gannon Buhr",
+    "Avatar": "/files/styles/large/public/pictures/picture-1154441-1712290699.jpg",
+    "ProfileURL": "https://www.pdga.com/player/75412",
+    "DivisionName": "Mixed Pro Open",
+    "FormattedPlace": "1st",
+    "TierLetter": "A",
+    "TierType": "Tier",
+    "Class": "Professional",
+    "Rating": 1058,
+    "RatingEffectiveDate": "2025-02-11",
+    "Location": "Urbandale, IA",
+    "Country": "US",
+    "Nationality": null,
+    "AvatarURL": "/files/styles/large/public/pictures/picture-1154441-1712290699.jpg",
+    "Scores": [
+      {
+        "ScoreID": 22782308,
+        "ThrowStatusID": 340100,
+        "Round": 1,
+        "RoundDate": "2025-01-19",
+        "RoundField": "Rd1",
+        "TeeTime": "13:54:00",
+        "TeeStart": "1",
+        "RoundScore": 48,
+        "ScoreToPar": -8,
+        "RoundToPar": -8,
+        "Birdies": 11,
+        "BirdieHoles": 11,
+        "Bogeys": 3,
+        "BogeyHoles": 2,
+        "HotRound": false,
+        "RoundComplete": true,
+        "RoundRating": 1024,
+        "HoleScores": {
+          "1": 2,
+          "2": 4,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 5,
+          "8": 5,
+          "9": 3,
+          "10": 2,
+          "11": 3,
+          "12": 2,
+          "13": 2,
+          "14": 3,
+          "15": 2,
+          "16": 2,
+          "17": 3,
+          "18": 2
+        },
+        "Layout": {
+          "CourseName": "Fountain Hills Disc Golf Course",
+          "ShortCourseName": "Fountain Hills",
+          "Name": "PRO MEN-Fountain Championship 2025",
+          "ShortName": "PRO MEN-Fountain Championship 2025",
+          "Holes": 18,
+          "Par": 56,
+          "Length": 6741,
+          "Units": "Feet",
+          "Detail": {
+            "1": {
+              "Label": "1",
+              "Length": 393,
+              "Par": 3
+            },
+            "10": {
+              "Label": "10",
+              "Length": 310,
+              "Par": 3
+            },
+            "11": {
+              "Label": "11",
+              "Length": 368,
+              "Par": 3
+            },
+            "12": {
+              "Label": "12",
+              "Length": 290,
+              "Par": 3
+            },
+            "13": {
+              "Label": "13",
+              "Length": 255,
+              "Par": 3
+            },
+            "14": {
+              "Label": "14",
+              "Length": 375,
+              "Par": 3
+            },
+            "15": {
+              "Label": "15",
+              "Length": 426,
+              "Par": 3
+            },
+            "16": {
+              "Label": "16",
+              "Length": 327,
+              "Par": 3
+            },
+            "17": {
+              "Label": "17",
+              "Length": 468,
+              "Par": 3
+            },
+            "18": {
+              "Label": "18",
+              "Length": 400,
+              "Par": 3
+            },
+            "2": {
+              "Label": "2",
+              "Length": 703,
+              "Par": 4
+            },
+            "3": {
+              "Label": "3",
+              "Length": 294,
+              "Par": 3
+            },
+            "4": {
+              "Label": "4",
+              "Length": 250,
+              "Par": 3
+            },
+            "5": {
+              "Label": "5",
+              "Length": 463,
+              "Par": 3
+            },
+            "6": {
+              "Label": "6",
+              "Length": 233,
+              "Par": 3
+            },
+            "7": {
+              "Label": "7",
+              "Length": 210,
+              "Par": 3
+            },
+            "8": {
+              "Label": "8",
+              "Length": 570,
+              "Par": 4
+            },
+            "9": {
+              "Label": "9",
+              "Length": 406,
+              "Par": 3
+            }
+          }
+        }
+      },
+      {
+        "ScoreID": 22785528,
+        "ThrowStatusID": 340245,
+        "Round": 2,
+        "RoundDate": "2025-01-19",
+        "RoundField": "Rd2",
+        "TeeTime": "13:22:00",
+        "TeeStart": "1",
+        "RoundScore": 43,
+        "ScoreToPar": -13,
+        "RoundToPar": -13,
+        "Birdies": 14,
+        "BirdieHoles": 14,
+        "Bogeys": 1,
+        "BogeyHoles": 1,
+        "HotRound": false,
+        "RoundComplete": true,
+        "RoundRating": 1074,
+        "HoleScores": {
+          "1": 2,
+          "2": 4,
+          "3": 2,
+          "4": 3,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 5,
+          "9": 3,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 2,
+          "17": 2,
+          "18": 2
+        },
+        "Layout": {
+          "CourseName": "Fountain Hills Disc Golf Course",
+          "ShortCourseName": "Fountain Hills",
+          "Name": "PRO MEN-Fountain Championship 2025",
+          "ShortName": "PRO MEN-Fountain Championship 2025",
+          "Holes": 18,
+          "Par": 56,
+          "Length": 6741,
+          "Units": "Feet",
+          "Detail": {
+            "1": {
+              "Label": "1",
+              "Length": 393,
+              "Par": 3
+            },
+            "10": {
+              "Label": "10",
+              "Length": 310,
+              "Par": 3
+            },
+            "11": {
+              "Label": "11",
+              "Length": 368,
+              "Par": 3
+            },
+            "12": {
+              "Label": "12",
+              "Length": 290,
+              "Par": 3
+            },
+            "13": {
+              "Label": "13",
+              "Length": 255,
+              "Par": 3
+            },
+            "14": {
+              "Label": "14",
+              "Length": 375,
+              "Par": 3
+            },
+            "15": {
+              "Label": "15",
+              "Length": 426,
+              "Par": 3
+            },
+            "16": {
+              "Label": "16",
+              "Length": 327,
+              "Par": 3
+            },
+            "17": {
+              "Label": "17",
+              "Length": 468,
+              "Par": 3
+            },
+            "18": {
+              "Label": "18",
+              "Length": 400,
+              "Par": 3
+            },
+            "2": {
+              "Label": "2",
+              "Length": 703,
+              "Par": 4
+            },
+            "3": {
+              "Label": "3",
+              "Length": 294,
+              "Par": 3
+            },
+            "4": {
+              "Label": "4",
+              "Length": 250,
+              "Par": 3
+            },
+            "5": {
+              "Label": "5",
+              "Length": 463,
+              "Par": 3
+            },
+            "6": {
+              "Label": "6",
+              "Length": 233,
+              "Par": 3
+            },
+            "7": {
+              "Label": "7",
+              "Length": 210,
+              "Par": 3
+            },
+            "8": {
+              "Label": "8",
+              "Length": 570,
+              "Par": 4
+            },
+            "9": {
+              "Label": "9",
+              "Length": 406,
+              "Par": 3
+            }
+          }
+        }
+      },
+      {
+        "ScoreID": 22805170,
+        "ThrowStatusID": 341310,
+        "Round": 3,
+        "RoundDate": "2025-01-19",
+        "RoundField": "Rd3",
+        "TeeTime": "13:54:00",
+        "TeeStart": "1",
+        "RoundScore": 52,
+        "ScoreToPar": -8,
+        "RoundToPar": -8,
+        "Birdies": 11,
+        "BirdieHoles": 11,
+        "Bogeys": 3,
+        "BogeyHoles": 3,
+        "HotRound": false,
+        "RoundComplete": true,
+        "RoundRating": 1052,
+        "HoleScores": {
+          "1": 2,
+          "2": 2,
+          "3": 3,
+          "4": 2,
+          "5": 3,
+          "6": 3,
+          "7": 3,
+          "8": 4,
+          "9": 2,
+          "10": 3,
+          "11": 3,
+          "12": 3,
+          "13": 3,
+          "14": 5,
+          "15": 3,
+          "16": 4,
+          "17": 2,
+          "18": 2
+        },
+        "Layout": {
+          "CourseName": "Vista del Camino Park",
+          "ShortCourseName": "Vista del Camino Park",
+          "Name": "PRO MEN-Vista XL 2025 Memorial",
+          "ShortName": "PRO MEN-Vista XL 2025 Memorial",
+          "Holes": 18,
+          "Par": 60,
+          "Length": 8637,
+          "Units": "Feet",
+          "Detail": {
+            "1": {
+              "Label": "1",
+              "Length": 284,
+              "Par": 3
+            },
+            "10": {
+              "Label": "10",
+              "Length": 651,
+              "Par": 4
+            },
+            "11": {
+              "Label": "11",
+              "Length": 759,
+              "Par": 4
+            },
+            "12": {
+              "Label": "12",
+              "Length": 427,
+              "Par": 3
+            },
+            "13": {
+              "Label": "13",
+              "Length": 405,
+              "Par": 3
+            },
+            "14": {
+              "Label": "14",
+              "Length": 605,
+              "Par": 4
+            },
+            "15": {
+              "Label": "15",
+              "Length": 741,
+              "Par": 4
+            },
+            "16": {
+              "Label": "16",
+              "Length": 380,
+              "Par": 3
+            },
+            "17": {
+              "Label": "17",
+              "Length": 243,
+              "Par": 3
+            },
+            "18": {
+              "Label": "18",
+              "Length": 330,
+              "Par": 3
+            },
+            "2": {
+              "Label": "2",
+              "Length": 415,
+              "Par": 3
+            },
+            "3": {
+              "Label": "3",
+              "Length": 360,
+              "Par": 3
+            },
+            "4": {
+              "Label": "4",
+              "Length": 381,
+              "Par": 3
+            },
+            "5": {
+              "Label": "5",
+              "Length": 386,
+              "Par": 3
+            },
+            "6": {
+              "Label": "6",
+              "Length": 783,
+              "Par": 4
+            },
+            "7": {
+              "Label": "7",
+              "Length": 645,
+              "Par": 4
+            },
+            "8": {
+              "Label": "8",
+              "Length": 360,
+              "Par": 3
+            },
+            "9": {
+              "Label": "9",
+              "Length": 482,
+              "Par": 3
+            }
+          }
+        }
+      },
+      {
+        "ScoreID": 22814763,
+        "ThrowStatusID": 341913,
+        "Round": 12,
+        "RoundDate": "2025-01-19",
+        "RoundField": "Finals",
+        "TeeTime": "13:54:00",
+        "TeeStart": "1",
+        "RoundScore": 47,
+        "ScoreToPar": -13,
+        "RoundToPar": -13,
+        "Birdies": 13,
+        "BirdieHoles": 13,
+        "Bogeys": 0,
+        "BogeyHoles": 0,
+        "HotRound": false,
+        "RoundComplete": true,
+        "RoundRating": 1093,
+        "HoleScores": {
+          "1": 2,
+          "2": 3,
+          "3": 2,
+          "4": 3,
+          "5": 3,
+          "6": 3,
+          "7": 3,
+          "8": 2,
+          "9": 3,
+          "10": 3,
+          "11": 3,
+          "12": 2,
+          "13": 2,
+          "14": 3,
+          "15": 3,
+          "16": 3,
+          "17": 2,
+          "18": 2
+        },
+        "Layout": {
+          "CourseName": "Vista del Camino Park",
+          "ShortCourseName": "Vista del Camino Park",
+          "Name": "PRO MEN-Vista XL 2025 Memorial",
+          "ShortName": "PRO MEN-Vista XL 2025 Memorial",
+          "Holes": 18,
+          "Par": 60,
+          "Length": 8637,
+          "Units": "Feet",
+          "Detail": {
+            "1": {
+              "Label": "1",
+              "Length": 284,
+              "Par": 3
+            },
+            "10": {
+              "Label": "10",
+              "Length": 651,
+              "Par": 4
+            },
+            "11": {
+              "Label": "11",
+              "Length": 759,
+              "Par": 4
+            },
+            "12": {
+              "Label": "12",
+              "Length": 427,
+              "Par": 3
+            },
+            "13": {
+              "Label": "13",
+              "Length": 405,
+              "Par": 3
+            },
+            "14": {
+              "Label": "14",
+              "Length": 605,
+              "Par": 4
+            },
+            "15": {
+              "Label": "15",
+              "Length": 741,
+              "Par": 4
+            },
+            "16": {
+              "Label": "16",
+              "Length": 380,
+              "Par": 3
+            },
+            "17": {
+              "Label": "17",
+              "Length": 243,
+              "Par": 3
+            },
+            "18": {
+              "Label": "18",
+              "Length": 330,
+              "Par": 3
+            },
+            "2": {
+              "Label": "2",
+              "Length": 415,
+              "Par": 3
+            },
+            "3": {
+              "Label": "3",
+              "Length": 360,
+              "Par": 3
+            },
+            "4": {
+              "Label": "4",
+              "Length": 381,
+              "Par": 3
+            },
+            "5": {
+              "Label": "5",
+              "Length": 386,
+              "Par": 3
+            },
+            "6": {
+              "Label": "6",
+              "Length": 783,
+              "Par": 4
+            },
+            "7": {
+              "Label": "7",
+              "Length": 645,
+              "Par": 4
+            },
+            "8": {
+              "Label": "8",
+              "Length": 360,
+              "Par": 3
+            },
+            "9": {
+              "Label": "9",
+              "Length": 482,
+              "Par": 3
+            }
+          }
+        }
+      }
+    ],
+    "AverageRoundRating": 1061,
+    "RatingDiff": 3,
+    "ToParString": -42,
+    "Teammates": []
+  },
+  "hash": "9db2559ac3417476286211451942c8b8"
+}

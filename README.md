@@ -99,6 +99,33 @@ Filtered to XHR, the network panel showcases a handful of API calls that are use
 
 Had one of those moments where a fucking banger of a song turned on right at this point in the train of thought and it occured to me that the best way to describe all of this is to actually pull down the data and enumerate it within the repo so it's explorable and digestable in that way. Hell yeah let's go.
 
+So data folder structure. I'm sort of going to follow the API structure with this, but it exposes some confusion: Why round 12? The interface has Rounds 1, 2 3 and Finals which maps to 12. Weird. Anyway, if I consider this is a possible (eventual) destination for a local copy of this data I figure it makes sense to construct it in a traversable way that would make sense for such population efforts. I was gonna map out the folder structure concept here but whatever I'll just build it and then the commit record can provide that same info.
+
+Ok, so I observed a few things while working on this. When you expand the individual player card the initial fetch_player call is made for what seems to have the bulk of the meaty stats and then two sets of 4 calls are made for hole-breakdowns and round-stats. The ids for these are different but they are denoted within the fetch_player_Result call and indicate Rounds. So we're just dealing with some sort of normalization scheme that is exposed via the frontend somewhat. Makes me wonder if this has to do with how sometimes the rounds are ongoing (this is a live score readout after all) and I'm pretty convinced that's the case. Neat.
+
+Oh ok, I looked a little closer at some stuff in the data and mapped it to what I'm working on with the existing GAS functionality. I'm actually focusing on Round 1 data here, and when I click around in the interface to view the scorecard for Gannon's round 1 what do you know the data lines up. Outstanding I have the full connection so let's write some code.
+
+I get to cheat and know that I'm going directly to Gannon's player Id which is 211457089, but eventually determining that Id will be a fun little challenge. So I'm making an API call to `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_player?ResultID=211457089`. How to make API calls in GAS?
+
+Found [this](https://developers.google.com/apps-script/guides/services/external) almost immediately. When I try to run the sample code I get another UAC popup and I don't really pay attention to it. I'll revisit this when I'm done with all core functionality stuff and I'm not certain that's right now. The initial version of this function works.
+
+So I'm parsing through this data and thinking about how I'm going to translate it. In order to calculate strokes, I'm going to be comparing an array of 18 ordered integers called scores against an array of pars that is a bit nested. So why not turn it into a structure that benefits me? Something like
+
+```
+interface playerScore {
+  scores: number[],
+  pars: number[]
+}
+```
+
+Bro, why does the execution log disappear when you start making code changes? that's awful. Oof, ok the Layout - Detail par data structure is interesting. I'm going to make a dedicated function to work with it. I'm making this harder than it needs to be. I can reduce this down to a single array that denotes the difference between strokes and par. Noice.
+
+HoleScores is actually KVPs with a string-based index for hole number and so I can use that as a baseline because that's how it's kinda delivered on the Layout.Detail side too. I can't map on these dictionaries, hm. I'll just use a basic for loop here. Worked like a charm.
+
+Now let's map it to an easier-to-traverse object style for passing around instructions to the other functions at play here. And there you have it, hell yeah.
+
+So here's what I did. I made `obtainGannonData()` and then constructed a stats object that the function produces. This is then returned by that function and I made another function called `updateGannonStatsDynamically()`. It's just like the explicit function except it also makes a call to `obtainGannonData()` to obtain the stats object and then references values from that (built by routine javascript traversal logic counting the types of strokes by way of the score/par differences) to write data into the sheet. I tested it by having my main function run `resetGannonStats()` before hitting the dynamic function to populate the strokes section. All data looks to match expected values and there you have it: a full tracer round for dynamic spreadsheet updating by way of PDGA data. Woo, stopwatch says 2 hours 6 minutes!
+
 [event-scores-network-panel]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/event-scores-network-panel.png "Event Scores Network Panel"
 [event-scores-player-click-network-panel]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/event-scores-player-click-network-panel.png "Event Scores Player Click Network Panel"
 [gannon-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonexample.png "Gannon Example"

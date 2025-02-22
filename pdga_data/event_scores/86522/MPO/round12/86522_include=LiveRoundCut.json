@@ -1,0 +1,146 @@
+[
+  {
+    "id": 12742574,
+    "tournId": 86522,
+    "division": "FP40",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 116,
+      "divisionName": "Women's Pro 40+",
+      "division": "FP40",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters Women 40+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742576,
+    "tournId": 86522,
+    "division": "FP50",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 126,
+      "divisionName": "Women's Pro 50+",
+      "division": "FP50",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters Women 50+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742578,
+    "tournId": 86522,
+    "division": "FP60",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 146,
+      "divisionName": "Women's Pro 60+",
+      "division": "FP60",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters Women 60+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742572,
+    "tournId": 86522,
+    "division": "FPO",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 105,
+      "divisionName": "Women's Pro Open",
+      "division": "FPO",
+      "updateDate": "2016-10-10T21:59:34+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Open Women",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742573,
+    "tournId": 86522,
+    "division": "MP40",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 111,
+      "divisionName": "Mixed Pro 40+",
+      "division": "MP40",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters 40+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742575,
+    "tournId": 86522,
+    "division": "MP50",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 121,
+      "divisionName": "Mixed Pro 50+",
+      "division": "MP50",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters 50+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742577,
+    "tournId": 86522,
+    "division": "MP60",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 141,
+      "divisionName": "Mixed Pro 60+",
+      "division": "MP60",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters 60+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742579,
+    "tournId": 86522,
+    "division": "MP70",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 161,
+      "divisionName": "Mixed Pro 70+",
+      "division": "MP70",
+      "updateDate": "2018-01-01T00:00:00+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Pro Masters 70+",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  },
+  {
+    "id": 12742571,
+    "tournId": 86522,
+    "division": "MPO",
+    "fieldPayoutPercentage": 40,
+    "pdgaDivision": {
+      "divisionId": 100,
+      "divisionName": "Mixed Pro Open",
+      "division": "MPO",
+      "updateDate": "2016-10-10T21:59:34+00:00",
+      "active": true,
+      "class": "P",
+      "legacyName": "Open",
+      "legacyCutoff": "2023-01-01T00:00:00+00:00"
+    }
+  }
+]
