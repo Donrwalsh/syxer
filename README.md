@@ -79,4 +79,4 @@ And now the main event: `obtainGannonData()`. So I need to get to the website th
 
 ![alt text][gannon-example]
 
-[gannon-example]: https://github.com/Donrwalsh/syxer/raw/master/images/gannonexample.png "Gannon Example"
+[gannon-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonexample.png "Gannon Example"
