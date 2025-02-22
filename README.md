@@ -1,5 +1,9 @@
 # syxer
 
+## Outstanding Questions:
+
+- [ ] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
+
 ## Train of Thought / Working Notes
 
 #### 2/21/25
@@ -83,5 +87,19 @@ Neat! That was pretty straightforward - even works in the vsCode preview, dope. 
 
 ![Gannon Buhr Scorecard Population Example][gannon-scorecard-example]
 
+First of all, I'm making an assumption here that the strokes data is coming from the score section because I'm not seeing a direct correlation from the listing of stroke types that the spreadsheet enumerates data by to any other data presented on the page of the first image - highlighted or no. But I'm aware that score translates into this kind of stroke counting with a single very minor difference that might be important: The spreadsheet categorizes double bogey+ as a single line-item when the + indicates that there may be more strokes to be counted beyond the calculated 2. Now I don't know if this is a scoring convention in that all double bogey+s are counted just as double bogeys so I'm going to log it as a question quick. . . I'll add a section to the top of the README.
+
+Anyway, sidequest done. I need the site that's depicted in the first image. [Here it is](https://www.pdga.com/live/event/86522/MPO/scores?round=12). Let's talk about what happens when you visit this site:
+
+![How the sausage is made][event-scores-network-panel]
+
+Filtered to XHR, the network panel showcases a handful of API calls that are used to construct the data that's immediately visible. But there's more! When you click on an individual player a panel is expanded and more data is fetched on-demand, which looks like this:
+
+![How we make the sausage][event-scores-player-click-network-panel]
+
+Had one of those moments where a fucking banger of a song turned on right at this point in the train of thought and it occured to me that the best way to describe all of this is to actually pull down the data and enumerate it within the repo so it's explorable and digestable in that way. Hell yeah let's go.
+
+[event-scores-network-panel]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/event-scores-network-panel.png "Event Scores Network Panel"
+[event-scores-player-click-network-panel]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/event-scores-player-click-network-panel.png "Event Scores Player Click Network Panel"
 [gannon-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonexample.png "Gannon Example"
 [gannon-scorecard-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonscorecardexample.png "Gannon Scorecard Example"
