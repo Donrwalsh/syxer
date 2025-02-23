@@ -2,7 +2,8 @@
 
 ## Outstanding Questions:
 
-- [ ] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
+- [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
+  - yes, but this was an administrative decision for record-keeping so it can stay this way. (I happened to code with this assumption so we good here)
 
 ## Train of Thought / Working Notes
 
@@ -130,3 +131,38 @@ So here's what I did. I made `obtainGannonData()` and then constructed a stats o
 [event-scores-player-click-network-panel]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/event-scores-player-click-network-panel.png "Event Scores Player Click Network Panel"
 [gannon-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonexample.png "Gannon Example"
 [gannon-scorecard-example]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/gannonscorecardexample.png "Gannon Scorecard Example"
+
+#### 2/23/25
+
+G'morning. Spoke with Matt yesterday and grabbed a ton of helpful details about the structure of the game and possible future states. I'm a bit strapped for time this morning so I'm not going to be able to transcribe everything, but I will be sure to do that at some point.
+
+For today I'm going to just play with a bit more data. C1R and C2R are next up. I see on Gannon's highlighted screenshot that there's a spot for these stats directly. The C1R value I want to find is 12 and the C2R value I want to find is 2. The presented scores on the highlighted scorecard is 12/18 C1R and 14/18 C2R. So intuitively they each have a cap of 18 because they are describing what happened on a given hole. C1R implies C2R and so that makes sense that we're recording the difference between the two. Let's look at the data.
+
+Ok, we're gonna get interesting right away. I don't see a direct readout of CXR scores in the neatly arranged data from last time for strokes. I poke around for a moment. I see in the hole-breakdown some structures that probably match what I'm looking for. I'm going to map this out because honestly I was hoping to knock this out in a quick 15min block but it's more challenging than that so I'm gonna breadcrumb my way through this gingerbread house.
+
+- `live_results_fetch_player_ResultID=211457089` is missing the data I want
+- It looks like a `xxx-hole-breakdowns` will have it for me.
+- The `xxx` number from above corresponds to a ScoreID for the round and so for round 1 we're looking at `22782308`
+- Therefore `22782308-hole-breakdowns` is the where I expect to find this data.
+
+So piping that data into a potato I run some tests:
+
+`potato.filter((hole) => hole.holeBreakdown.c1 == 1).length` = 14
+
+`potato.filter((hole) => hole.holeBreakdown.c2 == 1).length` = 3
+
+Not quite what I expected, hm. I have a theory that there's something unique about what happened on hole 6 that's causing it to be counted as C2R but not as C1R. . . ? Looking at the screenshot there's a dot instead of a big or small circle. I need to pause here and get ready for a thing, but this may warrant a question to Matt if I can't sort it out in my next visit.
+
+Oh wait I think I just figured it out. The row is labeled Greens, so I probably need to count from that column one sec.
+
+`potato.filter((hole) => hole.holeBreakdown.green == "c1").length` = 11
+
+`potato.filter((hole) => hole.holeBreakdown.green == "c2").length` = 2
+
+These numbers also displease me. We're missing something and it's happening on hole 6:
+
+`potato.filter((hole) => hole.holeBreakdown.green == "parked").length` = 1
+
+So the theory is that the value of `"parked"` counts as C1 which bumps the 11 to 12 and keeps the 2 as it is and those are the exact numbers I want.
+
+Ok now I'm really out of time, but I think this is a compelling theory.
