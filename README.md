@@ -1,5 +1,10 @@
 # syxer
 
+## Todo:
+
+- [ ] Write up notes from 2/22 stakeholder discussions.
+- [ ] Seems like it could be cool to standardize the selection of cells based on stat description (+ round designation) to do away with the verbose spreadsheet referencing over and over again.
+
 ## Outstanding Questions:
 
 - [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
@@ -166,3 +171,37 @@ These numbers also displease me. We're missing something and it's happening on h
 So the theory is that the value of `"parked"` counts as C1 which bumps the 11 to 12 and keeps the 2 as it is and those are the exact numbers I want.
 
 Ok now I'm really out of time, but I think this is a compelling theory.
+
+#### 2/24/25
+
+So I noodled on where I left off for a bit since I last looked at this. I'm fairly convinced that this is the right line of thinking and it just occured to me that I can confirm this by perusing other stats. The numbers that make it into the spreadsheet ultimately match what's being rendered on the page over on the right-hand side in the sideways bar graph stats block so it's only the data (which drives this in the first place) that holds what might be a discrepancy.
+
+Looking at Anthony Barela he's got 9 C1R and 2 C2R. The circles show many more parks and so this basically fully confirms that they're being counted as C1R which breaks down into 5 natty C1Rs and 4 parked, ok that's convincing enough for me let's put it into code.
+
+I want obtainGannonData to spit this out too, so I'll start by expanding the output to be sectioned. Ok, I remember now that I'm not getting this data from the existing API call so let's introduce the new API call that fetches this data (note that this whole process and mechanism needs to be abstracted away from sequential operations at the start of this function but that's too big of a thread to unravel right this second).
+
+I'm just going to inline count the values of hole.holeBreakdown.green in the ouptut object. Probably I'll move that somewhere else later but it's fine there for now. While I'm here let's go ahead and calculated OB and Ace because they're pretty straightforward. OB is a value contained in the hole breakdown data so I can just directly reference that. Ace is just a stroke value of 1 but that's independent of Par, so I'll just reference that from the player stats bit that has score that I use in the calculation of strokes.
+
+So for OB it's nested and I want to sum. I chose to map the holeBreakdowns object into a clean list of integers and then do a basic reduce to sum those integers and it's actually a shorter line than the filter with two conditions. Ha!
+
+The arrangement of the score data is KVPs so it's not simple to iterate over. I dealt with this before so I'm already iterating over these values to construct strokes data so I'll just add a quick check for aces while I'm doing that.
+
+So the end result is that `obtainGannonData()` is now returning an object that looks like this:
+
+```
+{ strokes:
+   { doubleBogey: 1,
+     bogey: 1,
+     par: 5,
+     birdie: 11,
+     eagle: 0,
+     albatross: 0 },
+  stats: { c1r: 12, c2r: 2, ob: 3, ace: 0 },
+  makes: {} }
+```
+
+And this makes my life a hell of a lot easier when it's time to update stats dynamically and my goodness would you look at the time - that's now!
+
+Actually one sec before I do that. In the interest of completeness I'm going to update the code I'm working with to write an empty value to the No Stats spot. These two are independent of one another but it'll be convenient when future me has a spot to introduce that logic in whatever form it takes. Good work, past Don.
+
+I ran the script and it does exactly what I want. Excellent. I'm going to migrate the code updates so they're tracked here and then go finish getting ready for work.
