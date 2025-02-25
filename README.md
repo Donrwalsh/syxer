@@ -4,11 +4,14 @@
 
 - [ ] Write up notes from 2/22 stakeholder discussions.
 - [ ] Seems like it could be cool to standardize the selection of cells based on stat description (+ round designation) to do away with the verbose spreadsheet referencing over and over again.
+- [ ] Player spreadsheet red point values are decorative only and aren't used in calculations...
 
 ## Outstanding Questions:
 
 - [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
   - yes, but this was an administrative decision for record-keeping so it can stay this way. (I happened to code with this assumption so we good here)
+- [ ] When we're talking No Stats for partial data, how does Makes play into that?
+- [ ] In the event that a player does not make a selection in time for kickoff, what happens? Is a default selection made or are they penalized and required to make a selection after data starts rolling in?
 
 ## Train of Thought / Working Notes
 
@@ -205,3 +208,29 @@ And this makes my life a hell of a lot easier when it's time to update stats dyn
 Actually one sec before I do that. In the interest of completeness I'm going to update the code I'm working with to write an empty value to the No Stats spot. These two are independent of one another but it'll be convenient when future me has a spot to introduce that logic in whatever form it takes. Good work, past Don.
 
 I ran the script and it does exactly what I want. Excellent. I'm going to migrate the code updates so they're tracked here and then go finish getting ready for work.
+
+#### 2/25/25
+
+Ok, so I've got some stuff to jot down based on a few conversations with Matt. First off, No Stats. This is a binary decision based on the following flow:
+
+- If the player has stats (C1R, C2R, OB) then they take those values and we stop here.
+- If the player has no stats (which happens due to incomplete data being recorded in the PDGA system) then they get a 1 value in the No Stats cell which results in either 17 points for MPO or 12 points for FPO.
+- If the player has partial stats then calculate the result of both options and award the player the higher of the two.
+
+So realistically I need to be able to determine what both no and partial stats look like to make these decisions. I'm a bit concerned that partial stats may be hard to identify during a live-feed situation, but that's pretty far down the road at the moment. Doing the comparison and choosing between either option is straightforward but will require reading values from the spreadsheet which hasn't needed to happen yet. Ok also it just occurred to me that I'm not sure how Makes plays into this and WHAT'S THAT we've got actual point values in the red column but they aren't being relied on to make the calculations, hm.
+
+Next up, I'm going to write down some of the takeaways from the 2/22 stakeholder discussion.
+
+- Season of 21 events: 18 regular season, final 3 playoffs.
+- Each event the game of it is a head-to-head competition between two players.
+- Draft pool involves 300-400 athletes: chosen via some metric that Matt used which I didn't record. In any case, they will all have PDGA profiles and distinct playerIds.
+- Draft was 2/24, first event kicks off on 2/28.
+- Players will draft 12 athletes and each event they will select 6 from their roster: 3 MPO and 3 FPO. Roster choices are locked upon kickoff.
+- Looking at the player stat sheet, most events are 3 rounds (DGPT) but some are 4 (DGPT+) and one is 5 (Worlds)
+- Players can trade using a Waiver Wire concept. This is pretty out of scope for now, but just understand that these potential trades are prioritized based on current player standings. No plans to introduce the management of this into spreadsheets at this time other than knowing that the players' athlete selection is subject to change as the season progresses.
+
+Furthermore we spoke briefly last night after the draft concluded. I advised Matt to stick with individual spreadsheets for now because we can have spreadsheets talk to one another via IMPORTRANGE and I read some stuff about how you can have a script update multiple spreadsheets and immediately I pictured a master spreadsheet with buttons that reach out to satellite spreadsheets and update the data based on Roster selections. I asked him to procure me a spreadsheet too like I'm a player so I can tinker with this. I figure that'll be my next area of focus once I finish the logic to record Makes and then start upgrading what I've written to be able to handle multiple rounds and variable athletes.
+
+![Mood][kronk]
+
+[kronk]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/kronk.png "Oh Yeah"
