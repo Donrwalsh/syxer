@@ -11,6 +11,7 @@
 - [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
   - yes, but this was an administrative decision for record-keeping so it can stay this way. (I happened to code with this assumption so we good here)
 - [ ] When we're talking No Stats for partial data, how does Makes play into that?
+  - Makes will also be empty in a no stats situation,
 - [ ] In the event that a player does not make a selection in time for kickoff, what happens? Is a default selection made or are they penalized and required to make a selection after data starts rolling in?
 
 ## Train of Thought / Working Notes
@@ -232,5 +233,66 @@ Next up, I'm going to write down some of the takeaways from the 2/22 stakeholder
 Furthermore we spoke briefly last night after the draft concluded. I advised Matt to stick with individual spreadsheets for now because we can have spreadsheets talk to one another via IMPORTRANGE and I read some stuff about how you can have a script update multiple spreadsheets and immediately I pictured a master spreadsheet with buttons that reach out to satellite spreadsheets and update the data based on Roster selections. I asked him to procure me a spreadsheet too like I'm a player so I can tinker with this. I figure that'll be my next area of focus once I finish the logic to record Makes and then start upgrading what I've written to be able to handle multiple rounds and variable athletes.
 
 ![Mood][kronk]
+
+Ok, let's take a look at the next stat of the bunch: C1X Putting. The scorecard example shows a **12/15** value for C1X but it's a bit unclear where that's coming from. If I sum the values in the row I get 20 so that's not it. If I count/sum the bold values I get 11 so that's not it either. . . C2 Makes lines up nicely with 1 to 1 so that suggests it's the bolded values so where's the missing one coming from? Oh it's probably where C2 counts for C1? Doesn't that represent a slightly different mechanism for counting across the Stats and Makes sections? I'll need to ponder this for a while.
+
+Ok, let's take a moment to do some side-work since I'm a bit blocked by lacking domain knowledge at the moment. Currently I'm only updating round 1 data, so what would expanding this to work with multiple rounds look like? There's an implicit mapping happening with the hardcoded concept of grabbing round1scores and also the location of the cells we're updating. If I were going to (and I plan to) expand `updateGannonStatsDynamically` to be more generic I'd probably want to land on something like `updateAthleteStats(athlete, round)`. I'm going to start building this I think - we're in loose typing land over here so I can cut corners while it makes sense to.
+
+Since I'm accepting params, I'll want to throw errors if they aren't what I expect. Round is easy, it'll be an integer between 1 and 5. (note there's an opportunity here for futher granularity and restriction but it requires better working knowledge of which tournament we're working with and we aren't there yet).
+
+```
+function updateAthleteStats(athleteName, round) {
+  if (![1, 2, 3, 4, 5].includes(round)) {   
+    throw 'Error. Invalid Round Param';
+  }
+}
+```
+
+That gives me a console error which is sufficient for now. Next, let's do player. I want to consult a comprehensive list of player names and keys to see if the provided player is available. I'll start that list with one value since we're only dealing with Gannon's stats at the moment. 
+
+```
+const athletes = [
+  { name: "Gannon Buhr", PDGANum: 75412 }
+]
+
+function updateAthleteStats(athleteName, round) {
+  const athlete = athletes.find((athlete) => athlete.name == athleteName);
+
+  if (athlete == null) {
+    throw `Error. Athlete "${athleteName}" not found`;
+  }
+}
+```
+Cool. In thinking about this, I'm basically introducing round and player as toggles while keeping tournament and which spreadsheet is being updated as static concepts for now. It makes sense to be a bit more explicit about this so I'll add a constant that denotes the tournamentId. For the spreadsheet it'll just be implied via the `getActiveSpreadsheet` call.
+
+At this point, I'd really like to make a call to some `obtainAthleteStats()` method so let's sound it out. I'm going to be passing in the athlete's PDGA number, the tournamentId and the round in question. Effectively the output is going to be the contents of the `round1Scores` variable from `obtainGannonData()`. So stepping through that, the first issue is that `obtainGannonData()` already knows the playerResult URL so I'll need to construct that from just the params.
+
+So the target URL that I want to build in this instance looks like this:
+
+`https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=86522&Division=MPO&Round=12`
+
+I pulled this into a potato and decided to extract a starter list of athletes and PDGANums from this which I wrote into the constants for now.
+
+`potato.data.scores.map((athlete) => ({name: athlete.Name, PDGANum: athlete.PDGANum}))`
+
+Neat, ok so I'm going to just default to asking for Round 12 for now since I know that the tournament I'm working with has finished. My first question to answer is "Did the player in question play at this tournament?" Nope, nevermind I can't actually do that since it doesn't seem possible to walk from the round 12 to get the all the data that I need. So here's what I came up with:
+
+```
+function obtainAthleteData(pdgaNum, tournId, round) {
+  var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=MPO&Round=${round}`;
+  var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
+  const json = JSON.parse(response.getContentText());
+
+  targetAthlete = json.data.scores.find((athlete) => athlete.PDGANum == pdgaNum);
+
+  if (targetAthlete == null) {
+    throw `Error. Athlete with PDGANum ${pdgaNum} not found in tournament data`;
+  }
+
+  return targetAthlete;
+}
+```
+
+Cool, that works and I literally JUST REALIZED that you can add additional files haha. So I've got a method that obtains the data I want. Next task is to create a method that translates that data into the form I want, so actually I'm not done yet. Let's introduce the holebreakdown data into the return value of this function.
 
 [kronk]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/kronk.png "Oh Yeah"
