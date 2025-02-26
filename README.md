@@ -10,9 +10,10 @@
 
 - [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
   - yes, but this was an administrative decision for record-keeping so it can stay this way. (I happened to code with this assumption so we good here)
-- [ ] When we're talking No Stats for partial data, how does Makes play into that?
+- [x] When we're talking No Stats for partial data, how does Makes play into that?
   - Makes will also be empty in a no stats situation,
 - [ ] In the event that a player does not make a selection in time for kickoff, what happens? Is a default selection made or are they penalized and required to make a selection after data starts rolling in?
+- [ ] What happens if for a given tournament a player's roster is invalid? i.e. 7 or more of their athletes aren't participating in the tournament and so they cannot actually pick 6 athletes to compete (similar situation if 4 or more of a given division of their roster aren't competing)
 
 ## Train of Thought / Working Notes
 
@@ -242,13 +243,13 @@ Since I'm accepting params, I'll want to throw errors if they aren't what I expe
 
 ```
 function updateAthleteStats(athleteName, round) {
-  if (![1, 2, 3, 4, 5].includes(round)) {   
+  if (![1, 2, 3, 4, 5].includes(round)) {
     throw 'Error. Invalid Round Param';
   }
 }
 ```
 
-That gives me a console error which is sufficient for now. Next, let's do player. I want to consult a comprehensive list of player names and keys to see if the provided player is available. I'll start that list with one value since we're only dealing with Gannon's stats at the moment. 
+That gives me a console error which is sufficient for now. Next, let's do player. I want to consult a comprehensive list of player names and keys to see if the provided player is available. I'll start that list with one value since we're only dealing with Gannon's stats at the moment.
 
 ```
 const athletes = [
@@ -263,6 +264,7 @@ function updateAthleteStats(athleteName, round) {
   }
 }
 ```
+
 Cool. In thinking about this, I'm basically introducing round and player as toggles while keeping tournament and which spreadsheet is being updated as static concepts for now. It makes sense to be a bit more explicit about this so I'll add a constant that denotes the tournamentId. For the spreadsheet it'll just be implied via the `getActiveSpreadsheet` call.
 
 At this point, I'd really like to make a call to some `obtainAthleteStats()` method so let's sound it out. I'm going to be passing in the athlete's PDGA number, the tournamentId and the round in question. Effectively the output is going to be the contents of the `round1Scores` variable from `obtainGannonData()`. So stepping through that, the first issue is that `obtainGannonData()` already knows the playerResult URL so I'll need to construct that from just the params.
@@ -296,3 +298,39 @@ function obtainAthleteData(pdgaNum, tournId, round) {
 Cool, that works and I literally JUST REALIZED that you can add additional files haha. So I've got a method that obtains the data I want. Next task is to create a method that translates that data into the form I want, so actually I'm not done yet. Let's introduce the holebreakdown data into the return value of this function.
 
 [kronk]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/kronk.png "Oh Yeah"
+
+#### 2/26/25
+
+Sat down with Matt yesterday and we discussed some details that I'm going to transcribe now. The draft happened on Monday and so the 10 players have chosen their 12 athletes each. I jotted down a copy of this list in my NuTracking spreadsheet since this represents the first player choice that drives the game forward. Next up we looked through the sheets in detail. 10 players across 18 rounds works out perfectly for two cycles of 9 rounds wherein everybody plays everybody else once. This is a simple combinatrics problem that I worked on graph paper for about 10 minutes before throwing up my hands and not finding the pattern. I solved it for 4 players across 3 and then 6 players across 5 but no pattern emerged so meh. Thankfully, everything's been done before so I found a writeup that breaks it down but doesn't explain the pattern:
+
+![Pairings][pairings]
+
+Cool, so that'll make things easier for Matt I hope. The Matchup tab on player spreadsheets is going to be a big driver of content and information. It'll show the upcoming pairings for tournaments (essentially a loose tournament schedule as well) and current point totals for the given round's tournament as well as overall league standings and other such summary information. Finally, the big ticket action is migration of data from the individual score tabs onto an aggregate score tab near the back. Then manually this gets updated to pull data for the next tournament from the same spot and so the wheel turns. This pretty much gives me everything I need to know.
+
+Breaking it down, you've got the following flow for a given tournament:
+
+1. Players make athlete selections prior to Roster Lock.
+2. Players fill out stats in the 6 tabs based on posted PDGA data.
+3. Results are finalized, points counted and winners/losers declared.
+4. Data for the round is recorded and sheets are reset in preparation for the next round.
+
+Steps 2-4 can be automated so long as step 1 is performed in time. Step 1 can't be automated because it involves player choice, but it can be swiftly validated which is pretty cool. There's a consideration here which is players selecting an athlete from their roster isn't the whole story - they need to pick an athlete that's actually competing in the tournament in question which suggests that a player could actually be in a situation where they can't actually make a selection because 7 or more of their players aren't participating in the tournament. This is possible from a data standpoint but I doubt it's actually something that can happen since I figure we would've discussed it by now. I'll drop a question up top on it just in case.
+
+Next I explained to Matt the architecture that I'm envisioning: An Admin Console that has the power to perform CRUD operations on the entire spreadsheet ecosystem which is composed of 10 player sheets and then a handful of administrative tracking sheets that Matt uses to manage the game. From there we discussed a list of 'operations' that can be performed from the Admin Console and it went a little off the rails but still did a lot to help solidify the overall scope of what this application will want to do. Here's the list in its entirety:
+
+- Validate Player Athlete Selections
+- Supply Detailed Stats
+- Store Detailed Stats
+- Show Current Standings
+- Trade Athletes -> Add/Drop operations
+- Manage Athletes ~ (Undrafted/Free Agents)
+- Manage Periods ~ (Waiver Periods/Free Agent Acquisition/Tournament Periods)
+- See Athletes Details ~ (Points Per Season, Rank)
+
+And from here we discussed a bit of what exists on other fantasy sports apps. It's interesting seeing the trajectory of this list because it really covers multiple different viewpoints but it really helps supply the shape of this to me. I'm not going to use this list directly but I do think it's somewhat exhaustive in a gameplay element/operation/action systemization approach. Anyway, the discussion around this list generation was extremely useful and I think the list itself will be useful in jogging my memory on this.
+
+Ok, still more to talk about. We sat down at the computer and looked into the C1X data issue and the conclusion is that the PDGA data is wrong. The definition of C1X is every opportunity for making a putt from circle 1 where circle 1 is 11' to 33' (it was originally defined in meters hence the weird numbers). Looking back on the example data I think that there was a discrepancy in one spot but now in reviewing it I'm not so sure. One sec. Ok yeah pretty sure I was tunnel-visioning on the boldness of the C1X putting row on the scorecard. If I only count throwIn values the numbers add up so maybe there isn't a data discrepancy here. In any case, I got enough information for determining the C1X value from the data that we have available. I _also_ stumbled across an opportunity for even more data because when you click on the individual numbers in the C1X row it pops up a modal that shows you a ludicrously detailed breakdown of the individual throw. This is supplied by a throw-timelines API call which I'll capture for Gannon Buhr's first round. This data is very specific and I believe that I will need to digest it in order to calculate the 100% C1X/C2 bonus since there's no indication (that I can tell) of the 'out of' count for C1X and instead I'll need to traverse the throw timelines to fetch that data. That'll be a bit arduous especially in a live data situation but meh, them's the requirements.
+
+Alrighty. So that just about covers where everything is at. Code-wise where I'm at is continuing to flesh out the generic `obtainAthleteData()` method while also starting to bolster the entire app itself with a bit more OOP to make it easier to scale up to where it needs to be. First tournament starts this weekend and so at the very least I plan to watch the shape of the data as it rolls in, but I figure that puts me at about a week from now of really wanting a functional data scraper up and running. Love me a good deadline, let's make it happen.
+
+[pairings]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/pairings.png "Pairings"
