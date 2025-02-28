@@ -334,3 +334,15 @@ Ok, still more to talk about. We sat down at the computer and looked into the C1
 Alrighty. So that just about covers where everything is at. Code-wise where I'm at is continuing to flesh out the generic `obtainAthleteData()` method while also starting to bolster the entire app itself with a bit more OOP to make it easier to scale up to where it needs to be. First tournament starts this weekend and so at the very least I plan to watch the shape of the data as it rolls in, but I figure that puts me at about a week from now of really wanting a functional data scraper up and running. Love me a good deadline, let's make it happen.
 
 [pairings]: https://raw.githubusercontent.com/Donrwalsh/syxer/refs/heads/main/images/pairings.png "Pairings"
+
+#### 2/28/25
+
+Gotta go fast. Re-engineered the overall script to work for a single round to deliver on data availability for live event being run now. Known gaps:
+
+- [ ] c1x and c2 make bonuses are ignored.
+- [ ] incomplete player data is ignored (and logged).
+- [ ] round and tournament details are hardcoded.
+
+Maybe I'll find time to make a write up of the changes here, but mostly it amounts to: did the work.
+
+- [ ] Set it up to not repeat-fetch data to extend into further usability
