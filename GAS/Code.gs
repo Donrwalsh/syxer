@@ -1,4 +1,5 @@
-const URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
+// v1
+const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 const playerSpreadsheetIds = [
   { id: '1uVEARqNbGgES_16-PmFe5Fq25sSj9fkmWusW5EUdvr0/edit?gid=1623859890', name: "Synxy Mynxes" },
   { id: '19VsPtTxMgMfNmo31L3oRDXW8eS2daqIibqAjo3x3cic/edit?gid=1623859890', name: "Ginter" },
@@ -11,25 +12,33 @@ const playerSpreadsheetIds = [
   { id: '1RnVrJ01zdvbfhk0q3S8TMtgPBXA5y11P1NwK2eOMk_k/edit?gid=1623859890', name: "Boost It" },
   { id: '1OOn4SzHDwwh0xaWXIpRBAwiH8HcLvhwhXJwU3PqQ__I/edit?gid=1623859890', name: "Jame Team" }
 ];
-const tournamentId = 88276;
-
+const devPlayerSpreadSheetIds = [
+    { id: '1vbUcgMMRiH41GpdTqgqQklRRVH-W_k8LKdosaEbcXJ8/edit?gid=1623859890', name: "Don" },
+    
+]
 let homeSheetCounter = 1;
+const tournamentId = 88276; // Discraft Supreme Flight Open
 
 function main() {
   var homeSS = SpreadsheetApp.getActiveSpreadsheet();
   var home = homeSS.getSheetByName('Magic')
   home.deleteColumn(1);
 
-  for (const psi of playerSpreadsheetIds) {
-    var ss = SpreadsheetApp.openByUrl(`${URL_PREFIX}${psi.id}}`);
+  for (const psi of devPlayerSpreadSheetIds) {
+    var ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
     var sheets = ss.getSheets();
 
-    updateAthleteStats(sheets[0].getRange('B3').getValue(), 1, ss, "MPO #1", home, psi.name)
-    updateAthleteStats(sheets[0].getRange('B4').getValue(), 1, ss, "MPO #2", home, psi.name)
-    updateAthleteStats(sheets[0].getRange('B5').getValue(), 1, ss, "MPO #3", home, psi.name)
-    updateAthleteStats(sheets[0].getRange('C3').getValue(), 1, ss, "FPO #1", home, psi.name)
-    updateAthleteStats(sheets[0].getRange('C4').getValue(), 1, ss, "FPO #2", home, psi.name)
-    updateAthleteStats(sheets[0].getRange('C5').getValue(), 1, ss, "FPO #3", home, psi.name)
+    [
+      { cell: 'B3', division: "MPO #1" },
+      { cell: 'B4', division: "MPO #2" },
+      { cell: 'B5', division: "MPO #3" },
+      { cell: 'C3', division: "FPO #1" },
+      { cell: 'C4', division: "FPO #2" },
+      { cell: 'C5', division: "FPO #3" }
+    ].forEach(
+      (element) => updateAthleteStats(
+        sheets[0].getRange(element.cell).getValue(),
+        1, ss, element.division, home, psi.name))
   }
 }
 
@@ -40,40 +49,18 @@ function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName)
 
   try {
     const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
-
     writeStatsToSheet(athleteStats, sheet, tab, round);
   } catch (e) {
-
     const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
-
     console.log(errorMessage)
     homeSheet.getRange(`A${homeSheetCounter}`).setValues([[errorMessage]]);
     homeSheetCounter++;
   }
-
 }
 
 function writeStatsToSheet(stats, spreadsheet, sheetName, round) {
   var sheet = spreadsheet.getSheetByName(sheetName)
-
-  var roundAlpha;
-  switch (round) {
-    case 1:
-      roundAlpha = "D";
-      break;
-    case 2:
-      roundAlpha = "G";
-      break;
-    case 3:
-      roundAlpha = "J";
-      break;
-    case 4:
-      roundAlpha = "M";
-      break;
-    case 5:
-      roundAlpha = "P";
-      break;
-  }
+  var roundAlpha = ["D", "G", "J", "M", "P"][round-1];
 
   // Strokes
   sheet.getRange(`${roundAlpha}4`).setValues([[stats.strokes.doubleBogey.toString()]]);
@@ -118,10 +105,10 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       const score = athleteData.HoleScores[counter.toString() - 1];
       if (score == 1) {
         acesCount++;
-      }
-      const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
-
-      diffs.push(score - par);
+      } else {
+        const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
+        diffs.push(score - par);
+      }    
     }
 
     return {
@@ -149,7 +136,6 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       }
     };
   }
-
 }
 
 function obtainLayoutData(tournamentId, layoutId) {
@@ -167,7 +153,8 @@ function obtainAthleteData(athleteName, tournId, round, division) {
 
   targetAthlete = json.data.scores.find((athlete) => athlete.Name == athleteName);
 
-    throw `Error. Athlete with PDGANum ${pdgaNum} not found in tournament data`;
+  if (targetAthlete == null) {
+    throw `Athlete ${athleteName} missing from tournament data. Are they competing?`;
   }
 
   return targetAthlete;

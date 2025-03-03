@@ -346,3 +346,7 @@ Gotta go fast. Re-engineered the overall script to work for a single round to de
 Maybe I'll find time to make a write up of the changes here, but mostly it amounts to: did the work.
 
 - [ ] Set it up to not repeat-fetch data to extend into further usability
+- [x] Pretty sure there's a bug in the aces code in that they will double count with whatever calc'd shot type the ace also registers as.
+- [ ] obtainLayoutData doesn't need to be repeated at all.
+- [ ] Need to leverage script structure more, fewer params being passed around that may make sense as variables made available across the script.
+- [ ] Have a toggle or something that allows the script to be run from either my dev environment or the prod environment based on location examination. Then switch between arrays of fleet sheets.
