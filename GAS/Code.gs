@@ -1,5 +1,14 @@
 // v1
 const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
+const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
+
+let layoutData;
+let homeSheetCounter = 1;
+
+// Control Panel:
+const tournamentId = 88276; // Discraft Supreme Flight Open
+const rounds = [1, 2, 3]
+
 const playerSpreadsheetIds = [
   { id: '1uVEARqNbGgES_16-PmFe5Fq25sSj9fkmWusW5EUdvr0/edit?gid=1623859890', name: "Synxy Mynxes" },
   { id: '19VsPtTxMgMfNmo31L3oRDXW8eS2daqIibqAjo3x3cic/edit?gid=1623859890', name: "Ginter" },
@@ -13,54 +22,63 @@ const playerSpreadsheetIds = [
   { id: '1OOn4SzHDwwh0xaWXIpRBAwiH8HcLvhwhXJwU3PqQ__I/edit?gid=1623859890', name: "Jame Team" }
 ];
 const devPlayerSpreadSheetIds = [
-    { id: '1vbUcgMMRiH41GpdTqgqQklRRVH-W_k8LKdosaEbcXJ8/edit?gid=1623859890', name: "Don" },
-    
+  { id: '1vbUcgMMRiH41GpdTqgqQklRRVH-W_k8LKdosaEbcXJ8/edit?gid=1623859890', name: "Don" },
 ]
-let homeSheetCounter = 1;
-const tournamentId = 88276; // Discraft Supreme Flight Open
+// End Control Panel
 
 function main() {
   var homeSS = SpreadsheetApp.getActiveSpreadsheet();
   var home = homeSS.getSheetByName('Magic')
   home.deleteColumn(1);
 
-  for (const psi of devPlayerSpreadSheetIds) {
-    var ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
-    var sheets = ss.getSheets();
+  for (const round in rounds) {
+    for (const psi of devPlayerSpreadSheetIds) {
+      var ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
+      var sheets = ss.getSheets();
 
-    [
-      { cell: 'B3', division: "MPO #1" },
-      { cell: 'B4', division: "MPO #2" },
-      { cell: 'B5', division: "MPO #3" },
-      { cell: 'C3', division: "FPO #1" },
-      { cell: 'C4', division: "FPO #2" },
-      { cell: 'C5', division: "FPO #3" }
-    ].forEach(
-      (element) => updateAthleteStats(
-        sheets[0].getRange(element.cell).getValue(),
-        1, ss, element.division, home, psi.name))
+      [
+        { cell: 'B3', division: "MPO #1" },
+        { cell: 'B4', division: "MPO #2" },
+        { cell: 'B5', division: "MPO #3" },
+        { cell: 'C3', division: "FPO #1" },
+        { cell: 'C4', division: "FPO #2" },
+        { cell: 'C5', division: "FPO #3" }
+      ].forEach(
+        (element) => updateAthleteStats(
+          sheets[0].getRange(element.cell).getValue(),
+          rounds[round], ss, element.division, home, psi.name))
+    }
   }
 }
 
 function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName) {
   if (![1, 2, 3, 4, 5].includes(round)) {
-    throw 'Error. Invalid Round Param';
+    throw `Error. Invalid Round Param ${round}`;
   }
 
-  try {
-    const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
-    writeStatsToSheet(athleteStats, sheet, tab, round);
-  } catch (e) {
-    const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
-    console.log(errorMessage)
-    homeSheet.getRange(`A${homeSheetCounter}`).setValues([[errorMessage]]);
-    homeSheetCounter++;
+  let sum = 0;
+  let range = sheet.getSheetByName(tab).getRange(`${ROUND_ALPHA[round - 1]}4:${ROUND_ALPHA[round - 1]}23`).getValues()
+  for (var i in range[0]) {
+    sum += range[0][i];
+  }
+  if (sum == 0) {
+    try {
+      const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
+      writeStatsToSheet(athleteStats, sheet, tab, round);
+    } catch (e) {
+      const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
+      console.log(errorMessage)
+      homeSheet.getRange(`A${homeSheetCounter}`).setValues([[errorMessage]]);
+      homeSheetCounter++;
+    }
+  } else {
+    console.log(`${athleteName} data for round ${round} already present. Skipping`);
   }
 }
 
 function writeStatsToSheet(stats, spreadsheet, sheetName, round) {
   var sheet = spreadsheet.getSheetByName(sheetName)
-  var roundAlpha = ["D", "G", "J", "M", "P"][round-1];
+  var roundAlpha = ROUND_ALPHA[round - 1];
 
   // Strokes
   sheet.getRange(`${roundAlpha}4`).setValues([[stats.strokes.doubleBogey.toString()]]);
@@ -108,7 +126,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       } else {
         const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
         diffs.push(score - par);
-      }    
+      }
     }
 
     return {
@@ -139,11 +157,13 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
 }
 
 function obtainLayoutData(tournamentId, layoutId) {
-  var url = `https://www.pdga.com/api/v1/live-tournaments/${tournamentId}/live-layouts?include=LiveLayoutDetails`;
-  var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
-  const json = JSON.parse(response.getContentText());
+  if (layoutData == null) {
+    var url = `https://www.pdga.com/api/v1/live-tournaments/${tournamentId}/live-layouts?include=LiveLayoutDetails`;
+    var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
+    layoutData = JSON.parse(response.getContentText());
+  }
 
-  return json.find((row) => row.layoutId == layoutId);
+  return layoutData.find((row) => row.layoutId == layoutId);
 }
 
 function obtainAthleteData(athleteName, tournId, round, division) {
