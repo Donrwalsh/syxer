@@ -350,3 +350,16 @@ Maybe I'll find time to make a write up of the changes here, but mostly it amoun
 - [ ] obtainLayoutData doesn't need to be repeated at all.
 - [ ] Need to leverage script structure more, fewer params being passed around that may make sense as variables made available across the script.
 - [ ] Have a toggle or something that allows the script to be run from either my dev environment or the prod environment based on location examination. Then switch between arrays of fleet sheets.
+
+3/14 kickoff
+
+- Event totals to the right
+- STats - down
+- 2025 fantasy points analysis - down (https://docs.google.com/spreadsheets/d/1ECfrOfSrM0_ztIww2X0oBFF9UuWfewqFB32XgK18u_c/edit?gid=0#gid=0)
+- Clear out scorecards
+- Better button
+
+- the dang c1 possibilities calc
+- rankings
+
+Code updates notes go here

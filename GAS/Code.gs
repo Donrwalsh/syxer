@@ -8,6 +8,7 @@ let homeSheetCounter = 1;
 // Control Panel:
 const tournamentId = 88276; // Discraft Supreme Flight Open
 const rounds = [1, 2, 3]
+const overrideSkip = false;
 
 const playerSpreadsheetIds = [
   { id: '1uVEARqNbGgES_16-PmFe5Fq25sSj9fkmWusW5EUdvr0/edit?gid=1623859890', name: "Synxy Mynxes" },
@@ -58,10 +59,11 @@ function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName)
 
   let sum = 0;
   let range = sheet.getSheetByName(tab).getRange(`${ROUND_ALPHA[round - 1]}4:${ROUND_ALPHA[round - 1]}23`).getValues()
-  for (var i in range[0]) {
-    sum += range[0][i];
+  
+  for (var i in range) {
+    sum += range[i][0];
   }
-  if (sum == 0) {
+  if (sum == 0 || overrideSkip) {
     try {
       const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
       writeStatsToSheet(athleteStats, sheet, tab, round);
@@ -107,8 +109,10 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
   const athleteData = obtainAthleteData(athleteName, tournamentId, round, division);
   const layoutData = obtainLayoutData(tournamentId, athleteData.LayoutID);
   const holeBreakdownData = obtainHoleBreakdownData(athleteData.ScoreID);
+  const throwTimelineData = obtainThrowTimelineData(athleteData.ScoreID);
 
   let diffs = [];
+  let distputts = [];
   let acesCount = 0;
   let noStats = false;
 
@@ -127,9 +131,18 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
         diffs.push(score - par);
       }
+      distputts.push(throwTimelineData.scoreThrows[counter - 1].holeThrows.map((distThrow) => {
+        if (distThrow.liveScoreThrow.distanceToTarget == null && distThrow.liveScoreThrow.zoneId == 3 ) {
+          return 25
+        } else {
+          return distThrow.liveScoreThrow.distanceToTarget
+        }
+      }).filter((distPutt) => distPutt != null))
     }
 
-    return {
+
+
+    let result = {
       strokes: {
         doubleBogey: diffs.filter(d => d >= 2).length,
         bogey: diffs.filter(d => d === 1).length,
@@ -146,14 +159,24 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         noStats: 0
       },
       makes: noStats ? { c1x: 0, c1xBonus: 0, c2: 0, c2Bonus: 0, throwIns: 0 } : {
-        c1x: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 10 && hole.holeBreakdown.throwIn <= 34).length,
+        c1x: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 10 && hole.holeBreakdown.throwIn <= 32).length,
         c1xBonus: 0,
-        c2: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 33 && hole.holeBreakdown.throwIn <= 66).length,
+        c2: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 32 && hole.holeBreakdown.throwIn <= 66).length,
         c2Bonus: 0,
         throwIns: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 66).length
       }
     };
+
+    // if (!noStats) {
+    //   var c1xPossible = distputts.filter((attempt) => attempt > 10 && attempt <= 32).length;
+    //   var c2Possible = distputts.filter((attempt) => attempt > 32 && attempt <= 66).length;
+    //   result.makes.c1xBonus = c1xPossible == result.makes.c1x ? result.makes.c1x : 0;
+    //   result.makes.c2Bonus = c2Possible == result.makes.c2 ? result.makes.c2 : 0;
+    // }
+
+    return result;
   }
+
 }
 
 function obtainLayoutData(tournamentId, layoutId) {
@@ -182,6 +205,14 @@ function obtainAthleteData(athleteName, tournId, round, division) {
 
 function obtainHoleBreakdownData(athleteScoreId) {
   var url = `https://www.pdga.com/api/v1/feat/live-scores/${athleteScoreId}/hole-breakdowns`;
+  var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
+  const json = JSON.parse(response.getContentText());
+
+  return json;
+}
+
+function obtainThrowTimelineData(athleteScoreId) {
+  var url = `https://www.pdga.com/api/v1/feat/live-scores/${athleteScoreId}/throw-timelines`;
   var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
   const json = JSON.parse(response.getContentText());
 
