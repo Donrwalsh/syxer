@@ -1,4 +1,4 @@
-// v1
+// v1.01
 const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
 
@@ -99,9 +99,9 @@ function writeStatsToSheet(stats, spreadsheet, sheetName, round) {
 
   // Makes
   sheet.getRange(`${roundAlpha}19`).setValues([[stats.makes.c1x.toString()]]);
-  // sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1xBonus.toString()]]);
+  sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1xBonus.toString()]]);
   sheet.getRange(`${roundAlpha}21`).setValues([[stats.makes.c2.toString()]]);
-  // sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2Bonus.toString()]]);
+  sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2Bonus.toString()]]);
   sheet.getRange(`${roundAlpha}23`).setValues([[stats.makes.throwIns.toString()]]);
 }
 
@@ -131,10 +131,12 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
         diffs.push(score - par);
       }
-      distputts.push(throwTimelineData.scoreThrows[counter - 1].holeThrows.map((distThrow) => {
-        if (distThrow.liveScoreThrow.distanceToTarget == null && distThrow.liveScoreThrow.zoneId == 3 ) {
-          return 25
-        } else {
+      distputts.push(...throwTimelineData.scoreThrows[counter - 1].holeThrows.map((distThrow) => {
+        if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 4 || (distThrow.liveScoreThrow.zoneId == 6 && distThrow.liveScoreThrow.dropZoneId == 4))) {
+          return 65 // dummy value to trigger being counted as circle 2 later
+        } else if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 3 || (distThrow.liveScoreThrow.zoneId == 6 && distThrow.liveScoreThrow.dropZoneId == 3))) {
+          return 25 // dummy value to trigger being counted as circle 1 later
+        } else {  
           return distThrow.liveScoreThrow.distanceToTarget
         }
       }).filter((distPutt) => distPutt != null))
@@ -161,18 +163,18 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       makes: noStats ? { c1x: 0, c1xBonus: 0, c2: 0, c2Bonus: 0, throwIns: 0 } : {
         c1x: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 10 && hole.holeBreakdown.throwIn <= 32).length,
         c1xBonus: 0,
-        c2: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 32 && hole.holeBreakdown.throwIn <= 66).length,
+        c2: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 32 && hole.holeBreakdown.throwIn < 66).length,
         c2Bonus: 0,
         throwIns: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 66).length
       }
     };
 
-    // if (!noStats) {
-    //   var c1xPossible = distputts.filter((attempt) => attempt > 10 && attempt <= 32).length;
-    //   var c2Possible = distputts.filter((attempt) => attempt > 32 && attempt <= 66).length;
-    //   result.makes.c1xBonus = c1xPossible == result.makes.c1x ? result.makes.c1x : 0;
-    //   result.makes.c2Bonus = c2Possible == result.makes.c2 ? result.makes.c2 : 0;
-    // }
+    if (!noStats) {
+      var c1xPossible = distputts.filter((attempt) => attempt > 10 && attempt <= 32).length;
+      var c2Possible = distputts.filter((attempt) => attempt > 32 && attempt < 66).length;
+      result.makes.c1xBonus = c1xPossible == result.makes.c1x ? result.makes.c1x : 0;
+      result.makes.c2Bonus = c2Possible == result.makes.c2 ? result.makes.c2 : 0;
+    }
 
     return result;
   }

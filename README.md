@@ -363,3 +363,21 @@ Maybe I'll find time to make a write up of the changes here, but mostly it amoun
 - rankings
 
 Code updates notes go here
+
+#### 3/10/2025
+
+Back at it. I need to figure out about what's going on with C1X and C2 bonus stuff. Turns out I was very close, but I needed to spread the result of what I'm placing into `distputts` because it isn't guaranteed to be flat. That solved most of the troubles, and I fixed another one by adding a second conditional to account for one of Gannon's OOB situations. But there's still something not quite right:
+
+Gannon Buhr Round 1 Hole 7, OOB shot counted as C2
+Chris Dickerson Round 3 discrepancy. C2 being counted as C1
+Rebecca Cox Round 2 discrepancy. Missing a c2
+Holly Finley Round 2 discrepancy, Missing a c2
+
+Ok, I got it figured out. There's a dropZoneId value that I can consult for out of bounds plays. This code was super helpful in tracking this all down:
+
+        zones = ["unknown", "Fairway", "Off Fairway", "Circle 1", "Circle 2", "Basket", "Out Of Bounds", "unknown"];
+        // if (distThrow.liveScoreThrow.zoneId != 5 && distThrow.liveScoreThrow.zoneId != 2 && distThrow.liveScoreThrow.zoneId != 1) {
+          // console.log(`hole: ${counter}, zoneId: ${distThrow.liveScoreThrow.zoneId} ,zone: ${zones[distThrow.liveScoreThrow.zoneId]}, distanceToTarget: ${distThrow.liveScoreThrow.distanceToTarget},`)
+        // }
+
+This code now reports successful c1x and c2 make bonus values for all 6 dev athletes.
