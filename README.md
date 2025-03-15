@@ -345,11 +345,11 @@ Gotta go fast. Re-engineered the overall script to work for a single round to de
 
 Maybe I'll find time to make a write up of the changes here, but mostly it amounts to: did the work.
 
-- [ ] Set it up to not repeat-fetch data to extend into further usability
+- [x] Set it up to not repeat-fetch data to extend into further usability
 - [x] Pretty sure there's a bug in the aces code in that they will double count with whatever calc'd shot type the ace also registers as.
-- [ ] obtainLayoutData doesn't need to be repeated at all.
+- [x] obtainLayoutData doesn't need to be repeated at all.
 - [ ] Need to leverage script structure more, fewer params being passed around that may make sense as variables made available across the script.
-- [ ] Have a toggle or something that allows the script to be run from either my dev environment or the prod environment based on location examination. Then switch between arrays of fleet sheets.
+- [x] Have a toggle or something that allows the script to be run from either my dev environment or the prod environment based on location examination. Then switch between arrays of fleet sheets.
 
 3/14 kickoff
 
@@ -381,3 +381,11 @@ Ok, I got it figured out. There's a dropZoneId value that I can consult for out 
         // }
 
 This code now reports successful c1x and c2 make bonus values for all 6 dev athletes.
+
+#### 3/11/2025
+
+So where are we exactly with everything? There's been a reasonable amount of stuff that's happened quickly enough that I did not take decent notes about it and frankly I don't think I'll be able to recreate enough detail to do so after the fact. So it goes.
+
+As of v1.01 the script should properly write data for all of the common score-impacting stats onto all player sheets. The only outstanding issues that come to mind with this flow is that data can sometimes be incomplete depending on when you are running the script and right now the 'controls' for it are a bit awkward to manage in that they have to be handled via code changes. The big red button concept that I hatched up isn't ideal, especially because it outright deletes a column of data everytime and will eventually cease functioning because it'll run out of columns haha. So maybe it makes sense to expand that.
+
+Yeah, I can work on both addressing the file structure of the script while also moving some of the administrative toggles into a better place for admins that aren't me to manage them. So let's start by making a separate .gs file with controls that I can pull into the main script. Turns out there's no importing necessary as all the files make everything available in the same way. So I was able to just copy-paste the control panel content into a totally new .gs file and everything still works the same way. Yeah, this makes deployment a bit trickier but perhaps that's something I can automate along the way. One thing I want protection on is from accidentally running the prod version in dev. I think I'll add some logic to make it really difficult to do that. This was easy to do, I have a single dev environment so I'll just check the Id of the active sheet and compare it against the one I expect to see. I don't think I need a protection going the other way since I don't care if the script is run as dev in prod.
