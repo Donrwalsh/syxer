@@ -1,21 +1,14 @@
-// v1.01
+// v1.02
 const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
-const DEV_SPREADSHEET_APP = '1lze7Z7bbPDIQRUaCagSQWXESewI7kqVfgQa5nitPRFM';
 
 let layoutData;
-let homeSheetCounter = 1;
 
 function main() {
-  var homeSS = SpreadsheetApp.getActiveSpreadsheet();
+  ctrl = new ControlPanel();
+  ctrl.devCheck();
+  ctrl.clearErrors();
 
-  if (!isDev && homeSS.getId() == DEV_SPREADSHEET_APP) {
-    console.log("It looks like you're trying to run prod code on the dev spreadsheet - terminating.");
-    return;
-  }
-
-  var home = homeSS.getSheetByName('Magic')
-  home.deleteColumn(1);
   let spreadsheetIds = isDev ? devPlayerSpreadSheetIds : playerSpreadsheetIds;
 
   for (const round in rounds) {
@@ -32,13 +25,14 @@ function main() {
         { cell: 'C5', division: "FPO #3" }
       ].forEach(
         (element) => updateAthleteStats(
+          ctrl,
           sheets[0].getRange(element.cell).getValue(),
-          rounds[round], ss, element.division, home, psi.name))
+          rounds[round], ss, element.division, psi.name))
     }
   }
 }
 
-function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName) {
+function updateAthleteStats(ctrl, athleteName, round, sheet, tab, teamName) {
   if (![1, 2, 3, 4, 5].includes(round)) {
     throw `Error. Invalid Round Param ${round}`;
   }
@@ -64,8 +58,7 @@ function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName)
       if (emptyingOut) {
         emptyOutSheet(sheet, tab, round);
       }
-      homeSheet.getRange(`A${homeSheetCounter}`).setValues([[errorMessage]]);
-      homeSheetCounter++;
+      ctrl.writeError(errorMessage);
     }
   } else {
     console.log(`${athleteName} data for round ${round} already present. Skipping`);

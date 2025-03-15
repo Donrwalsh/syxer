@@ -1,3 +1,31 @@
+class ControlPanel {
+  constructor() {
+    this.homeSS = SpreadsheetApp.getActiveSpreadsheet();
+    this.homeSheet = this.homeSS.getSheetByName('Control-Panel');
+    
+    // Errors List Cell
+    this.elc = { x: 'A', y: 7 };
+    this.errorsListRange = `${this.elc.x}${this.elc.y}:${this.elc.x}${this.elc.y+30}`
+  }
+
+  devCheck() { 
+    if (!isDev && this.homeSS.getId() == DEV_SPREADSHEET_APP) {
+      throw new Error("It looks like you're trying to run prod code on the dev spreadsheet - terminating.");
+    }
+  }
+
+  clearErrors() {
+    this.homeSheet.getRange(this.errorsListRange).clearContent()  
+  }
+
+  writeError(errorMessage) {
+    this.homeSheet.getRange(`${this.elc.x}${this.elc.y}`).setValues([[errorMessage]]);
+    this.elc.y++;
+  }
+}
+
+const DEV_SPREADSHEET_APP = '1lze7Z7bbPDIQRUaCagSQWXESewI7kqVfgQa5nitPRFM';
+
 const isDev = true;
 
 // const tournamentId = 88276; // Discraft Supreme Flight Open

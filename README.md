@@ -1,12 +1,14 @@
 # syxer
 
-## Todo:
+## v1.02
+
+### Todo:
 
 - [ ] Write up notes from 2/22 stakeholder discussions.
 - [ ] Seems like it could be cool to standardize the selection of cells based on stat description (+ round designation) to do away with the verbose spreadsheet referencing over and over again.
 - [ ] Player spreadsheet red point values are decorative only and aren't used in calculations...
 
-## Outstanding Questions:
+### Outstanding Questions:
 
 - [x] Does grouping Double Bogeys and Double Bogey+s together change the overall stroke score?
   - yes, but this was an administrative decision for record-keeping so it can stay this way. (I happened to code with this assumption so we good here)
@@ -15,7 +17,7 @@
 - [ ] In the event that a player does not make a selection in time for kickoff, what happens? Is a default selection made or are they penalized and required to make a selection after data starts rolling in?
 - [ ] What happens if for a given tournament a player's roster is invalid? i.e. 7 or more of their athletes aren't participating in the tournament and so they cannot actually pick 6 athletes to compete (similar situation if 4 or more of a given division of their roster aren't competing)
 
-## Train of Thought / Working Notes
+### Train of Thought / Working Notes
 
 #### 2/21/25
 
@@ -389,3 +391,20 @@ So where are we exactly with everything? There's been a reasonable amount of stu
 As of v1.01 the script should properly write data for all of the common score-impacting stats onto all player sheets. The only outstanding issues that come to mind with this flow is that data can sometimes be incomplete depending on when you are running the script and right now the 'controls' for it are a bit awkward to manage in that they have to be handled via code changes. The big red button concept that I hatched up isn't ideal, especially because it outright deletes a column of data everytime and will eventually cease functioning because it'll run out of columns haha. So maybe it makes sense to expand that.
 
 Yeah, I can work on both addressing the file structure of the script while also moving some of the administrative toggles into a better place for admins that aren't me to manage them. So let's start by making a separate .gs file with controls that I can pull into the main script. Turns out there's no importing necessary as all the files make everything available in the same way. So I was able to just copy-paste the control panel content into a totally new .gs file and everything still works the same way. Yeah, this makes deployment a bit trickier but perhaps that's something I can automate along the way. One thing I want protection on is from accidentally running the prod version in dev. I think I'll add some logic to make it really difficult to do that. This was easy to do, I have a single dev environment so I'll just check the Id of the active sheet and compare it against the one I expect to see. I don't think I need a protection going the other way since I don't care if the script is run as dev in prod.
+
+#### 3/15/2025
+
+Dang we could use some cleanup in here. First things first, I made a commit to solidify v1.01 functionality that allows for the clearing out of scores since I forgot that yesterday was kickoff and we were still hardcoded to point at SFO. So that's the update that I then deployed out to Prod. I gave Matt the heads up and now that locks in v1.01.
+
+## v1.02
+
+Alright, so the biggest thing I need to tackle is that all the configuration is done in code. I want the spreadsheet itself to participate in the management of the script and how it runs, so I'm going to be expanding the scope of what consitutes the script. I've got a folder in this repo named GAS which represents the Google Apps Script files, and now those files are going to care about the structure and position of certain spreadsheet cells that will drive configuration. Actually, the first thing I need to do is place the error log. So I want it to look like this:
+
+| Errors                |
+| :-------------------- |
+| [Player] Error text 1 |
+| [Player] Error text 2 |
+
+Right now these errors are written to the leftmost cell in the spreadsheet and prior to each run that column is deleted which results in annoying behavior when the spreadsheet runs out of columns haha. So I want to clear an arbitrary pile of fields without deleting the column. Neat, so I got that working. I'm going to slide errors down a few to give me some space to work with. I'm not sure how to represent this in a file that I can save and recall. Maybe csv but that loses some formatting. I could take a screenshot of the google spreadsheet? Let's step back. The problem I'm trying to solve is that the homeSheetCounter is sort of a magic number that corresponds to where I start writing errors so I think it's a poorly named variable. If I instead come at this from a different perspective I might use something like an object called errorsListCell which lets me easily create something called errorsListRange. Furthermore, I only use this in two specific spots so I want this to be part of a more dedicated sheet-connection concept. Come to think of it, anything that touches the home spreadsheet belongs here.
+
+So the Control Panel is now a class that deals with the spreadsheet named 'magic'. Right now that amounts to clearing the list of errors and writing those errors in the first place. I also moved the devCheck since this deals with the id of the host spreadsheet. All-in-all, this is feeling pretty clean and a great base of operations to expand upon for the configuration options which are also going to be a part of this class. But I'm feeling like taking a snapshot and a break right here. I'm also renaming the spreadsheet tab from `Magic` to `Control-Panel`
