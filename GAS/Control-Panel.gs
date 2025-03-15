@@ -1,8 +1,11 @@
-const isDev = false;
+const isDev = true;
 
-const tournamentId = 88276; // Discraft Supreme Flight Open
+// const tournamentId = 88276; // Discraft Supreme Flight Open
+const tournamentId = 88277; // Prodigy presents WACO
 const rounds = [1, 2, 3]
+
 const overrideSkip = false;
+const emptyingOut = false;
 
 const devPlayerSpreadSheetIds = [
   { id: '1vbUcgMMRiH41GpdTqgqQklRRVH-W_k8LKdosaEbcXJ8/edit?gid=1623859890', name: "Don" },

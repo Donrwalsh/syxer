@@ -52,16 +52,51 @@ function updateAthleteStats(athleteName, round, sheet, tab, homeSheet, teamName)
   if (sum == 0 || overrideSkip) {
     try {
       const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
-      writeStatsToSheet(athleteStats, sheet, tab, round);
+      if (emptyingOut) {
+        emptyOutSheet(sheet, tab, round);
+      } else {
+        writeStatsToSheet(athleteStats, sheet, tab, round);
+      }
+      
     } catch (e) {
       const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
       console.log(errorMessage)
+      if (emptyingOut) {
+        emptyOutSheet(sheet, tab, round);
+      }
       homeSheet.getRange(`A${homeSheetCounter}`).setValues([[errorMessage]]);
       homeSheetCounter++;
     }
   } else {
     console.log(`${athleteName} data for round ${round} already present. Skipping`);
   }
+}
+
+function emptyOutSheet(spreadsheet, sheetName, round) {
+  var sheet = spreadsheet.getSheetByName(sheetName);
+  var roundAlpha = ROUND_ALPHA[round - 1];
+
+  // Strokes
+  sheet.getRange(`${roundAlpha}4`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}5`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}6`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}7`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}8`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}9`).setValues([[0]]);
+
+  // Stats
+  sheet.getRange(`${roundAlpha}12`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}13`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}14`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}15`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}16`).setValues([[0]]);
+
+  // Makes
+  sheet.getRange(`${roundAlpha}19`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}20`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}21`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}22`).setValues([[0]]);
+  sheet.getRange(`${roundAlpha}23`).setValues([[0]]);
 }
 
 function writeStatsToSheet(stats, spreadsheet, sheetName, round) {
