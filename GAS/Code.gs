@@ -1,21 +1,14 @@
 // v1.02
-const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
-const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
-
 let layoutData;
 
 function main() {
   ctrl = new ControlPanel();
-  ctrl.devCheck();
   ctrl.clearErrors();
+  let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
-  let spreadsheetIds = isDev ? devPlayerSpreadSheetIds : playerSpreadsheetIds;
-
-  for (const round in rounds) {
+  for (const round in ctrl.config.rounds) {
     for (const psi of spreadsheetIds) {
-      var ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
-      var sheets = ss.getSheets();
-
+      var playerSpreadsheet = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
       [
         { cell: 'B3', division: "MPO #1" },
         { cell: 'B4', division: "MPO #2" },
@@ -26,27 +19,23 @@ function main() {
       ].forEach(
         (element) => updateAthleteStats(
           ctrl,
-          sheets[0].getRange(element.cell).getValue(),
-          rounds[round], ss, element.division, psi.name))
+          playerSpreadsheet.getSheets()[0].getRange(element.cell).getValue(),
+          ctrl.config.rounds[round], playerSpreadsheet, element.division, psi.name))
     }
   }
 }
 
 function updateAthleteStats(ctrl, athleteName, round, sheet, tab, teamName) {
-  if (![1, 2, 3, 4, 5].includes(round)) {
-    throw `Error. Invalid Round Param ${round}`;
-  }
-
   let sum = 0;
   let range = sheet.getSheetByName(tab).getRange(`${ROUND_ALPHA[round - 1]}4:${ROUND_ALPHA[round - 1]}23`).getValues()
   
   for (var i in range) {
     sum += range[i][0];
   }
-  if (sum == 0 || overrideSkip) {
+  if (sum == 0 || ctrl.config.overrideSkip) {
     try {
-      const athleteStats = obtainAthleteStats(athleteName, tournamentId, round, tab.substring(0, 3));
-      if (emptyingOut) {
+      const athleteStats = obtainAthleteStats(athleteName, ctrl.config.tournamentId, round, tab.substring(0, 3));
+      if (ctrl.config.emptyOut) {
         emptyOutSheet(sheet, tab, round);
       } else {
         writeStatsToSheet(athleteStats, sheet, tab, round);
@@ -55,7 +44,7 @@ function updateAthleteStats(ctrl, athleteName, round, sheet, tab, teamName) {
     } catch (e) {
       const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
       console.log(errorMessage)
-      if (emptyingOut) {
+      if (ctrl.config.emptyOut) {
         emptyOutSheet(sheet, tab, round);
       }
       ctrl.writeError(errorMessage);
