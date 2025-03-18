@@ -1,3 +1,29 @@
+// v1.03
+
+class Standings {
+  constructor() {
+    this.ss = SpreadsheetApp.getActiveSpreadsheet();
+    this.sheet = this.ss.getSheetByName('Standings');
+  }
+
+  writeToPlace(place, teamName, record, points) {
+    this.sheet.getRange(`R${4 + place}`).setValues([[teamName]]);
+    this.sheet.getRange(`S${4 + place}`).setValues([[record]]);
+    this.sheet.getRange(`T${4 + place}`).setValues([[points]]);
+  }
+}
+
+class RosterWaivers {
+  constructor() {
+    this.ss = SpreadsheetApp.getActiveSpreadsheet();
+    this.sheet = this.ss.getSheetByName('Rosters/Waivers');
+  }
+  
+  writeToWaiverPrio(place, teamName) {
+    this.sheet.getRange(`O${14 - place}`).setValues([[teamName]]);
+  }
+}
+
 class ControlPanel {
   constructor() {
     this.homeSS = SpreadsheetApp.getActiveSpreadsheet();
@@ -20,11 +46,11 @@ class ControlPanel {
 
     // Errors List Cell
     this.elc = { x: 'A', y: 7 };
-    this.errorsListRange = `${this.elc.x}${this.elc.y}:${this.elc.x}${this.elc.y+30}`
+    this.errorsListRange = `${this.elc.x}${this.elc.y}:${this.elc.x}${this.elc.y + 30}`
   }
 
   clearErrors() {
-    this.homeSheet.getRange(this.errorsListRange).clearContent()  
+    this.homeSheet.getRange(this.errorsListRange).clearContent()
   }
 
   writeError(errorMessage) {

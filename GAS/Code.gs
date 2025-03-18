@@ -1,5 +1,41 @@
-// v1.02
+// v1.03
 let layoutData;
+
+function roundStandings() {
+  ctrl = new ControlPanel();
+  let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
+
+  let placement = [];
+
+  for (const psi of spreadsheetIds) {
+        var playerSpreadsheet = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
+        var record = playerSpreadsheet.getSheetByName('Matchup').getRange('G4').getDisplayValue();
+        var points = playerSpreadsheet.getSheetByName('Stats').getRange('T6').getDisplayValue();
+        placement.push({
+          name: psi.name,
+          record: record,
+          wins: record.split('-')[0],
+          losses: record.split('-')[1],
+          points: points,
+          url: `${GOOGLE_URL_PREFIX}${psi.id}}`
+        })
+  }
+
+  placement.sort(function (a, b) {
+    return b.wins - a.wins || a.losses - b.losses || b.points - a.points;
+  })
+
+  standings = new Standings();
+  rosterWaivers = new RosterWaivers();
+
+  for (let i = 0; i < placement.length; i++) {
+    let playerSheet = SpreadsheetApp.openByUrl(placement[i].url).getSheetByName('Matchup')
+    playerSheet.getRange('G8').setValues([[i+1]])
+    standings.writeToPlace(i+1, placement[i].name, placement[i].record, placement[i].points)
+    rosterWaivers.writeToWaiverPrio(i+1, placement[i].name)
+  }
+  
+}
 
 function main() {
   ctrl = new ControlPanel();
