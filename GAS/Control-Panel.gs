@@ -1,4 +1,4 @@
-// v1.03
+// v1.04
 
 class Standings {
   constructor() {
@@ -41,6 +41,7 @@ class ControlPanel {
       tournamentId: {
         'Discraft Supreme Flight Open': 88276,
         'Prodigy presents WACO': 88277,
+        'MVP\'s Open at Austin': 88279
       }[this.homeSheet.getRange("F3").getValue()]
     }
 

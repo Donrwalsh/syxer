@@ -1,5 +1,7 @@
-// v1.03
+// v1.04
 let layoutData;
+let mpoAthleteData;
+let fpoAthleteData;
 
 function roundStandings() {
   ctrl = new ControlPanel();
@@ -8,17 +10,15 @@ function roundStandings() {
   let placement = [];
 
   for (const psi of spreadsheetIds) {
-        var playerSpreadsheet = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
-        var record = playerSpreadsheet.getSheetByName('Matchup').getRange('G4').getDisplayValue();
-        var points = playerSpreadsheet.getSheetByName('Stats').getRange('T6').getDisplayValue();
-        placement.push({
-          name: psi.name,
-          record: record,
-          wins: record.split('-')[0],
-          losses: record.split('-')[1],
-          points: points,
-          url: `${GOOGLE_URL_PREFIX}${psi.id}}`
-        })
+    ps = new PlayerSheet(psi.id);
+    placement.push({
+      name: ps.getName(),
+      record: ps.getRecord(),
+      wins: ps.getRecord().split('-')[0],
+      losses: ps.getRecord().split('-')[1],
+      points: ps.getPointsTotal(),
+      sheet: ps
+    })
   }
 
   placement.sort(function (a, b) {
@@ -29,12 +29,12 @@ function roundStandings() {
   rosterWaivers = new RosterWaivers();
 
   for (let i = 0; i < placement.length; i++) {
-    let playerSheet = SpreadsheetApp.openByUrl(placement[i].url).getSheetByName('Matchup')
-    playerSheet.getRange('G8').setValues([[i+1]])
-    standings.writeToPlace(i+1, placement[i].name, placement[i].record, placement[i].points)
-    rosterWaivers.writeToWaiverPrio(i+1, placement[i].name)
+    placement[i].sheet.writeRank(i+1);
+    placement[i].sheet.writeWaiver(placement.length - i);
+    standings.writeToPlace(i + 1, placement[i].name, placement[i].record, placement[i].points)
+    rosterWaivers.writeToWaiverPrio(i + 1, placement[i].name)
   }
-  
+
 }
 
 function main() {
@@ -42,106 +42,37 @@ function main() {
   ctrl.clearErrors();
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
-  for (const round in ctrl.config.rounds) {
-    for (const psi of spreadsheetIds) {
-      var playerSpreadsheet = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${psi.id}}`);
-      [
-        { cell: 'B3', division: "MPO #1" },
-        { cell: 'B4', division: "MPO #2" },
-        { cell: 'B5', division: "MPO #3" },
-        { cell: 'C3', division: "FPO #1" },
-        { cell: 'C4', division: "FPO #2" },
-        { cell: 'C5', division: "FPO #3" }
-      ].forEach(
-        (element) => updateAthleteStats(
-          ctrl,
-          playerSpreadsheet.getSheets()[0].getRange(element.cell).getValue(),
-          ctrl.config.rounds[round], playerSpreadsheet, element.division, psi.name))
-    }
-  }
-}
+  for (const psi of spreadsheetIds) {
+    const ps = new PlayerSheet(psi.id);
+    ps.getAthleteLineup().forEach((lineup) => {
+      for (const rd in ctrl.config.rounds) {
+        const round = ctrl.config.rounds[rd]
+        let shouldGetData = false;
 
-function updateAthleteStats(ctrl, athleteName, round, sheet, tab, teamName) {
-  let sum = 0;
-  let range = sheet.getSheetByName(tab).getRange(`${ROUND_ALPHA[round - 1]}4:${ROUND_ALPHA[round - 1]}23`).getValues()
-  
-  for (var i in range) {
-    sum += range[i][0];
-  }
-  if (sum == 0 || ctrl.config.overrideSkip) {
-    try {
-      const athleteStats = obtainAthleteStats(athleteName, ctrl.config.tournamentId, round, tab.substring(0, 3));
-      if (ctrl.config.emptyOut) {
-        emptyOutSheet(sheet, tab, round);
-      } else {
-        writeStatsToSheet(athleteStats, sheet, tab, round);
+        if (ctrl.config.emptyOut) {
+          ps.emptyScorecard(lineup.division, round);
+        } else if (ctrl.config.overrideSkip) {
+          shouldGetData = true;
+        } else {
+          shouldGetData = ps.getCurrentPointsSum(lineup.division, round) == 0;
+        }
+
+        try {
+          if (shouldGetData) {
+            const athleteStats = obtainAthleteStats(lineup.athlete, ctrl.config.tournamentId, round, lineup.division.substring(0, 3));
+            ps.writeStatsToScorecard(athleteStats, lineup.division, round);
+            ps.writeFieldSizeAndPlayerRanking(athleteStats, lineup.division);
+          } else {
+            console.log(`${lineup.athlete} data for round ${round} already present. Skipping`);
+          }
+        } catch (e) {
+          const errorMessage = `[${ps.getName()}]  Encountered error obtaining ${lineup.athlete}'s stats for round ${round}. Error: ${e} `
+          console.log(errorMessage)
+          ctrl.writeError(errorMessage);
+        }
       }
-      
-    } catch (e) {
-      const errorMessage = `[${teamName}]  Encountered error obtaining ${athleteName}'s stats for round ${round}. Error: ${e} `
-      console.log(errorMessage)
-      if (ctrl.config.emptyOut) {
-        emptyOutSheet(sheet, tab, round);
-      }
-      ctrl.writeError(errorMessage);
-    }
-  } else {
-    console.log(`${athleteName} data for round ${round} already present. Skipping`);
+    })
   }
-}
-
-function emptyOutSheet(spreadsheet, sheetName, round) {
-  var sheet = spreadsheet.getSheetByName(sheetName);
-  var roundAlpha = ROUND_ALPHA[round - 1];
-
-  // Strokes
-  sheet.getRange(`${roundAlpha}4`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}5`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}6`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}7`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}8`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}9`).setValues([[0]]);
-
-  // Stats
-  sheet.getRange(`${roundAlpha}12`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}13`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}14`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}15`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}16`).setValues([[0]]);
-
-  // Makes
-  sheet.getRange(`${roundAlpha}19`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}20`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}21`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}22`).setValues([[0]]);
-  sheet.getRange(`${roundAlpha}23`).setValues([[0]]);
-}
-
-function writeStatsToSheet(stats, spreadsheet, sheetName, round) {
-  var sheet = spreadsheet.getSheetByName(sheetName)
-  var roundAlpha = ROUND_ALPHA[round - 1];
-
-  // Strokes
-  sheet.getRange(`${roundAlpha}4`).setValues([[stats.strokes.doubleBogey.toString()]]);
-  sheet.getRange(`${roundAlpha}5`).setValues([[stats.strokes.bogey.toString()]]);
-  sheet.getRange(`${roundAlpha}6`).setValues([[stats.strokes.par.toString()]]);
-  sheet.getRange(`${roundAlpha}7`).setValues([[stats.strokes.birdie.toString()]]);
-  sheet.getRange(`${roundAlpha}8`).setValues([[stats.strokes.eagle.toString()]]);
-  sheet.getRange(`${roundAlpha}9`).setValues([[stats.strokes.albatross.toString()]]);
-
-  // Stats
-  sheet.getRange(`${roundAlpha}12`).setValues([[stats.stats.c1r.toString()]]);
-  sheet.getRange(`${roundAlpha}13`).setValues([[stats.stats.c2r.toString()]]);
-  sheet.getRange(`${roundAlpha}14`).setValues([[stats.stats.ob.toString()]]);
-  sheet.getRange(`${roundAlpha}15`).setValues([[stats.stats.ace.toString()]]);
-  sheet.getRange(`${roundAlpha}16`).setValues([[stats.stats.noStats.toString()]]);
-
-  // Makes
-  sheet.getRange(`${roundAlpha}19`).setValues([[stats.makes.c1x.toString()]]);
-  sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1xBonus.toString()]]);
-  sheet.getRange(`${roundAlpha}21`).setValues([[stats.makes.c2.toString()]]);
-  sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2Bonus.toString()]]);
-  sheet.getRange(`${roundAlpha}23`).setValues([[stats.makes.throwIns.toString()]]);
 }
 
 function obtainAthleteStats(athleteName, tournamentId, round, division) {
@@ -175,13 +106,11 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
           return 65 // dummy value to trigger being counted as circle 2 later
         } else if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 3 || (distThrow.liveScoreThrow.zoneId == 6 && distThrow.liveScoreThrow.dropZoneId == 3))) {
           return 25 // dummy value to trigger being counted as circle 1 later
-        } else {  
+        } else {
           return distThrow.liveScoreThrow.distanceToTarget
         }
       }).filter((distPutt) => distPutt != null))
     }
-
-
 
     let result = {
       strokes: {
@@ -205,6 +134,10 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         c2: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 32 && hole.holeBreakdown.throwIn < 66).length,
         c2Bonus: 0,
         throwIns: holeBreakdownData.filter((hole) => hole.holeBreakdown.throwIn > 66).length
+      },
+      ranking: {
+        place: athleteData.RunningPlace,
+        fieldSize: getTournamentFieldSize(division),
       }
     };
 
@@ -217,7 +150,6 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
 
     return result;
   }
-
 }
 
 function obtainLayoutData(tournamentId, layoutId) {
@@ -230,12 +162,20 @@ function obtainLayoutData(tournamentId, layoutId) {
   return layoutData.find((row) => row.layoutId == layoutId);
 }
 
-function obtainAthleteData(athleteName, tournId, round, division) {
-  var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round}`;
-  var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
-  const json = JSON.parse(response.getContentText());
+function getTournamentFieldSize(division) {
+  return (division == "MPO" ? mpoAthleteData : fpoAthleteData).scores.length;
+}
 
-  targetAthlete = json.data.scores.find((athlete) => athlete.Name == athleteName);
+function obtainAthleteData(athleteName, tournId, round, division) {
+  if (division == "MPO" && mpoAthleteData == null || division == "FPO" && fpoAthleteData == null) {
+    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round}`;
+    var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
+    athleteData = JSON.parse(response.getContentText()).data;
+    if (division == "MPO") mpoAthleteData = athleteData;
+    if (division == "FPO") fpoAthleteData = athleteData;    
+  }
+
+  targetAthlete = (division == "MPO" ? mpoAthleteData : fpoAthleteData).scores.find((athlete) => athlete.Name == athleteName);
 
   if (targetAthlete == null) {
     throw `Athlete ${athleteName} missing from tournament data. Are they competing?`;

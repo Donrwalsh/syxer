@@ -414,3 +414,7 @@ DPS queue takin' forever over here. I worked on the reading of isDev from a spec
 ## v1.03
 
 I added a script that works to determine standings and then write it to a few places. I'm not super pleased with how it shaped up - An individual class for each tab on the fantasy central sheet follows the pattern I established, sure, but it's pretty awkward. In addition I'm really needing a PlayerSheet class to encapsulate a lot of the operational aspects of these scripts. The standings calc is functional for now though, which is nice. Hoping the next thing I get to work on is refactoring and introducing some of these concepts.
+
+## v1.04
+
+Supports fieldSize and athlete rank data fetching. Made a major performance improvement by cutting down on unnecessary playerData fetches. Using a PlayerSheet class now to ease growing operation complexity.
