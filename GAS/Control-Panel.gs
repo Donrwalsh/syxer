@@ -1,4 +1,4 @@
-// v1.04
+// v1.05
 
 class Standings {
   constructor() {
@@ -36,13 +36,14 @@ class ControlPanel {
       rounds: [
         ...(this.homeSheet.getRange("C3").getValue() ? [1] : []),
         ...(this.homeSheet.getRange("D3").getValue() ? [2] : []),
-        ...(this.homeSheet.getRange("E3").getValue() ? [3] : [])
+        ...(this.homeSheet.getRange("E3").getValue() ? [3] : []),
+        ...(this.homeSheet.getRange("F3").getValue() ? [4] : []),
       ],
       tournamentId: {
         'Discraft Supreme Flight Open': 88276,
         'Prodigy presents WACO': 88277,
         'MVP\'s Open at Austin': 88279
-      }[this.homeSheet.getRange("F3").getValue()]
+      }[this.homeSheet.getRange("G3").getValue()]
     }
 
     // Errors List Cell

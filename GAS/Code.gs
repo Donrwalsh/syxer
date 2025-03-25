@@ -1,4 +1,4 @@
-// v1.04
+// v1.05
 let layoutData;
 let mpoAthleteData;
 let fpoAthleteData;
@@ -45,8 +45,9 @@ function main() {
   for (const psi of spreadsheetIds) {
     const ps = new PlayerSheet(psi.id);
     ps.getAthleteLineup().forEach((lineup) => {
-      for (const rd in ctrl.config.rounds) {
-        const round = ctrl.config.rounds[rd]
+      ctrl.config.rounds.forEach((round) => {
+        mpoAthleteData = null;
+        fpoAthleteData = null;
         let shouldGetData = false;
 
         if (ctrl.config.emptyOut) {
@@ -70,7 +71,7 @@ function main() {
           console.log(errorMessage)
           ctrl.writeError(errorMessage);
         }
-      }
+      })
     })
   }
 }
@@ -168,7 +169,7 @@ function getTournamentFieldSize(division) {
 
 function obtainAthleteData(athleteName, tournId, round, division) {
   if (division == "MPO" && mpoAthleteData == null || division == "FPO" && fpoAthleteData == null) {
-    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round}`;
+    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round == 4 ? 12 : round}`;
     var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
     athleteData = JSON.parse(response.getContentText()).data;
     if (division == "MPO") mpoAthleteData = athleteData;
