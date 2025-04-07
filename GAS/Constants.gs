@@ -1,4 +1,4 @@
-// v1.03
+// v1.06
 
 const DEV_SPREADSHEET_APP_ID = '1lze7Z7bbPDIQRUaCagSQWXESewI7kqVfgQa5nitPRFM';
 const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';

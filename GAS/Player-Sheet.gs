@@ -1,3 +1,5 @@
+// v1.06
+
 class PlayerSheet {
   constructor(id) {
     this.ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${id}}`);
@@ -8,8 +10,10 @@ class PlayerSheet {
   emptyScorecard(division, round) {
     var sheet = this.ss.getSheetByName(division);
 
-    ['4', '5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '19', '20', '21', '22', '23']
+    ['4', '5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '20', '21', '22', '23', '24']
       .forEach((int) => sheet.getRange(`${ROUND_ALPHA[round - 1]}${int}`).setValues([[0]]))
+      
+    sheet.getRange('V12').setValues([['']]);
   }
 
   getAthleteLineup() {
@@ -67,16 +71,17 @@ class PlayerSheet {
     // Stats
     sheet.getRange(`${roundAlpha}12`).setValues([[stats.stats.c1r.toString()]]);
     sheet.getRange(`${roundAlpha}13`).setValues([[stats.stats.c2r.toString()]]);
-    sheet.getRange(`${roundAlpha}14`).setValues([[stats.stats.ob.toString()]]);
-    sheet.getRange(`${roundAlpha}15`).setValues([[stats.stats.ace.toString()]]);
-    sheet.getRange(`${roundAlpha}16`).setValues([[stats.stats.noStats.toString()]]);
+    sheet.getRange(`${roundAlpha}14`).setValues([[stats.stats.parked.toString()]]);
+    sheet.getRange(`${roundAlpha}15`).setValues([[stats.stats.ob.toString()]]);
+    sheet.getRange(`${roundAlpha}16`).setValues([[stats.stats.ace.toString()]]);
+    sheet.getRange(`${roundAlpha}17`).setValues([[stats.stats.noStats.toString()]]);
 
     // Makes
-    sheet.getRange(`${roundAlpha}19`).setValues([[stats.makes.c1x.toString()]]);
-    sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1xBonus.toString()]]);
-    sheet.getRange(`${roundAlpha}21`).setValues([[stats.makes.c2.toString()]]);
-    sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2Bonus.toString()]]);
-    sheet.getRange(`${roundAlpha}23`).setValues([[stats.makes.throwIns.toString()]]);
+    sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1x.toString()]]);
+    sheet.getRange(`${roundAlpha}21`).setValues([[stats.makes.c1xBonus.toString()]]);
+    sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2.toString()]]);
+    sheet.getRange(`${roundAlpha}23`).setValues([[stats.makes.c2Bonus.toString()]]);
+    sheet.getRange(`${roundAlpha}24`).setValues([[stats.makes.throwIns.toString()]]);
   }
 
   writeWaiver(rank) {

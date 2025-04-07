@@ -1,4 +1,4 @@
-// v1.05
+// v1.06
 let layoutData;
 let mpoAthleteData;
 let fpoAthleteData;
@@ -105,8 +105,8 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       distputts.push(...throwTimelineData.scoreThrows[counter - 1].holeThrows.map((distThrow) => {
         if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 4 || (distThrow.liveScoreThrow.zoneId == 6 && distThrow.liveScoreThrow.dropZoneId == 4))) {
           return 65 // dummy value to trigger being counted as circle 2 later
-        } else if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 3 || (distThrow.liveScoreThrow.zoneId == 6 && distThrow.liveScoreThrow.dropZoneId == 3))) {
-          return 25 // dummy value to trigger being counted as circle 1 later
+        } else if (distThrow.liveScoreThrow.distanceToTarget == null && (distThrow.liveScoreThrow.zoneId == 3 || ((distThrow.liveScoreThrow.zoneId == 6 || distThrow.liveScoreThrow.zoneId == 7) && distThrow.liveScoreThrow.dropZoneId == 3))) {
+          return distThrow.liveScoreThrow.dropDistanceToTarget || 25 // dummy value to trigger being counted as circle 1 later
         } else {
           return distThrow.liveScoreThrow.distanceToTarget
         }
@@ -125,6 +125,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       stats: noStats ? { c1r: 0, c2r: 0, ob: 0, ace: 0, noStats: 1 } : {
         c1r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c1" || hole.holeBreakdown.green == "parked").length,
         c2r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c2").length,
+        parked: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "parked").length,
         ob: holeBreakdownData.map((hole) => hole.holeBreakdown.ob).reduce((sum, num) => sum + num),
         ace: acesCount,
         noStats: 0
