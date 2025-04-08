@@ -1,7 +1,11 @@
-// v1.06
+// v1.07
 let layoutData;
-let mpoAthleteData;
-let fpoAthleteData;
+
+let athleteData = {
+  'MPO': {},
+  'FPO': {}
+};
+
 
 function roundStandings() {
   ctrl = new ControlPanel();
@@ -61,7 +65,8 @@ function main() {
         try {
           if (shouldGetData) {
             const athleteStats = obtainAthleteStats(lineup.athlete, ctrl.config.tournamentId, round, lineup.division.substring(0, 3));
-            ps.writeStatsToScorecard(athleteStats, lineup.division, round);
+            const properRound = ctrl.config.tournamentId == 88282 && round == 12 ? 3 : round;
+            ps.writeStatsToScorecard(athleteStats, lineup.division, properRound);
             ps.writeFieldSizeAndPlayerRanking(athleteStats, lineup.division);
           } else {
             console.log(`${lineup.athlete} data for round ${round} already present. Skipping`);
@@ -78,6 +83,11 @@ function main() {
 
 function obtainAthleteStats(athleteName, tournamentId, round, division) {
   const athleteData = obtainAthleteData(athleteName, tournamentId, round, division);
+
+  if (athleteData.ScoreID == null) {
+    throw `${athleteName} does not have an ID for round ${round}. Have they been cut?`;
+  }
+
   const layoutData = obtainLayoutData(tournamentId, athleteData.LayoutID);
   const holeBreakdownData = obtainHoleBreakdownData(athleteData.ScoreID);
   const throwTimelineData = obtainThrowTimelineData(athleteData.ScoreID);
@@ -122,7 +132,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         eagle: diffs.filter(d => d === -2).length,
         albatross: diffs.filter(d => d <= -3).length
       },
-      stats: noStats ? { c1r: 0, c2r: 0, ob: 0, ace: 0, noStats: 1 } : {
+      stats: noStats ? { c1r: 0, c2r: 0, parked: 0, ob: 0, ace: 0, noStats: 1 } : {
         c1r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c1" || hole.holeBreakdown.green == "parked").length,
         c2r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c2").length,
         parked: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "parked").length,
@@ -139,7 +149,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       },
       ranking: {
         place: athleteData.RunningPlace,
-        fieldSize: getTournamentFieldSize(division),
+        fieldSize: getTournamentFieldSize(division, round),
       }
     };
 
@@ -164,20 +174,19 @@ function obtainLayoutData(tournamentId, layoutId) {
   return layoutData.find((row) => row.layoutId == layoutId);
 }
 
-function getTournamentFieldSize(division) {
-  return (division == "MPO" ? mpoAthleteData : fpoAthleteData).scores.length;
+function getTournamentFieldSize(division, round) {
+  return athleteData[division][round].scores.length;
 }
 
 function obtainAthleteData(athleteName, tournId, round, division) {
-  if (division == "MPO" && mpoAthleteData == null || division == "FPO" && fpoAthleteData == null) {
+  if (!athleteData[division][round]) {
     var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round == 4 ? 12 : round}`;
     var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
-    athleteData = JSON.parse(response.getContentText()).data;
-    if (division == "MPO") mpoAthleteData = athleteData;
-    if (division == "FPO") fpoAthleteData = athleteData;    
+    freshData = JSON.parse(response.getContentText()).data;
+    athleteData[division][round] = freshData
   }
-
-  targetAthlete = (division == "MPO" ? mpoAthleteData : fpoAthleteData).scores.find((athlete) => athlete.Name == athleteName);
+  
+  targetAthlete = athleteData[division][round].scores.find((athlete) => athlete.Name == athleteName);
 
   if (targetAthlete == null) {
     throw `Athlete ${athleteName} missing from tournament data. Are they competing?`;

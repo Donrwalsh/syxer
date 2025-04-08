@@ -1,4 +1,4 @@
-// v1.06
+// v1.07
 
 class Standings {
   constructor() {
@@ -36,7 +36,7 @@ class ControlPanel {
       rounds: [
         ...(this.homeSheet.getRange("C3").getValue() ? [1] : []),
         ...(this.homeSheet.getRange("D3").getValue() ? [2] : []),
-        ...(this.homeSheet.getRange("E3").getValue() ? [3] : []),
+        ...(this.homeSheet.getRange("E3").getValue() ? [this.homeSheet.getRange("G3").getValue() == 'Music City Open' ? 12 : 3] : []),
         ...(this.homeSheet.getRange("F3").getValue() ? [4] : []),
       ],
       tournamentId: {
