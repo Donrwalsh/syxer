@@ -1,4 +1,4 @@
-// v1.06
+// v1.08
 
 class PlayerSheet {
   constructor(id) {
@@ -12,7 +12,7 @@ class PlayerSheet {
 
     ['4', '5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '20', '21', '22', '23', '24']
       .forEach((int) => sheet.getRange(`${ROUND_ALPHA[round - 1]}${int}`).setValues([[0]]))
-      
+
     sheet.getRange('V12').setValues([['']]);
   }
 
@@ -32,6 +32,20 @@ class PlayerSheet {
     return range.reduce(
       (acc, cv) => acc + (parseInt(cv) || 0), 0
     )
+  }
+
+  getEventTotalByEventName(eventName) {
+    //TODON untested
+    return this.ss.getSheetByName('Event Totals').getRange(TOURNAMENTS.find((tournament) => tournament.name == eventName).cell).getDisplayValue();
+  }
+
+  // Note that this only goes to week 18
+  getMatchups() {
+    let matchups = [];
+
+    ['5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '20', '21', '22']
+      .forEach((int) => matchups.push(this.matchup.getRange(`D${int}`).getDisplayValue()));
+    return matchups
   }
 
   getName() {

@@ -1,4 +1,4 @@
-// v1.07
+// v1.08
 let layoutData;
 
 let athleteData = {
@@ -6,27 +6,38 @@ let athleteData = {
   'FPO': {}
 };
 
-
 function roundStandings() {
   ctrl = new ControlPanel();
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
-  let placement = [];
+  let playerSheets = [];
 
   for (const psi of spreadsheetIds) {
     ps = new PlayerSheet(psi.id);
+    playerSheets.push({
+      sheet: ps,
+      name: ps.getName()
+    })
+  }
+
+  let placement = [];
+
+  for (const playerName of playerSheets.map((sheet) => sheet.name)) {
+    var sheet = playerSheets.find((playerSheet) => playerSheet.name == playerName).sheet;
     placement.push({
-      name: ps.getName(),
-      record: ps.getRecord(),
-      wins: ps.getRecord().split('-')[0],
-      losses: ps.getRecord().split('-')[1],
-      points: ps.getPointsTotal(),
-      sheet: ps
+      name: playerName,
+      pointsFor: sheet.getPointsTotal(),
+      pointsAgainst: calculatePointsAgainst(playerName, playerSheets),
+      //TODON: These values need better sources. I want to try calculating from on-the-fly comparison between pointsFor and pointsAgainst
+      record: sheet.getRecord(),
+      wins: sheet.getRecord().split('-')[0],
+      losses: sheet.getRecord().split('-')[1],
+      sheet: sheet
     })
   }
 
   placement.sort(function (a, b) {
-    return b.wins - a.wins || a.losses - b.losses || b.points - a.points;
+    return b.wins - a.wins || a.losses - b.losses || b.pointsFor - a.pointsFor;
   })
 
   standings = new Standings();
@@ -35,10 +46,25 @@ function roundStandings() {
   for (let i = 0; i < placement.length; i++) {
     placement[i].sheet.writeRank(i+1);
     placement[i].sheet.writeWaiver(placement.length - i);
-    standings.writeToPlace(i + 1, placement[i].name, placement[i].record, placement[i].points)
+    standings.writeToPlace(i + 1, placement[i].name, placement[i].record, placement[i].pointsFor, placement[i].pointsAgainst)
     rosterWaivers.writeToWaiverPrio(i + 1, placement[i].name)
   }
+}
 
+function calculatePointsAgainst(teamName, playerSheets) {
+  const todaysDate = new Date();
+  const pastTournaments = TOURNAMENTS.filter((tournament) => tournament.end < todaysDate)
+  const matchups = playerSheets.find((playerSheet) => playerSheet.name == teamName).sheet.getMatchups();
+  
+  var pointsAgainst = 0;
+
+  for (let i = 0; i < pastTournaments.length; i++) {
+    const opponentScore = playerSheets.find((playerSheet) => playerSheet.name == matchups[i]).sheet.getEventTotalByEventName(pastTournaments[i].name);
+    console.log(`For team ${teamName} tournament # ${i}, opposing team ${matchups[i]} scored ${opponentScore} points`)
+    pointsAgainst += parseFloat(opponentScore);
+  }
+
+  return pointsAgainst;
 }
 
 function main() {
@@ -104,7 +130,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
     if (holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
       noStats = true;
     }
-    for (var counter = 1; counter <= 18; counter = counter + 1) {
+    for (var counter = 1; counter <= holeBreakdownData.length; counter = counter + 1) {
       const score = athleteData.HoleScores[counter.toString() - 1];
       if (score == 1) {
         acesCount++;

@@ -1,4 +1,4 @@
-// v1.07
+// v1.08
 
 class Standings {
   constructor() {
@@ -6,10 +6,11 @@ class Standings {
     this.sheet = this.ss.getSheetByName('Standings');
   }
 
-  writeToPlace(place, teamName, record, points) {
+  writeToPlace(place, teamName, record, pointsFor, pointsAgainst) {
     this.sheet.getRange(`R${4 + place}`).setValues([[teamName]]);
     this.sheet.getRange(`S${4 + place}`).setValues([[record]]);
-    this.sheet.getRange(`T${4 + place}`).setValues([[points]]);
+    this.sheet.getRange(`T${4 + place}`).setValues([[pointsFor]]);
+    this.sheet.getRange(`U${4 + place}`).setValues([[pointsAgainst]]);
   }
 }
 
@@ -39,12 +40,7 @@ class ControlPanel {
         ...(this.homeSheet.getRange("E3").getValue() ? [this.homeSheet.getRange("G3").getValue() == 'Music City Open' ? 12 : 3] : []),
         ...(this.homeSheet.getRange("F3").getValue() ? [4] : []),
       ],
-      tournamentId: {
-        'Discraft Supreme Flight Open': 88276,
-        'Prodigy presents WACO': 88277,
-        'MVP\'s Open at Austin': 88279,
-        'Music City Open': 88282
-      }[this.homeSheet.getRange("G3").getValue()]
+      tournamentId: TOURNAMENTS.find((tournament) => tournament.name == this.homeSheet.getRange("G3").getValue()).id
     }
 
     // Errors List Cell
