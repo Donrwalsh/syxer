@@ -1,4 +1,4 @@
-// v1.08
+// v1.09
 let layoutData;
 
 let athleteData = {
@@ -60,7 +60,7 @@ function calculatePointsAgainst(teamName, playerSheets) {
 
   for (let i = 0; i < pastTournaments.length; i++) {
     const opponentScore = playerSheets.find((playerSheet) => playerSheet.name == matchups[i]).sheet.getEventTotalByEventName(pastTournaments[i].name);
-    console.log(`For team ${teamName} tournament # ${i}, opposing team ${matchups[i]} scored ${opponentScore} points`)
+    // console.log(`For team ${teamName} tournament # ${i}, opposing team ${matchups[i]} scored ${opponentScore} points`)
     pointsAgainst += parseFloat(opponentScore);
   }
 
@@ -134,7 +134,7 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
       const score = athleteData.HoleScores[counter.toString() - 1];
       if (score == 1) {
         acesCount++;
-      } else {
+      } else if (score != 0) {
         const par = layoutData.liveLayoutDetails[counter.toString() - 1].par;
         diffs.push(score - par);
       }

@@ -422,3 +422,7 @@ Supports fieldSize and athlete rank data fetching. Made a major performance impr
 ## v1.08
 
 I mean lots has happened haha. Today the changes are mostly focused on establishing a timeline of tournaments to avoid me having to remember to add something to a list every week or so. The ids are available and the tournaments are scheduled so there's no reason to not do this. Also, this allows my roundStandings code to know which tournaments have already transpired and focus attention just on that. There's more stuff here that I'd like to do but didn't get around to, in general the information flow is a bit fragmented and this effort today shifts towards a single-source-of-truth model but is still in the business of piecing data together from multiple sources in inconsistent ways. This will cause problems, but idk how large they'll be. I'm happy with the state of things right now, although I'll admit I wish I'd tested it more.
+
+## v1.09
+
+Albatross fix, but that's all.
