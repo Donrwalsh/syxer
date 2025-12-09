@@ -1,7 +1,8 @@
-// v1.08
+// v1.10
 
 const DEV_SPREADSHEET_APP_ID = '1lze7Z7bbPDIQRUaCagSQWXESewI7kqVfgQa5nitPRFM';
 const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
+const PDGA_URL_PREFIX = `https://www.pdga.com/`;
 const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
 
 const DEV_PLAYER_SPREADSHEET_IDS = [

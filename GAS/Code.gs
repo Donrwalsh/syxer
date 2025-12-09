@@ -1,11 +1,4 @@
-// v1.09
-let layoutData;
-
-let athleteData = {
-  'MPO': {},
-  'FPO': {}
-};
-
+// v1.10
 function roundStandings() {
   ctrl = new ControlPanel();
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
@@ -70,14 +63,13 @@ function calculatePointsAgainst(teamName, playerSheets) {
 function main() {
   ctrl = new ControlPanel();
   ctrl.clearErrors();
+  let tourn = new Tournament(ctrl.config.tournamentId);
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
   for (const psi of spreadsheetIds) {
     const ps = new PlayerSheet(psi.id);
     ps.getAthleteLineup().forEach((lineup) => {
       ctrl.config.rounds.forEach((round) => {
-        mpoAthleteData = null;
-        fpoAthleteData = null;
         let shouldGetData = false;
 
         if (ctrl.config.emptyOut) {
@@ -89,7 +81,9 @@ function main() {
         }
 
         try {
-          if (shouldGetData) {
+          if (shouldGetData) { // HERE I actually want 4 methods: strokes/stats/makes/ranking and then I'll better be able to control for no stats
+            const numbers = tourn.obtainAthleteNumbers(lineup.division.substring(0, 3), round, lineup.athlete);
+            return
             const athleteStats = obtainAthleteStats(lineup.athlete, ctrl.config.tournamentId, round, lineup.division.substring(0, 3));
             const properRound = ctrl.config.tournamentId == 88282 && round == 12 ? 3 : round;
             ps.writeStatsToScorecard(athleteStats, lineup.division, properRound);
@@ -125,6 +119,11 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
 
   if (holeBreakdownData.some((hole) => hole.holeBreakdown == null)
     && !holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
+      // TODON 00:
+      // Rather than throwing an error here, consider this as part of no stats.
+      // But in this case do a partial calc (this may need some logic considerations below)
+      // Then compare the output of this partial calc to this round's noStats value.
+      // Award the player the higher of those two values
     throw `Found incomplete data for ${athleteName}, skipping for now`;
   } else {
     if (holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
@@ -206,7 +205,8 @@ function getTournamentFieldSize(division, round) {
 
 function obtainAthleteData(athleteName, tournId, round, division) {
   if (!athleteData[division][round]) {
-    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${round == 4 ? 12 : round}`;
+    //TODON: Ugly magic number cowboy-coded bullshit:
+    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${(round == 4 && tournId == 88286) ? 12 : round}`;
     var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
     freshData = JSON.parse(response.getContentText()).data;
     athleteData[division][round] = freshData

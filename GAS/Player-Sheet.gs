@@ -1,4 +1,4 @@
-// v1.08
+// v1.09c - cowboy coded bullshit
 
 class PlayerSheet {
   constructor(id) {
@@ -10,7 +10,7 @@ class PlayerSheet {
   emptyScorecard(division, round) {
     var sheet = this.ss.getSheetByName(division);
 
-    ['4', '5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '20', '21', '22', '23', '24']
+    ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
       .forEach((int) => sheet.getRange(`${ROUND_ALPHA[round - 1]}${int}`).setValues([[0]]))
 
     sheet.getRange('V12').setValues([['']]);
@@ -43,7 +43,7 @@ class PlayerSheet {
   getMatchups() {
     let matchups = [];
 
-    ['5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '20', '21', '22']
+    ['5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
       .forEach((int) => matchups.push(this.matchup.getRange(`D${int}`).getDisplayValue()));
     return matchups
   }
