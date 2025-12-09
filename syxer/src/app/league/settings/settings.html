@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
+    <div class="row">
+      <!-- Date Picker -->
+      <div class="col-md-6 mb-3">
+        <label for="date" class="form-label">Choose Date</label>
+        <input type="date" id="date" class="form-control" formControlName="date" />
+      </div>
+
+      <!-- Time Picker -->
+      <div class="col-md-6 mb-3">
+        <label for="time" class="form-label">Choose Time</label>
+        <input type="time" id="time" class="form-control" formControlName="time" />
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Dropdown -->
+      <div class="col-md-6 mb-3">
+        <label for="player" class="form-label">Select Player</label>
+        <select id="player" class="form-select" formControlName="player">
+          <option value="">-- Choose Player --</option>
+          <option *ngFor="let player of players" [value]="player.id">
+            {{ player.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="settingsForm.invalid">
+      Save Settings
+    </button>
+  </form>
+</div>

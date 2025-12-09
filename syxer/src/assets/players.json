@@ -1,0 +1,14 @@
+{
+  "teams": [
+    { "id": 1, "name": "Syxy Mynxes" },
+    { "id": 2, "name": "Ginter" },
+    { "id": 3, "name": "Langster's Paradise" },
+    { "id": 4, "name": "Phenomenal Raptors" },
+    { "id": 5, "name": "Teem 5" },
+    { "id": 6, "name": "Laura" },
+    { "id": 7, "name": "Bajari" },
+    { "id": 8, "name": "I live to Frolf" },
+    { "id": 9, "name": "Boost It" },
+    { "id": 10, "name": "Jame Team" }
+  ]
+}
