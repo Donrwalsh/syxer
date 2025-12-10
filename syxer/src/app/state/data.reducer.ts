@@ -1,15 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import * as DataActions from './data.actions';
-import { Team } from '../services/data.service';
+import { Team, Tournament } from '../services/data.service';
 
 export interface DataState {
   teams: Team[];
+  tournaments: Tournament[];
   loading: boolean;
   error: any;
 }
 
 export const initialState: DataState = {
   teams: [],
+  tournaments: [],
   loading: false,
   error: null,
 };
@@ -17,22 +19,37 @@ export const initialState: DataState = {
 export const dataReducer = createReducer(
   initialState,
 
-  // Start loading
   on(DataActions.loadTeams, (state) => ({
     ...state,
     loading: true,
     error: null,
   })),
 
-  // Success
   on(DataActions.loadTeamsSuccess, (state, { teams }) => ({
     ...state,
     teams,
     loading: false,
   })),
 
-  // Failure
   on(DataActions.loadTeamsFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
+  on(DataActions.loadTournaments, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
+
+  on(DataActions.loadTournamentsSuccess, (state, { tournaments }) => ({
+    ...state,
+    tournaments,
+    loading: false,
+  })),
+
+  on(DataActions.loadTournamentsFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,

@@ -3,7 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { Menu } from './menu/menu';
 import { Store } from '@ngrx/store';
 import { DataService } from './services/data.service';
-import { loadTeamsSuccess, loadTeamsFailure, loadTeams } from './state/data.actions';
+import {
+  loadTeamsSuccess,
+  loadTeamsFailure,
+  loadTeams,
+  loadTournaments,
+  loadTournamentsSuccess,
+  loadTournamentsFailure,
+} from './state/data.actions';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +33,17 @@ export class App {
       error: (err) => {
         console.error('Error loading teams', err);
         this.store.dispatch(loadTeamsFailure({ error: err }));
+      },
+    });
+
+    this.store.dispatch(loadTournaments());
+    this.dataService.getTournaments().subscribe({
+      next: (tournaments) => {
+        this.store.dispatch(loadTournamentsSuccess({ tournaments }));
+      },
+      error: (err) => {
+        console.error('Error loading tournaments', err);
+        this.store.dispatch(loadTournamentsFailure({ error: err }));
       },
     });
   }

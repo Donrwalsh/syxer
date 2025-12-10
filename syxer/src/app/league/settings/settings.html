@@ -1,27 +1,24 @@
 <div class="container mt-4">
   <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
     <div class="row">
-      <!-- Date Picker -->
-      <div class="col-md-6 mb-3">
-        <label for="date" class="form-label">Choose Date</label>
-        <input type="date" id="date" class="form-control" formControlName="date" />
-      </div>
-
-      <!-- Time Picker -->
-      <div class="col-md-6 mb-3">
-        <label for="time" class="form-label">Choose Time</label>
-        <input type="time" id="time" class="form-control" formControlName="time" />
-      </div>
-    </div>
-
-    <div class="row">
-      <!-- Dropdown -->
+      <!-- Player Dropdown -->
       <div class="col-md-6 mb-3">
         <label for="player" class="form-label">Select Player</label>
         <select id="player" class="form-select" formControlName="player">
           <option value="">-- Choose Player --</option>
           <option *ngFor="let player of players$ | async" [value]="player.id">
             {{ player.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Tournament Dropdown -->
+      <div class="col-md-6 mb-3">
+        <label for="tournament" class="form-label">Select Tournament</label>
+        <select id="tournament" class="form-select" formControlName="tournament">
+          <option value="">-- Choose Tournament --</option>
+          <option *ngFor="let tournament of tournaments$ | async" [value]="tournament.id">
+            {{ tournament.name }}
           </option>
         </select>
       </div>

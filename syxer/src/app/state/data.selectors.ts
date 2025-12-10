@@ -4,8 +4,8 @@ import { DataState } from './data.reducer';
 // Feature selector
 export const selectDataState = createFeatureSelector<DataState>('data');
 
-// Teams array
 export const selectTeams = createSelector(selectDataState, (state) => state.teams);
+export const selectTournaments = createSelector(selectDataState, (state) => state.tournaments);
 
 // Loading flag
 export const selectLoading = createSelector(selectDataState, (state) => state.loading);

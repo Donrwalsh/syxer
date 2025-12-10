@@ -1,0 +1,5 @@
+.inprogress-btn {
+  background: linear-gradient(90deg, #ffc107, #ffeb3b); /* Bootstrap warning + bright yellow */
+  color: #212529; /* dark text for contrast */
+  font-weight: 600;
+}

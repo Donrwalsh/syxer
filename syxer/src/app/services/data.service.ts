@@ -2,7 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-// Example interface for your data
+export interface Tournament {
+  id: number;
+  name: string;
+  start: string;
+  end: string;
+  matches: Match[];
+}
+
+export interface Match {
+  matchup: number;
+  teamId: number;
+  score: number;
+}
+
 export interface Team {
   id: number;
   name: string;
@@ -20,5 +33,9 @@ export class DataService {
     return this.http
       .get<any>(`${this.baseUrl}/players.json`)
       .pipe(map((response) => response.teams));
+  }
+
+  getTournaments(): Observable<Tournament[]> {
+    return this.http.get<any>(`${this.baseUrl}/tournaments.json`).pipe(map((response) => response));
   }
 }
