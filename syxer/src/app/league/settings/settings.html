@@ -20,7 +20,7 @@
         <label for="player" class="form-label">Select Player</label>
         <select id="player" class="form-select" formControlName="player">
           <option value="">-- Choose Player --</option>
-          <option *ngFor="let player of players" [value]="player.id">
+          <option *ngFor="let player of players$ | async" [value]="player.id">
             {{ player.name }}
           </option>
         </select>

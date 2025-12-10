@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DataService, Team } from '../../services/data.service';
+import { selectTeams } from '../../state/data.selectors';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-settings',
@@ -12,9 +15,9 @@ import { DataService, Team } from '../../services/data.service';
 })
 export class Settings {
   settingsForm!: FormGroup;
-  players: Team[] = [];
+  players$!: Observable<Team[]>;
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.settingsForm = this.fb.group({
@@ -23,14 +26,7 @@ export class Settings {
       player: ['', Validators.required],
     });
 
-    this.dataService.getTeams().subscribe({
-      next: (teams) => {
-        this.players = teams;
-      },
-      error: (err) => {
-        console.error('Error fetching teams:', err);
-      },
-    });
+    this.players$ = this.store.select(selectTeams);
   }
 
   saveSettings(): void {

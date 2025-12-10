@@ -9,7 +9,7 @@ export interface Team {
 }
 
 @Injectable({
-  providedIn: 'root', // makes the service available app-wide
+  providedIn: 'root',
 })
 export class DataService {
   private baseUrl = 'assets';
