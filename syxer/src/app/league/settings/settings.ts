@@ -5,6 +5,8 @@ import { DataService, Team, Tournament } from '../../services/data.service';
 import { selectTeams, selectTournaments } from '../../state/data.selectors';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { setPlayer, setTourn } from '../../state/config.actions';
+import { selectPlayer, selectTournament } from '../../state/config.selector';
 
 @Component({
   selector: 'app-settings',
@@ -15,16 +17,30 @@ import { Store } from '@ngrx/store';
 })
 export class Settings {
   settingsForm!: FormGroup;
+  configPlayer$!: Observable<number>;
+  configTourn$!: Observable<number>;
   players$!: Observable<Team[]>;
   tournaments$!: Observable<Tournament[]>;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
+    this.configPlayer$ = this.store.select(selectPlayer);
+    this.configTourn$ = this.store.select(selectTournament);
+
     this.settingsForm = this.fb.group({
       player: [''],
       tournament: [''],
     });
+
+    this.configPlayer$.subscribe(player => {
+      this.settingsForm.patchValue({ player });
+    });
+
+    this.configTourn$.subscribe(tournament => {
+      this.settingsForm.patchValue({ tournament });
+    });
+
 
     this.players$ = this.store.select(selectTeams);
     this.tournaments$ = this.store.select(selectTournaments);
@@ -32,7 +48,8 @@ export class Settings {
 
   saveSettings(): void {
     if (this.settingsForm.valid) {
-      console.log('Settings saved:', this.settingsForm.value);
+      this.store.dispatch(setPlayer({ player: Number(this.settingsForm.value.player) }))
+      this.store.dispatch(setTourn({ tournament: Number(this.settingsForm.value.tournament) }))
     } else {
       this.settingsForm.markAllAsTouched();
       console.log('Form invalid');
