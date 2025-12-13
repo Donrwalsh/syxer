@@ -1,0 +1,380 @@
+[
+  {
+    "id": 88276,
+    "name": "Supreme Flight Open",
+    "start": "2025-02-28",
+    "end": "2025-03-02",
+    "matches": [
+      { "matchup": 1, "teamId": 1, "score": 715.0 },
+      { "matchup": 1, "teamId": 10, "score": 607.0 },
+      { "matchup": 2, "teamId": 2, "score": 663.0 },
+      { "matchup": 2, "teamId": 9, "score": 672.0 },
+      { "matchup": 3, "teamId": 3, "score": 653.5 },
+      { "matchup": 3, "teamId": 8, "score": 603.0 },
+      { "matchup": 4, "teamId": 4, "score": 641.5 },
+      { "matchup": 4, "teamId": 7, "score": 557.5 },
+      { "matchup": 5, "teamId": 5, "score": 648.0 },
+      { "matchup": 5, "teamId": 6, "score": 730.0 }
+    ]
+  },
+  {
+    "id": 88277,
+    "name": "Waco Annual Charity Open",
+    "start": "2025-03-14",
+    "end": "2025-03-16",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 714.5 },
+      { "matchup": 1, "teamId": 6, "score": 751.0 },
+      { "matchup": 2, "teamId": 7, "score": 669.5 },
+      { "matchup": 2, "teamId": 5, "score": 813.0 },
+      { "matchup": 3, "teamId": 8, "score": 701.5 },
+      { "matchup": 3, "teamId": 4, "score": 635.5 },
+      { "matchup": 4, "teamId": 9, "score": 811.0 },
+      { "matchup": 4, "teamId": 3, "score": 776.0 },
+      { "matchup": 5, "teamId": 1, "score": 783.5 },
+      { "matchup": 5, "teamId": 2, "score": 849.5 }
+    ]
+  },
+  {
+    "id": 88279,
+    "name": "The Open at Austin",
+    "start": "2025-03-20",
+    "end": "2025-03-23",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 605.0 },
+      { "matchup": 1, "teamId": 2, "score": 746.5 },
+      { "matchup": 2, "teamId": 1, "score": 786.5 },
+      { "matchup": 2, "teamId": 3, "score": 863.0 },
+      { "matchup": 3, "teamId": 4, "score": 759.5 },
+      { "matchup": 3, "teamId": 9, "score": 751.0 },
+      { "matchup": 4, "teamId": 5, "score": 696.5 },
+      { "matchup": 4, "teamId": 8, "score": 756.5 },
+      { "matchup": 5, "teamId": 6, "score": 740.0 },
+      { "matchup": 5, "teamId": 7, "score": 840.5 }
+    ]
+  },
+  {
+    "id": 88282,
+    "name": "Music City Open",
+    "start": "2025-04-04",
+    "end": "2025-04-06",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 737.5 },
+      { "matchup": 1, "teamId": 7, "score": 652.0 },
+      { "matchup": 2, "teamId": 8, "score": 509.5 },
+      { "matchup": 2, "teamId": 6, "score": 732.0 },
+      { "matchup": 3, "teamId": 9, "score": 625.5 },
+      { "matchup": 3, "teamId": 5, "score": 665.0 },
+      { "matchup": 4, "teamId": 1, "score": 651.5 },
+      { "matchup": 4, "teamId": 4, "score": 683.0 },
+      { "matchup": 5, "teamId": 2, "score": 554.5 },
+      { "matchup": 5, "teamId": 3, "score": 732.0 }
+    ]
+  },
+  {
+    "id": 88282,
+    "name": "Kansas City Wide Open",
+    "start": "2025-04-18",
+    "end": "2025-04-20",
+    "matches": [
+      { "matchup": 1, "teamId": 3, "score": 571.0 },
+      { "matchup": 1, "teamId": 10, "score": 576.0 },
+      { "matchup": 2, "teamId": 4, "score": 633.5 },
+      { "matchup": 2, "teamId": 2, "score": 584.5 },
+      { "matchup": 3, "teamId": 5, "score": 662.5 },
+      { "matchup": 3, "teamId": 1, "score": 682.0 },
+      { "matchup": 4, "teamId": 6, "score": 727.5 },
+      { "matchup": 4, "teamId": 9, "score": 537.5 },
+      { "matchup": 5, "teamId": 7, "score": 558.0 },
+      { "matchup": 5, "teamId": 8, "score": 430.0 }
+    ]
+  },
+  {
+    "id": 88638,
+    "name": "PDGA Champions Cup",
+    "start": "2025-05-01",
+    "end": "2025-05-04",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 874.0 },
+      { "matchup": 1, "teamId": 8, "score": 722.5 },
+      { "matchup": 2, "teamId": 9, "score": 827.5 },
+      { "matchup": 2, "teamId": 7, "score": 683.5 },
+      { "matchup": 3, "teamId": 1, "score": 792.5 },
+      { "matchup": 3, "teamId": 6, "score": 839.0 },
+      { "matchup": 4, "teamId": 2, "score": 789.5 },
+      { "matchup": 4, "teamId": 5, "score": 690.5 },
+      { "matchup": 5, "teamId": 3, "score": 970.0 },
+      { "matchup": 5, "teamId": 4, "score": 741.5 }
+    ]
+  },
+  {
+    "id": 88284,
+    "name": "Cascade Challenge",
+    "start": "2025-05-16",
+    "end": "2025-05-18",
+    "matches": [
+      { "matchup": 1, "teamId": 4, "score": 659.5 },
+      { "matchup": 1, "teamId": 10, "score": 701.5 },
+      { "matchup": 2, "teamId": 5, "score": 531.5 },
+      { "matchup": 2, "teamId": 3, "score": 663.0 },
+      { "matchup": 3, "teamId": 6, "score": 525.0 },
+      { "matchup": 3, "teamId": 2, "score": 709.0 },
+      { "matchup": 4, "teamId": 7, "score": 539.5 },
+      { "matchup": 4, "teamId": 1, "score": 613.5 },
+      { "matchup": 5, "teamId": 8, "score": 700.5 },
+      { "matchup": 5, "teamId": 9, "score": 470.5 }
+    ]
+  },
+  {
+    "id": 88285,
+    "name": "Konopiste Open",
+    "start": "2025-05-23",
+    "end": "2025-05-25",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 643.5 },
+      { "matchup": 1, "teamId": 9, "score": 677.0 },
+      { "matchup": 2, "teamId": 1, "score": 697.5 },
+      { "matchup": 2, "teamId": 8, "score": 659.0 },
+      { "matchup": 3, "teamId": 2, "score": 718.5 },
+      { "matchup": 3, "teamId": 7, "score": 272.0 },
+      { "matchup": 4, "teamId": 3, "score": 689.0 },
+      { "matchup": 4, "teamId": 6, "score": 575.0 },
+      { "matchup": 5, "teamId": 4, "score": 656.0 },
+      { "matchup": 5, "teamId": 5, "score": 650.5 }
+    ]
+  },
+  {
+    "id": 88286,
+    "name": "NW Disc Golf Championship",
+    "start": "2025-05-29",
+    "end": "2025-06-01",
+    "matches": [
+      { "matchup": 1, "teamId": 5, "score": 843.0 },
+      { "matchup": 1, "teamId": 10, "score": 1047.5 },
+      { "matchup": 2, "teamId": 6, "score": 855.5 },
+      { "matchup": 2, "teamId": 4, "score": 761.5 },
+      { "matchup": 3, "teamId": 3, "score": 962.0 },
+      { "matchup": 3, "teamId": 7, "score": 133.5 },
+      { "matchup": 4, "teamId": 8, "score": 750.0 },
+      { "matchup": 4, "teamId": 2, "score": 825.5 },
+      { "matchup": 5, "teamId": 1, "score": 860.0 },
+      { "matchup": 5, "teamId": 9, "score": 714.5 }
+    ]
+  },
+  {
+    "id": 88287,
+    "name": "Ale Open",
+    "start": "2025-06-06",
+    "end": "2025-06-08",
+    "matches": [
+      { "matchup": 1, "teamId": 1, "score": 529.5 },
+      { "matchup": 1, "teamId": 10, "score": 498.0 },
+      { "matchup": 2, "teamId": 2, "score": 576.5 },
+      { "matchup": 2, "teamId": 9, "score": 616.5 },
+      { "matchup": 3, "teamId": 3, "score": 659.0 },
+      { "matchup": 3, "teamId": 8, "score": 585.5 },
+      { "matchup": 4, "teamId": 4, "score": 639.0 },
+      { "matchup": 4, "teamId": 7, "score": 249.5 },
+      { "matchup": 5, "teamId": 5, "score": 560.0 },
+      { "matchup": 5, "teamId": 6, "score": 554.5 }
+    ]
+  },
+  {
+    "id": 88357,
+    "name": "The Preserve Championship",
+    "start": "2025-06-13",
+    "end": "2025-06-15",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 754.5 },
+      { "matchup": 1, "teamId": 6, "score": 766.5 },
+      { "matchup": 2, "teamId": 7, "score": 544.0 },
+      { "matchup": 2, "teamId": 5, "score": 323.5 },
+      { "matchup": 3, "teamId": 8, "score": 725.0 },
+      { "matchup": 3, "teamId": 4, "score": 736.0 },
+      { "matchup": 4, "teamId": 9, "score": 613.5 },
+      { "matchup": 4, "teamId": 3, "score": 718.0 },
+      { "matchup": 5, "teamId": 1, "score": 779.0 },
+      { "matchup": 5, "teamId": 2, "score": 675.0 }
+    ]
+  },
+  {
+    "id": 88651,
+    "name": "USWDGC",
+    "start": "2025-06-19",
+    "end": "2025-06-22",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 536.0 },
+      { "matchup": 1, "teamId": 2, "score": 471.5 },
+      { "matchup": 2, "teamId": 1, "score": 445.0 },
+      { "matchup": 2, "teamId": 3, "score": 564.0 },
+      { "matchup": 3, "teamId": 4, "score": 525.5 },
+      { "matchup": 3, "teamId": 9, "score": 540.0 },
+      { "matchup": 4, "teamId": 5, "score": 460.5 },
+      { "matchup": 4, "teamId": 8, "score": 396.5 },
+      { "matchup": 5, "teamId": 6, "score": 488.5 },
+      { "matchup": 5, "teamId": 7, "score": 307.0 }
+    ]
+  },
+  {
+    "id": 88288,
+    "name": "Discmania Challenge",
+    "start": "2025-06-27",
+    "end": "2025-06-29",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 580.0 },
+      { "matchup": 1, "teamId": 7, "score": 772.5 },
+      { "matchup": 2, "teamId": 8, "score": 716.0 },
+      { "matchup": 2, "teamId": 6, "score": 708.5 },
+      { "matchup": 3, "teamId": 9, "score": 541.0 },
+      { "matchup": 3, "teamId": 5, "score": 673.5 },
+      { "matchup": 4, "teamId": 1, "score": 620.0 },
+      { "matchup": 4, "teamId": 4, "score": 741.0 },
+      { "matchup": 5, "teamId": 2, "score": 670.5 },
+      { "matchup": 5, "teamId": 3, "score": 803.0 }
+    ]
+  },
+  {
+    "id": 88289,
+    "name": "PCS Open",
+    "start": "2025-07-04",
+    "end": "2025-07-06",
+    "matches": [
+      { "matchup": 1, "teamId": 3, "score": 560.0 },
+      { "matchup": 1, "teamId": 10, "score": 561.5 },
+      { "matchup": 2, "teamId": 4, "score": 605.5 },
+      { "matchup": 2, "teamId": 2, "score": 538.0 },
+      { "matchup": 3, "teamId": 5, "score": 549.0 },
+      { "matchup": 3, "teamId": 1, "score": 623.5 },
+      { "matchup": 4, "teamId": 6, "score": 513.5 },
+      { "matchup": 4, "teamId": 9, "score": 603.5 },
+      { "matchup": 5, "teamId": 7, "score": 601.5 },
+      { "matchup": 5, "teamId": 8, "score": 578.0 }
+    ]
+  },
+  {
+    "id": 90652,
+    "name": "Krokhol Open",
+    "start": "2025-07-11",
+    "end": "2025-07-13",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 601.0 },
+      { "matchup": 1, "teamId": 8, "score": 676.0 },
+      { "matchup": 2, "teamId": 9, "score": 642.0 },
+      { "matchup": 2, "teamId": 7, "score": 445.5 },
+      { "matchup": 3, "teamId": 1, "score": 633.5 },
+      { "matchup": 3, "teamId": 6, "score": 752.5 },
+      { "matchup": 4, "teamId": 2, "score": 534.5 },
+      { "matchup": 4, "teamId": 5, "score": 605.5 },
+      { "matchup": 5, "teamId": 3, "score": 820.0 },
+      { "matchup": 5, "teamId": 4, "score": 648.5 }
+    ]
+  },
+  {
+    "id": 89546,
+    "name": "European DG Festival",
+    "start": "2025-07-17",
+    "end": "2025-07-20",
+    "matches": [
+      { "matchup": 1, "teamId": 4, "score": 882.5 },
+      { "matchup": 1, "teamId": 10, "score": 943.5 },
+      { "matchup": 2, "teamId": 5, "score": 876.5 },
+      { "matchup": 2, "teamId": 3, "score": 943.0 },
+      { "matchup": 3, "teamId": 6, "score": 826.5 },
+      { "matchup": 3, "teamId": 2, "score": 769.5 },
+      { "matchup": 4, "teamId": 7, "score": 679.5 },
+      { "matchup": 4, "teamId": 1, "score": 860.5 },
+      { "matchup": 5, "teamId": 8, "score": 829.0 },
+      { "matchup": 5, "teamId": 9, "score": 951.5 }
+    ]
+  },
+  {
+    "id": 90947,
+    "name": "PDGA Pro Worlds",
+    "start": "2025-07-30",
+    "end": "2025-08-03",
+    "matches": [
+      { "matchup": 1, "teamId": 10, "score": 1377.5 },
+      { "matchup": 1, "teamId": 9, "score": 1151.0 },
+      { "matchup": 2, "teamId": 1, "score": 1252.0 },
+      { "matchup": 2, "teamId": 8, "score": 1230.0 },
+      { "matchup": 3, "teamId": 2, "score": 1238.0 },
+      { "matchup": 3, "teamId": 7, "score": 1050.5 },
+      { "matchup": 4, "teamId": 3, "score": 1193.0 },
+      { "matchup": 4, "teamId": 6, "score": 1283.0 },
+      { "matchup": 5, "teamId": 4, "score": 1307.0 },
+      { "matchup": 5, "teamId": 5, "score": 1184.5 }
+    ]
+  },
+  {
+    "id": 88290,
+    "name": "Turku Open",
+    "start": "2025-08-08",
+    "end": "2025-08-10",
+    "matches": [
+      { "matchup": 1, "teamId": 5, "score": 598.5 },
+      { "matchup": 1, "teamId": 10, "score": 509.0 },
+      { "matchup": 2, "teamId": 6, "score": 446.5 },
+      { "matchup": 2, "teamId": 4, "score": 562.0 },
+      { "matchup": 3, "teamId": 3, "score": 697.5 },
+      { "matchup": 3, "teamId": 7, "score": 556.0 },
+      { "matchup": 4, "teamId": 8, "score": 561.5 },
+      { "matchup": 4, "teamId": 2, "score": 584.0 },
+      { "matchup": 5, "teamId": 1, "score": 633.5 },
+      { "matchup": 5, "teamId": 9, "score": 604.0 }
+    ]
+  },
+  {
+    "id": 88293,
+    "name": "Ledgestone Open",
+    "start": "2025-08-14",
+    "end": "2025-08-17",
+    "matches": [
+      { "matchup": 1, "teamId": 3, "score": 866.0 },
+      { "matchup": 1, "teamId": 5, "score": 875.0 },
+      { "matchup": 2, "teamId": 1, "score": 1097.0 },
+      { "matchup": 2, "teamId": 2, "score": 1008.0 },
+      { "matchup": 3, "teamId": 4, "score": 1065.0 },
+      { "matchup": 3, "teamId": 9, "score": 869.5 },
+      { "matchup": 4, "teamId": 6, "score": 807.5 },
+      { "matchup": 4, "teamId": 10, "score": 900.5 },
+      { "matchup": 5, "teamId": 8, "score": 758.0 },
+      { "matchup": 5, "teamId": 7, "score": 929.5 }
+    ]
+  },
+  {
+    "id": 88294,
+    "name": "LWS Open at Idlewild",
+    "start": "2025-08-22",
+    "end": "2025-08-24",
+    "matches": [
+      { "matchup": 1, "teamId": 1, "score": 760.0 },
+      { "matchup": 1, "teamId": 5, "score": 775.0 },
+      { "matchup": 2, "teamId": 4, "score": 775.0 },
+      { "matchup": 2, "teamId": 10, "score": 633.5 },
+      { "matchup": 3, "teamId": 3, "score": 646.5 },
+      { "matchup": 3, "teamId": 2, "score": 673.5 },
+      { "matchup": 4, "teamId": 6, "score": 630.5 },
+      { "matchup": 4, "teamId": 9, "score": 459.5 },
+      { "matchup": 5, "teamId": 8, "score": 659.0 },
+      { "matchup": 5, "teamId": 7, "score": 716.5 }
+    ]
+  },
+  {
+    "id": 88296,
+    "name": "Discraft Great Lakes Open",
+    "start": "2025-08-28",
+    "end": "2025-08-31",
+    "matches": [
+      { "matchup": 1, "teamId": 4, "score": 771.0 },
+      { "matchup": 1, "teamId": 5, "score": 795.5 },
+      { "matchup": 2, "teamId": 1, "score": 857.5 },
+      { "matchup": 2, "teamId": 10, "score": 893.5 },
+      { "matchup": 3, "teamId": 6, "score": 779.0 },
+      { "matchup": 3, "teamId": 2, "score": 738.0 },
+      { "matchup": 4, "teamId": 3, "score": 748.0 },
+      { "matchup": 4, "teamId": 9, "score": 609.0 },
+      { "matchup": 5, "teamId": 7, "score": 573.0 },
+      { "matchup": 5, "teamId": 8, "score": 743.5 }
+    ]
+  }
+]
