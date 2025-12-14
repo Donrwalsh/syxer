@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DataService, Team, Tournament } from '../../services/data.service';
-import { selectTeams, selectTournaments } from '../../state/data.selectors';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Team, Tournament } from '../../services/data.service';
 import { setPlayer, setTourn } from '../../state/config.actions';
-import { selectPlayer, selectTournament } from '../../state/config.selector';
+import { selectPlayer, selectTournament } from '../../state/config.selectors';
+import { selectTeams, selectTournaments } from '../../state/data.selectors';
 
 @Component({
   selector: 'app-settings',

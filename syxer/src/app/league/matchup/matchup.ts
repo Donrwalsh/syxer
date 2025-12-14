@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectPlayer, selectTournament } from '../../state/config.selectors';
+import { selectMatchups } from '../../state/matchup.selectors';
+import { selectFullTournamentStandings } from '../../state/standings.selectors';
 
 @Component({
   selector: 'app-matchup',
@@ -9,63 +13,36 @@ import { Component } from '@angular/core';
   styleUrl: './matchup.css',
 })
 export class Matchup {
-  // Dummy values — replace with NgRx selectors later
-  record = '1-1';
-  rank = 3;
-  waiver = 5;
+  matchups!: () => any[];
+  configTourn!: () => number;
+  configPlayer!: () => number;
+  standings!: () => any[];
 
-  events = [
-    {
-      id: 1,
-      name: 'Supreme Flight Open',
-      opponent: 'Jame Team',
-      myPoints: 715,
-      opponentPoints: 607,
-      result: 'W',
-      completed: true,
-      start: '2025-02-28',
-    },
-    {
-      id: 2,
-      name: 'Waco Annual Charity Open',
-      opponent: 'Laura',
-      myPoints: 607,
-      opponentPoints: 751,
-      result: 'L',
-      completed: true,
-      start: '2025-03-14',
-    },
-    {
-      id: 3,
-      name: 'The Open at Austin',
-      opponent: 'Ginter',
-      myPoints: 0,
-      opponentPoints: 0,
-      result: '',
-      completed: false,
-      start: '2025-03-20',
-    },
-    {
-      id: 4,
-      name: 'Music City Open',
-      opponent: 'Bajari',
-      myPoints: 0,
-      opponentPoints: 0,
-      result: '',
-      completed: false,
-      start: '2025-03-28',
-    },
-  ];
+  record = '';
+  rank = -1;
+  waiver = -1;
 
-  // Compute the next upcoming event
-  get nextUpcoming() {
-    return this.events.find((e) => !e.completed) || null;
+  constructor(private store: Store) {
+    this.configTourn = this.store.selectSignal(selectTournament);
+    this.configPlayer = this.store.selectSignal(selectPlayer);
+    this.matchups = this.store.selectSignal(selectMatchups);
+    this.standings = this.store.selectSignal(selectFullTournamentStandings(this.configTourn()));
+
+    this.record = `${
+      this.standings().find((standing) => standing.teamId == this.configPlayer()).wins
+    }-${this.standings().find((standing) => standing.teamId == this.configPlayer()).losses}`;
+
+    this.rank = this.standings().findIndex((s) => s.teamId == this.configPlayer()) + 1;
+
+    this.waiver = 11 - this.rank;
   }
 
-  // Completed events
+  get nextUpcoming() {
+    return this.matchups().find((e) => !e.completed) || null;
+  }
+
   get completedEvents() {
-    // Filter completed events and sort descending by start date
-    const sorted = this.events
+    const sorted = this.matchups()
       .filter((e) => e.completed)
       .sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
 
