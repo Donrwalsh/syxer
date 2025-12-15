@@ -1,1 +1,27 @@
-<p>standings works!</p>
+<div class="container mt-4">
+  <h3 class="mb-3 text-center">Standings</h3>
+  <div class="d-flex justify-content-center">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered align-middle mx-auto">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Player</th>
+            <th scope="col">Record</th>
+            <th scope="col">Points For</th>
+            <th scope="col">Points Against</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of standings(); let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.wins }}-{{ player.losses }}</td>
+            <td>{{ player.pointsFor }}</td>
+            <td>{{ player.pointsAgainst }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

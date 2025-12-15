@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prod-build": "ng build --configuration production --base-href \"https://donrwalsh.github.io/syxer/\"",
-    "prod-push": "npx angular-cli-ghpages --dir=./dist/syxer/browser"
+    "prod-deploy": "npx angular-cli-ghpages --dir=./dist/syxer/browser"
   },
   "prettier": {
     "printWidth": 100,

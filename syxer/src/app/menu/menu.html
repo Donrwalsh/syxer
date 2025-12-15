@@ -22,60 +22,66 @@
     </div>
 
     <div class="col-12 text-center mt-2">
-      <div id="timer" class="text-white fw-bold fs-4">00:00</div>
+      <div id="player-info" class="text-white fw-bold">
+        <div class="fs-5">
+          <span class="text-warning fs-4">{{ playerName() }}</span>
+          <span class="ms-2 fs-6">Week: {{ week() }}</span>
+        </div>
+        <div class="fs-6">Next Tournament: {{ nextTournamentName() }}</div>
+      </div>
     </div>
-  </div>
 
-  <div class="row g-2">
-    <div class="col-6 col-sm-3 col-md-2">
-      <a
-        class="btn btn-primary w-100 inprogress-btn"
-        routerLink="/matchup"
-        routerLinkActive="btn-secondary active"
-        role="button"
-      >
-        Matchup <i class="bi bi-diagram-2-fill"></i>
-      </a>
-    </div>
-    <div class="col-6 col-sm-3 col-md-2">
-      <a
-        class="btn btn-light w-100"
-        routerLink="/stats"
-        routerLinkActive="btn-secondary active"
-        role="button"
-      >
-        Stats <i class="bi bi-bar-chart-steps"></i>
-      </a>
-    </div>
-    <div class="col-6 col-sm-3 col-md-2">
-      <a
-        class="btn btn-light w-100"
-        routerLink="/standings"
-        routerLinkActive="btn-secondary active"
-        role="button"
-      >
-        Standings <i class="bi bi-trophy-fill"></i>
-      </a>
-    </div>
-    <div class="col-6 col-sm-3 col-md-2">
-      <a
-        class="btn btn-light w-100"
-        routerLink="/waiver"
-        routerLinkActive="btn-secondary active"
-        role="button"
-      >
-        Waiver <i class="bi bi-person-raised-hand"></i>
-      </a>
-    </div>
-    <div class="col-6 col-sm-3 col-md-2">
-      <a
-        class="btn btn-primary w-100 inprogress-btn"
-        routerLink="/settings"
-        routerLinkActive="btn-secondary active"
-        role="button"
-      >
-        Settings <i class="bi bi-gear-fill"></i>
-      </a>
+    <div class="row g-2">
+      <div class="col-6 col-sm-3 col-md-2">
+        <a
+          class="btn btn-primary w-100 inprogress-btn"
+          routerLink="/matchup"
+          routerLinkActive="btn-secondary active"
+          role="button"
+        >
+          Matchup <i class="bi bi-diagram-2-fill"></i>
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 col-md-2">
+        <a
+          class="btn btn-light w-100"
+          routerLink="/stats"
+          routerLinkActive="btn-secondary active"
+          role="button"
+        >
+          Stats <i class="bi bi-bar-chart-steps"></i>
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 col-md-2">
+        <a
+          class="btn btn-light w-100 inprogress-btn"
+          routerLink="/standings"
+          routerLinkActive="btn-secondary active"
+          role="button"
+        >
+          Standings <i class="bi bi-trophy-fill"></i>
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 col-md-2">
+        <a
+          class="btn btn-light w-100"
+          routerLink="/waiver"
+          routerLinkActive="btn-secondary active"
+          role="button"
+        >
+          Waiver <i class="bi bi-person-raised-hand"></i>
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 col-md-2">
+        <a
+          class="btn btn-primary w-100 inprogress-btn"
+          routerLink="/settings"
+          routerLinkActive="btn-secondary active"
+          role="button"
+        >
+          Settings <i class="bi bi-gear-fill"></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

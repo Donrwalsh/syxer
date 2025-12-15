@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectPlayer, selectTournament } from '../../state/config.selectors';
-import { selectMatchups } from '../../state/matchup.selectors';
-import { selectFullTournamentStandings } from '../../state/standings.selectors';
+import { selectMatchups, selectStandings } from '../../state/view-model.selectors';
 
 @Component({
   selector: 'app-matchup',
@@ -23,10 +22,11 @@ export class Matchup {
   waiver = -1;
 
   constructor(private store: Store) {
+    //TODON: This feels really weird?
     this.configTourn = this.store.selectSignal(selectTournament);
     this.configPlayer = this.store.selectSignal(selectPlayer);
     this.matchups = this.store.selectSignal(selectMatchups);
-    this.standings = this.store.selectSignal(selectFullTournamentStandings(this.configTourn()));
+    this.standings = this.store.selectSignal(selectStandings);
 
     this.record = `${
       this.standings().find((standing) => standing.teamId == this.configPlayer()).wins
