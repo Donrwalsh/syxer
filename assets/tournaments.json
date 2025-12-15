@@ -1,6 +1,7 @@
 [
   {
-    "id": 88276,
+    "id": 1,
+    "pdga_id": 88276,
     "name": "Supreme Flight Open",
     "start": "2025-02-28",
     "end": "2025-03-02",
@@ -18,7 +19,8 @@
     ]
   },
   {
-    "id": 88277,
+    "id": 2,
+    "pdga_id": 88277,
     "name": "Waco Annual Charity Open",
     "start": "2025-03-14",
     "end": "2025-03-16",
@@ -36,7 +38,8 @@
     ]
   },
   {
-    "id": 88279,
+    "id": 3,
+    "pdga_id": 88279,
     "name": "The Open at Austin",
     "start": "2025-03-20",
     "end": "2025-03-23",
@@ -54,7 +57,8 @@
     ]
   },
   {
-    "id": 88282,
+    "id": 4,
+    "pdga_id": 88282,
     "name": "Music City Open",
     "start": "2025-04-04",
     "end": "2025-04-06",
@@ -72,7 +76,8 @@
     ]
   },
   {
-    "id": 88282,
+    "id": 5,
+    "pdga_id": 88283,
     "name": "Kansas City Wide Open",
     "start": "2025-04-18",
     "end": "2025-04-20",
@@ -90,7 +95,8 @@
     ]
   },
   {
-    "id": 88638,
+    "id": 6,
+    "pdga_id": 88638,
     "name": "PDGA Champions Cup",
     "start": "2025-05-01",
     "end": "2025-05-04",
@@ -108,7 +114,8 @@
     ]
   },
   {
-    "id": 88284,
+    "id": 7,
+    "pdga_id": 88284,
     "name": "Cascade Challenge",
     "start": "2025-05-16",
     "end": "2025-05-18",
@@ -126,7 +133,8 @@
     ]
   },
   {
-    "id": 88285,
+    "id": 8,
+    "pdga_id": 88285,
     "name": "Konopiste Open",
     "start": "2025-05-23",
     "end": "2025-05-25",
@@ -144,7 +152,8 @@
     ]
   },
   {
-    "id": 88286,
+    "id": 9,
+    "pdga_id": 88286,
     "name": "NW Disc Golf Championship",
     "start": "2025-05-29",
     "end": "2025-06-01",
@@ -162,7 +171,8 @@
     ]
   },
   {
-    "id": 88287,
+    "id": 10,
+    "pdga_id": 88287,
     "name": "Ale Open",
     "start": "2025-06-06",
     "end": "2025-06-08",
@@ -180,7 +190,8 @@
     ]
   },
   {
-    "id": 88357,
+    "id": 11,
+    "pdga_id": 88357,
     "name": "The Preserve Championship",
     "start": "2025-06-13",
     "end": "2025-06-15",
@@ -198,7 +209,8 @@
     ]
   },
   {
-    "id": 88651,
+    "id": 12,
+    "pdga_id": 88651,
     "name": "USWDGC",
     "start": "2025-06-19",
     "end": "2025-06-22",
@@ -215,8 +227,10 @@
       { "matchup": 5, "teamId": 7, "score": 307.0 }
     ]
   },
+
   {
-    "id": 88288,
+    "id": 13,
+    "pdga_id": 88288,
     "name": "Discmania Challenge",
     "start": "2025-06-27",
     "end": "2025-06-29",
@@ -234,7 +248,8 @@
     ]
   },
   {
-    "id": 88289,
+    "id": 14,
+    "pdga_id": 88289,
     "name": "PCS Open",
     "start": "2025-07-04",
     "end": "2025-07-06",
@@ -252,7 +267,8 @@
     ]
   },
   {
-    "id": 90652,
+    "id": 15,
+    "pdga_id": 90652,
     "name": "Krokhol Open",
     "start": "2025-07-11",
     "end": "2025-07-13",
@@ -270,7 +286,8 @@
     ]
   },
   {
-    "id": 89546,
+    "id": 16,
+    "pdga_id": 89546,
     "name": "European DG Festival",
     "start": "2025-07-17",
     "end": "2025-07-20",
@@ -288,7 +305,8 @@
     ]
   },
   {
-    "id": 90947,
+    "id": 17,
+    "pdga_id": 90947,
     "name": "PDGA Pro Worlds",
     "start": "2025-07-30",
     "end": "2025-08-03",
@@ -306,7 +324,8 @@
     ]
   },
   {
-    "id": 88290,
+    "id": 18,
+    "pdga_id": 88290,
     "name": "Turku Open",
     "start": "2025-08-08",
     "end": "2025-08-10",
@@ -324,7 +343,8 @@
     ]
   },
   {
-    "id": 88293,
+    "id": 19,
+    "pdga_id": 88293,
     "name": "Ledgestone Open",
     "start": "2025-08-14",
     "end": "2025-08-17",
@@ -342,7 +362,8 @@
     ]
   },
   {
-    "id": 88294,
+    "id": 20,
+    "pdga_id": 88294,
     "name": "LWS Open at Idlewild",
     "start": "2025-08-22",
     "end": "2025-08-24",
@@ -360,7 +381,8 @@
     ]
   },
   {
-    "id": 88296,
+    "id": 21,
+    "pdga_id": 88296,
     "name": "Discraft Great Lakes Open",
     "start": "2025-08-28",
     "end": "2025-08-31",
