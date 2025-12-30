@@ -1,14 +1,1938 @@
 {
   "teams": [
-    { "id": 1, "name": "Syxy Mynxes" },
-    { "id": 2, "name": "Ginter" },
-    { "id": 3, "name": "Langster's Paradise" },
-    { "id": 4, "name": "Phenomenal Raptors" },
-    { "id": 5, "name": "Teem 5" },
-    { "id": 6, "name": "Laura" },
-    { "id": 7, "name": "Bajari" },
-    { "id": 8, "name": "I live to Frolf" },
-    { "id": 9, "name": "Boost It" },
-    { "id": 10, "name": "Jame Team" }
+    {
+      "id": 1,
+      "name": "Syxy Mynxes",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Albert Tamm",
+          "fpo1": "Silva Saarinen",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Holly Finley"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Joona Heinänen",
+          "fpo1": "Silva Saarinen",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Holly Finley"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Joona Heinänen",
+          "fpo1": "Silva Saarinen",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Holly Finley"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Natalie Ryan",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Holly Finley"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Natalie Ryan",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Holly Finley"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Rebecca Cox",
+          "fpo2": "Natalie Ryan",
+          "fpo3": "Anneli Tõugjas-Männiste"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Albert Tamm",
+          "mpo3": "Eric Oakley",
+          "fpo1": "Rebecca Cox",
+          "fpo2": "Natalie Ryan",
+          "fpo3": "Jennifer Smiley"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Mauri Villmann",
+          "mpo2": "Roland Kõur",
+          "mpo3": "Eric Oakley",
+          "fpo1": "Kaidi Allsalu",
+          "fpo2": "Anneli Tõugjas-Männiste",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Sullivan Tipton",
+          "mpo3": "Mason Ford",
+          "fpo1": "Natalie Ryan",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Lisa Fajkus"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Mauri Villmann",
+          "mpo2": "Roland Kõur",
+          "mpo3": "Raven Newsom",
+          "fpo1": "Kaidi Allsalu",
+          "fpo2": "Anneli Tõugjas-Männiste",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Natalie Ryan",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Lisa Fajkus"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Natalie Ryan",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Anneli Tõugjas-Männiste"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Mason Ford",
+          "fpo1": "Rebecca Cox",
+          "fpo2": "Lisa Fajkus",
+          "fpo3": "Lauren Butler"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Mauri Villmann",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Kaidi Allsalu",
+          "fpo2": "Anneli Tõugjas-Männiste",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Mauri Villmann",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Anneli Tõugjas-Männiste",
+          "fpo2": "Lykke Lorentzen",
+          "fpo3": "Elizabete Peksena"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Mauri Villmann",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Anneli Tõugjas-Männiste",
+          "fpo2": "Kaidi Allsalu",
+          "fpo3": "Elizabete Peksena"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Mauri Villmann",
+          "mpo3": "Chris Dickerson",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Anneli Tõugjas-Männiste",
+          "fpo3": "Rebecca Cox"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Mauri Villmann",
+          "mpo2": "Gregg Barsby",
+          "mpo3": "Roland Kõur",
+          "fpo1": "Kaidi Allsalu",
+          "fpo2": "Anneli Tõugjas-Männiste",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Mason Ford",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Lisa Fajkus",
+          "fpo3": "Rebecca Cox"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Mason Ford",
+          "fpo1": "Lisa Fajkus",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Morgan Lynds"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Gannon Buhr",
+          "mpo2": "Chris Dickerson",
+          "mpo3": "Mason Ford",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Rebecca Cox",
+          "fpo3": "Lisa Fajkus"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ginter",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Conrad",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Conrad",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Paige Shue"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Conrad",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Conrad",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Conrad",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Eliezra Midtlyng",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Väinö Mäkelä",
+          "mpo2": "James Conrad",
+          "mpo3": "Eetu Tuominen",
+          "fpo1": "Kristýna Jurčíková",
+          "fpo2": "Keiti Tätte",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Andrew Marwede",
+          "mpo3": "James Proctor",
+          "fpo1": "Kat Mertsch",
+          "fpo2": "Hanna Huynh",
+          "fpo3": "Eliezra Midtlyng"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Väinö Mäkelä",
+          "mpo2": "Eetu Tuominen",
+          "mpo3": "James Conrad",
+          "fpo1": "Kristýna Jurčíková",
+          "fpo2": "Keiti Tätte",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Andrew Marwede",
+          "mpo3": "Ryan Sheldon",
+          "fpo1": "Hanna Huynh",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Eliezra Midtlyng"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Hanna Huynh",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Eliezra Midtlyng"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Andrew Marwede",
+          "mpo3": "Parker Welck",
+          "fpo1": "Hanna Huynh",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Eliezra Midtlyng"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Väinö Mäkelä",
+          "fpo1": "Keiti Tätte",
+          "fpo2": "Josefine Johansson",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Väinö Mäkelä",
+          "fpo1": "Keiti Tätte",
+          "fpo2": "Josefine Johansson",
+          "fpo3": "Eliezra Midtlyng"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Väinö Mäkelä",
+          "fpo1": "Keiti Tätte",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Anthony Barela",
+          "mpo2": "James Proctor",
+          "mpo3": "Väinö Mäkelä",
+          "fpo1": "Keiti Tätte",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Eetu Tuominen",
+          "mpo2": "James Proctor",
+          "mpo3": "Väinö Mäkelä",
+          "fpo1": "Keiti Tätte",
+          "fpo2": "Martje Sumowski",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Väinö Mäkelä",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Eliezra Midtlyng",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Väinö Mäkelä",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Eliezra Midtlyng",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Hanna Huynh"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Anthony Barela",
+          "mpo2": "Parker Welck",
+          "mpo3": "Andrew Marwede",
+          "fpo1": "Eliezra Midtlyng",
+          "fpo2": "Kat Mertsch",
+          "fpo3": "Hanna Huynh"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Langster's Paradise",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Kona Star Montgomery",
+          "fpo3": "Trinity Bryant"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Kona Star Montgomery",
+          "fpo3": "Rebecca Don"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Trinity Bryant",
+          "fpo3": "Rebecca Don"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Andrew Presnell",
+          "mpo2": "Evan Smith",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Andrew Presnell",
+          "mpo2": "Kyle Klein",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Ratana Meekham",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Andrew Presnell",
+          "mpo2": "Kyle Klein",
+          "mpo3": "Evan Smith",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Andrew Presnell",
+          "mpo2": "Kyle Klein",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Violet Main",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Jakub Semerád",
+          "mpo2": "Hjalte Jensen",
+          "mpo3": "Joona Heinänen",
+          "fpo1": "Silva Saarinen",
+          "fpo2": "Kristi Unt",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Andrew Presnell",
+          "mpo3": "Jake Monn",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Kona Star Montgomery",
+          "fpo3": "Rebecca Don"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Daniel Davidsson",
+          "mpo2": "Dennis Augustsson",
+          "mpo3": "Joona Heinänen",
+          "fpo1": "Silva Saarinen",
+          "fpo2": "Sofie Björlycke",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Rebecca Don"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Jaden Rye",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Shelby Cowen",
+          "fpo3": "Rebecca Don"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Daniel Davidsson",
+          "mpo3": "Jake Monn",
+          "fpo1": "María Eldey Kristínardóttir",
+          "fpo2": "Kona Star Montgomery",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Daniel Davidsson",
+          "mpo3": "Evan Smith",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Daniel Davidsson",
+          "mpo3": "Evan Smith",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Daniel Davidsson",
+          "mpo3": "Evan Smith",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Silva Saarinen",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Rebecca Don",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Rebecca Don",
+          "fpo3": "Paige Shue"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Rebecca Don",
+          "fpo3": "Kona Star Montgomery"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Kyle Klein",
+          "mpo2": "Evan Smith",
+          "mpo3": "Andrew Presnell",
+          "fpo1": "Holyn Handley",
+          "fpo2": "Rebecca Don",
+          "fpo3": "Kona Star Montgomery"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Phenomenal Raptors",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Harry Chace",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Macie Velediaz"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Luke Taylor",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Kelley Foster"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Nikko Locastro",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Kelley Foster"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Kevin Jones",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Macie Velediaz",
+          "fpo2": "Hailey King",
+          "fpo3": "Kelley Foster"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Kevin Jones",
+          "mpo2": "Luke Taylor",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Valerie Mandujano",
+          "fpo2": "Hailey King",
+          "fpo3": "Kelley Foster"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Kevin Jones",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Valerie Mandujano",
+          "fpo2": "Jenni Karppinen",
+          "fpo3": "Anniken Kristiansen Steen"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Luke Taylor",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Richard Wysocki",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Jenni Karppinen",
+          "fpo3": "Madison Tomaino"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Hannes Kurn",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Linus Carlsson",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Jenni Karppinen",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Richard Wysocki",
+          "mpo2": "Kevin Jones",
+          "mpo3": "Luke Taylor",
+          "fpo1": "Valerie Mandujano",
+          "fpo2": "Kelley Foster",
+          "fpo3": "Sally West"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Richard Wysocki",
+          "mpo2": "Linus Carlsson",
+          "mpo3": "Niklas Anttila",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Jenni Karppinen",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Richard Wysocki",
+          "mpo2": "Albert Tamm",
+          "mpo3": "Luke Taylor",
+          "fpo1": "Hailey King",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Hannah Manis"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Hailey King",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Sai Ananda"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Kevin Jones",
+          "mpo2": "Harry Chace",
+          "mpo3": "Luke Taylor",
+          "fpo1": "Macie Velediaz",
+          "fpo2": "Valerie Mandujano",
+          "fpo3": "Taylor Chocek"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Niklas Anttila",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Luke Taylor",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Olivia Kindstedt",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Niklas Anttila",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Kevin Jones",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Sofie Björlycke",
+          "fpo3": "Jenni Karppinen"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Niklas Anttila",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Albert Tamm",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Jenni Karppinen",
+          "fpo3": "Valerie Mandujano"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Niklas Anttila",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Luke Taylor",
+          "fpo1": "Anniken Kristiansen Steen",
+          "fpo2": "Kristýna Jurčíková",
+          "fpo3": "Valerie Mandujano"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Niklas Anttila",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Kevin Jones",
+          "fpo1": "Jenni Karppinen",
+          "fpo2": "Netta Leppäaho",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Luke Taylor",
+          "mpo2": "Richard Wysocki",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Hailey King",
+          "fpo2": "Macie Velediaz",
+          "fpo3": "Valerie Mandujano"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Luke Taylor",
+          "mpo2": "Kevin Jones",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Alexis Mandujano",
+          "fpo2": "Macie Velediaz",
+          "fpo3": "Valerie Mandujano"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Luke Taylor",
+          "mpo2": "Niklas Anttila",
+          "mpo3": "Sullivan Tipton",
+          "fpo1": "Alexis Mandujano",
+          "fpo2": "Taylor Chocek",
+          "fpo3": "Valerie Mandujano"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Teem 5",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle Wynne McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Taylor Chocek",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Gregg Barsby",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle Wynn McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle Wynn McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Jennifer Allen",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Jennifer Allen",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Cole Redalen",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Zoe AnDyke"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Severi Saviniemi",
+          "mpo2": "Nestori Tuhkanen",
+          "mpo3": "Tuomas Hyytiäinen",
+          "fpo1": "Julia Fors",
+          "fpo2": "María Eldey Kristínardóttir",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Cole Redalen",
+          "mpo2": "Calvin Heimburg",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Jessica Weese",
+          "fpo2": "Emily Weatherman",
+          "fpo3": "Ali Smith"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Nestori Tuhkanen",
+          "mpo2": "Tuomas Hyytiäinen",
+          "mpo3": "Severi Saviniemi",
+          "fpo1": "María Eldey Kristínardóttir",
+          "fpo2": "Julia Fors",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Eagle McMahon",
+          "mpo3": "Aaron Gossage",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Erika Stinchcomb",
+          "fpo3": "Jessica Weese"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Eagle McMahon",
+          "mpo3": "Aaron Gossage",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Erika Stinchcomb",
+          "fpo3": "Emma Arp"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Linus Carlsson",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Jessica Weese",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Linus Carlsson",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Julia Fors"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Julia Fors"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Emily Weatherman",
+          "fpo2": "Ali Smith",
+          "fpo3": "Julia Fors"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Tuomas Hyytiäinen",
+          "fpo1": "Olivia Kindstedt",
+          "fpo2": "Ali Smith",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Eagle McMahon",
+          "fpo1": "Jessica Weese",
+          "fpo2": "Erika Stinchcomb",
+          "fpo3": "Emily Weatherman"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Cole Redalen",
+          "fpo1": "Ali Smith",
+          "fpo2": "Jessica Weese",
+          "fpo3": "Emily Weatherman"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Calvin Heimburg",
+          "mpo2": "Aaron Gossage",
+          "mpo3": "Paul Krans",
+          "fpo1": "Ali Smith",
+          "fpo2": "Jessica Weese",
+          "fpo3": "Erika Stinchcomb"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Laura",
+      "athleteSelections": [
+        {
+          "tournId": 1,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Mason Ford",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Paige Pierce",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 2,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Chantel Budinsky",
+          "fpo2": "Paige Pierce",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 3,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Chantel Budinsky",
+          "fpo2": "Paige Pierce",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 4,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Paige Pierce",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 5,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Chantel Budinsky",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 6,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Chantel Budinsky",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 7,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Emily Yale"
+        },
+        {
+          "tournId": 8,
+          "mpo1": "Fritiof Fagergren",
+          "mpo2": "Kasperi Pakarinen",
+          "mpo3": "Clay Edwards",
+          "fpo1": "Sonja Laine",
+          "fpo2": "Katka Boďová",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 9,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Jake Hebenheimer",
+          "mpo3": "Scott Withers",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Sheliemae Lai"
+        },
+        {
+          "tournId": 10,
+          "mpo1": "Matt Bell",
+          "mpo2": "Maxime Tanghe",
+          "mpo3": "Øyvind Jarnes",
+          "fpo1": "Katka Boďová",
+          "fpo2": "Iida Lehtomäki",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 11,
+          "mpo1": "Austin Turner",
+          "mpo2": "Jake Hebenheimer",
+          "mpo3": "Ty Love",
+          "fpo1": "Cadence Burge",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Chantel Budinsky"
+        },
+        {
+          "tournId": 12,
+          "mpo1": "",
+          "mpo2": "",
+          "mpo3": "",
+          "fpo1": "Cadence Burge",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Paige Pierce"
+        },
+        {
+          "tournId": 13,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Jake Hebenheimer",
+          "fpo1": "Cadence Burge",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Chantel Budinsky"
+        },
+        {
+          "tournId": 14,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Matt Bell",
+          "mpo3": "Casey White",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Martje Sumowski",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 15,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Matt Bell",
+          "mpo3": "Casey White",
+          "fpo1": "Paige Pierce",
+          "fpo2": "Ella Hansen",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 16,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Matt Bell",
+          "mpo3": "Casey White",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Kaire Tekku",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 17,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Matt Bell",
+          "mpo3": "Casey White",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Alexis Mandujano",
+          "fpo3": "Cadence Burge"
+        },
+        {
+          "tournId": 18,
+          "mpo1": "Onni Ruusunen",
+          "mpo2": "Severi Saviniemi",
+          "mpo3": "Raven Newsom",
+          "fpo1": "Kaire Tekku",
+          "fpo2": "Su Mei Yang",
+          "fpo3": "N/A"
+        },
+        {
+          "tournId": 19,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Casey White",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Cadence Burge",
+          "fpo3": "Chantel Budinsky"
+        },
+        {
+          "tournId": 20,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Casey White",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Cadence Burge",
+          "fpo3": "Chantel Budinsky"
+        },
+        {
+          "tournId": 21,
+          "mpo1": "Paul McBeth",
+          "mpo2": "Austin Turner",
+          "mpo3": "Casey White",
+          "fpo1": "Ella Hansen",
+          "fpo2": "Cadence Burge",
+          "fpo3": "Chantel Budinsky"
+        }
+      ]
+    },
+    { "id": 7, "name": "Bajari",     "athleteSelections": [
+      {
+        "tournId": 1,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Deann Carey",
+        "fpo2": "Emma Arp",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 2,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Alexis Mandujano",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 3,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Alexis Mandujano",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 4,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Deann Carey",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Emma Arp"
+      },
+      {
+        "tournId": 5,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Deann Carey",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Emma Arp"
+      },
+      {
+        "tournId": 6,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Deann Carey",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 7,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Alden Harris",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Raven Klein",
+        "fpo2": "Maria Liivamägi",
+        "fpo3": "Brandie Cargill"
+      },
+      {
+        "tournId": 8,
+        "mpo1": "Dominik Reutterer",
+        "mpo2": "Josef Berg",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Anni Mäkelä",
+        "fpo2": "Sophie Rossteuscher",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 9,
+        "mpo1": "Dominik Reutterer",
+        "mpo2": "Josef Berg",
+        "mpo3": "Adam Hammes",
+        "fpo1": "Anni Mäkelä",
+        "fpo2": "Sophie Rossteuscher",
+        "fpo3": "Deann Carey"
+      },
+      {
+        "tournId": 10,
+        "mpo1": "Melker Molin",
+        "mpo2": "Josef Berg",
+        "mpo3": "Oskar Eriksson",
+        "fpo1": "Anni Mäkelä",
+        "fpo2": "Rebecka Hoppe",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 11,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Raven Klein",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Deann Carey"
+      },
+      {
+        "tournId": 12,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Raven Klein",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Deann Carey"
+      },
+      {
+        "tournId": 13,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Raven Klein",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Lexi Marx"
+      },
+      {
+        "tournId": 14,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Deann Carey",
+        "fpo2": "Iida Lehtomäki",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 15,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Deann Carey",
+        "fpo2": "Jennifer Smiley",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 16,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Deann Carey",
+        "fpo2": "Jennifer Smiley",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 17,
+        "mpo1": "Adam Hammes",
+        "mpo2": "Matthew Orum",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Deann Carey",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 18,
+        "mpo1": "Alden Harris",
+        "mpo2": "John Willis II",
+        "mpo3": "Isaac Robinson",
+        "fpo1": "Deann Carey",
+        "fpo2": "Iida Lehtomäki",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 19,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Adam Hammes",
+        "mpo3": "Matthew Orum",
+        "fpo1": "Jennifer Smiley",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 20,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Adam Hammes",
+        "mpo3": "Matthew Orum",
+        "fpo1": "Jennifer Smiley",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      },
+      {
+        "tournId": 21,
+        "mpo1": "Isaac Robinson",
+        "mpo2": "Adam Hammes",
+        "mpo3": "Alden Harris",
+        "fpo1": "Deann Carey",
+        "fpo2": "Catrina Allen",
+        "fpo3": "Raven Klein"
+      }
+    ] },
+    { "id": 8, "name": "I live to Frolf", "athleteSelections": [
+      {
+        "tournId": 1,
+        "mpo1": "Cale Leiviska",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Gavin Babcock",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Lisa Fajkus",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 2,
+        "mpo1": "Cale Leiviska",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Emerson Keith",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Lisa Fajkus",
+        "fpo3": "Heidi Laine"
+      },
+      {
+        "tournId": 3,
+        "mpo1": "Cale Leiviska",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Gavin Babcock",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Madison Walker",
+        "fpo3": "Heidi Laine"
+      },
+      {
+        "tournId": 4,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Emerson Keith",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Lisa Fajkus",
+        "fpo3": "Heidi Laine"
+      },
+      {
+        "tournId": 5,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Gavin Phillips",
+        "mpo3": "Emerson Keith",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Lisa Fajkus",
+        "fpo3": "Heidi Laine"
+      },
+      {
+        "tournId": 6,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Ty Love",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Lisa Fajkus",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 7,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Ty Love",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Madison Walker",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 8,
+        "mpo1": "Lauri Lehtinen",
+        "mpo2": "Silver Lätt",
+        "mpo3": "Daniel Davidsson",
+        "fpo1": "Amanda Lennartsson",
+        "fpo2": "Elva-Kate Preston",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 9,
+        "mpo1": "Corey Ellis",
+        "mpo2": "Nikko Locastro",
+        "mpo3": "Jake Brown",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Sarah Hokom",
+        "fpo3": "Madison Walker"
+      },
+      {
+        "tournId": 10,
+        "mpo1": "Lauri Lehtinen",
+        "mpo2": "Silver Lätt",
+        "mpo3": "Henric Hagman",
+        "fpo1": "Olivia Kindstedt",
+        "fpo2": "Amanda Lennartsson",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 11,
+        "mpo1": "Cale Leiviska",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Gavin Babcock",
+        "fpo1": "Taylor Chocek",
+        "fpo2": "Ohn Scoggins",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 12,
+        "mpo1": "",
+        "mpo2": "",
+        "mpo3": "",
+        "fpo1": "Hannah Lengel",
+        "fpo2": "Ohn Scoggins",
+        "fpo3": "Madison Walker"
+      },
+      {
+        "tournId": 13,
+        "mpo1": "Nikko Locastro",
+        "mpo2": "Corey Ellis",
+        "mpo3": "Gavin Babcock",
+        "fpo1": "Jennifer Smiley",
+        "fpo2": "Ohn Scoggins",
+        "fpo3": "Alexis Kerman"
+      },
+      {
+        "tournId": 14,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Lauri Lehtinen",
+        "mpo3": "Silver Lätt",
+        "fpo1": "Katka Boďová",
+        "fpo2": "Madison Walker",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 15,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Lauri Lehtinen",
+        "mpo3": "Silver Lätt",
+        "fpo1": "Sarah Hokom",
+        "fpo2": "Madison Walker",
+        "fpo3": "Katka Boďová"
+      },
+      {
+        "tournId": 16,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Lauri Lehtinen",
+        "mpo3": "Corey Ellis",
+        "fpo1": "Sarah Hokom",
+        "fpo2": "Madison Walker",
+        "fpo3": "Ohn Scoggins"
+      },
+      {
+        "tournId": 17,
+        "mpo1": "Gavin Babcock",
+        "mpo2": "Lauri Lehtinen",
+        "mpo3": "Corey Ellis",
+        "fpo1": "Katka Boďová",
+        "fpo2": "Madison Walker",
+        "fpo3": "Ohn Scoggins"
+      },
+      {
+        "tournId": 18,
+        "mpo1": "Nikko Locastro",
+        "mpo2": "Lauri Lehtinen",
+        "mpo3": "Henric Hagman",
+        "fpo1": "Amanda Lennartsson",
+        "fpo2": "Chandler Reigh",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 19,
+        "mpo1": "Nikko Locastro",
+        "mpo2": "Gavin Babcock",
+        "mpo3": "Corey Ellis",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Madison Walker",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 20,
+        "mpo1": "Nikko Locastro",
+        "mpo2": "Gavin Babcock",
+        "mpo3": "Corey Ellis",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Madison Walker",
+        "fpo3": "Sarah Hokom"
+      },
+      {
+        "tournId": 21,
+        "mpo1": "Nikko Locastro",
+        "mpo2": "Gavin Babcock",
+        "mpo3": "Corey Ellis",
+        "fpo1": "Ohn Scoggins",
+        "fpo2": "Madison Walker",
+        "fpo3": "Chandler Reigh"
+      }
+    ] },
+    { "id": 9, "name": "Boost It",     "athleteSelections": [
+      {
+        "tournId": 1,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joseph Anderson",
+        "mpo3": "Gavin Rathbun",
+        "fpo1": "Sofia Donnecke",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Lykke Lorentzen"
+      },
+      {
+        "tournId": 2,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joey Buckets",
+        "mpo3": "Robert Burridge",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Lykke Lorentzen"
+      },
+      {
+        "tournId": 3,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joey Buckets",
+        "mpo3": "Robert Burridge",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Lykke Lorentzen"
+      },
+      {
+        "tournId": 4,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joey Buckets",
+        "mpo3": "Benjamin Callaway",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Lykke Lorentzen"
+      },
+      {
+        "tournId": 5,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joey Buckets",
+        "mpo3": "Gavin Rathbun",
+        "fpo1": "Lykke Lorentzen",
+        "fpo2": "Erika Stinchcomb",
+        "fpo3": "Leah Tsinajinnie"
+      },
+      {
+        "tournId": 6,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Joey Buckets",
+        "mpo3": "Gavin Rathbun",
+        "fpo1": "Lykke Lorentzen",
+        "fpo2": "Kristin Lätt",
+        "fpo3": "Henna Blomroos"
+      },
+      {
+        "tournId": 7,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Benjamin Callaway",
+        "mpo3": "Gavin Rathbun",
+        "fpo1": "Lykke Lorentzen",
+        "fpo2": "Erika Stinchcomb",
+        "fpo3": "Alison Mabbutt"
+      },
+      {
+        "tournId": 8,
+        "mpo1": "Jesse Nieminen",
+        "mpo2": "Øyvind Jarnes",
+        "mpo3": "Jakub Knápek",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Ida Emilie Nesse",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 9,
+        "mpo1": "Ezra Robinson",
+        "mpo2": "Nathan Sexton",
+        "mpo3": "Gavin Rathbun",
+        "fpo1": "Madison Tomaino",
+        "fpo2": "Lykke Lorentzen",
+        "fpo3": "Sofia Donnecke"
+      },
+      {
+        "tournId": 10,
+        "mpo1": "Jakub Semerád",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Teemu Lampainen",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Ida Emilie Nesse",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 11,
+        "mpo1": "Robert Burridge",
+        "mpo2": "Gavin Rathbun",
+        "mpo3": "Joey Buckets",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Lykke Lorentzen",
+        "fpo3": "Shelbi Dutton"
+      },
+      {
+        "tournId": 12,
+        "mpo1": "",
+        "mpo2": "",
+        "mpo3": "",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Sofia Donnecke",
+        "fpo3": "Henna Blomroos"
+      },
+      {
+        "tournId": 13,
+        "mpo1": "Robert Burridge",
+        "mpo2": "Gavin Rathbun",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Hailey Huber",
+        "fpo2": "Sofia Donnecke",
+        "fpo3": "Shelbi Dutton"
+      },
+      {
+        "tournId": 14,
+        "mpo1": "Nathan Sexton",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 15,
+        "mpo1": "Nathan Sexton",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Ida Emilie Nesse",
+        "fpo3": "Sofia Donnecke"
+      },
+      {
+        "tournId": 16,
+        "mpo1": "Nathan Sexton",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Sofia Donnecke"
+      },
+      {
+        "tournId": 17,
+        "mpo1": "Nathan Sexton",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Kristin Lätt",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "Sofia Donnecke"
+      },
+      {
+        "tournId": 18,
+        "mpo1": "Dennis Augustsson",
+        "mpo2": "Jesse Nieminen",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Ida Emilie Nesse",
+        "fpo2": "Henna Blomroos",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 19,
+        "mpo1": "Joey Buckets",
+        "mpo2": "Robert Burridge",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Maria (Nina) Guerrero",
+        "fpo2": "Eden Fornoff",
+        "fpo3": "Hannah Lengel"
+      },
+      {
+        "tournId": 20,
+        "mpo1": "Joey Buckets",
+        "mpo2": "Robert Burridge",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Maria (Nina) Guerrero",
+        "fpo2": "Eden Fornoff",
+        "fpo3": "Hannah Lengel"
+      },
+      {
+        "tournId": 21,
+        "mpo1": "Jesse Nieminen",
+        "mpo2": "Robert Burridge",
+        "mpo3": "Ezra Robinson",
+        "fpo1": "Henna Blomroos",
+        "fpo2": "Sofia Donnecke",
+        "fpo3": "Hannah Lengel"
+      }
+    ] },
+    { "id": 10, "name": "Jame Team", "athleteSelections": [
+      {
+        "tournId": 1,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Luke Humphries",
+        "mpo3": "Jeremy Koling",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Eveliina Salonen",
+        "fpo3": "Maria Oliva"
+      },
+      {
+        "tournId": 2,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Jeremy Koling",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Eveliina Salonen",
+        "fpo3": "Maria Oliva"
+      },
+      {
+        "tournId": 3,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Jeremy Koling",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Eveliina Salonen",
+        "fpo3": "Maria Oliva"
+      },
+      {
+        "tournId": 4,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Eveliina Salonen",
+        "fpo3": "Dani Kleidon"
+      },
+      {
+        "tournId": 5,
+        "mpo1": "Paul Ulibarri",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Maria Oliva",
+        "fpo3": "Casey Pennington"
+      },
+      {
+        "tournId": 6,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Eveliina Salonen",
+        "fpo3": "Maria Oliva"
+      },
+      {
+        "tournId": 7,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Paul Ulibarri",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Dani Kleidon",
+        "fpo3": "Maria Oliva"
+      },
+      {
+        "tournId": 8,
+        "mpo1": "Timo Hartmann",
+        "mpo2": "Paul Ulibarri",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Rachel Turton",
+        "fpo2": "Matilda Ringbom",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 9,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Jennifer Allen",
+        "fpo3": "Dani Kleidon"
+      },
+      {
+        "tournId": 10,
+        "mpo1": "Karl Johan Nybo",
+        "mpo2": "Eric Oakley",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Rachel Turton",
+        "fpo2": "Matilda Ringbom",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 11,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Jennifer Allen",
+        "fpo3": "Alexis Mandujano"
+      },
+      {
+        "tournId": 12,
+        "mpo1": "",
+        "mpo2": "",
+        "mpo3": "",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Alexis Mandujano",
+        "fpo3": "Eveliina Salonen"
+      },
+      {
+        "tournId": 13,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Kelley Foster",
+        "fpo2": "Alexis Mandujano",
+        "fpo3": "Dani Kleidon"
+      },
+      {
+        "tournId": 14,
+        "mpo1": "Paul Ulibarri",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Eveliina Salonen",
+        "fpo2": "Rachel Turton",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 15,
+        "mpo1": "Paul Ulibarri",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Hannah Manis",
+        "fpo2": "Rachel Turton",
+        "fpo3": "Matilda Ringbom"
+      },
+      {
+        "tournId": 16,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Eveliina Salonen",
+        "fpo2": "Missy Gannon",
+        "fpo3": "Jennifer Allen"
+      },
+      {
+        "tournId": 17,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Eveliina Salonen",
+        "fpo2": "Missy Gannon",
+        "fpo3": "Jennifer Allen"
+      },
+      {
+        "tournId": 18,
+        "mpo1": "Teemu Lampainen",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Tinja Väisänen",
+        "fpo2": "Hannah Manis",
+        "fpo3": "N/A"
+      },
+      {
+        "tournId": 19,
+        "mpo1": "Paul Ulibarri",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Dani Kleidon",
+        "fpo3": "Lauren Butler"
+      },
+      {
+        "tournId": 20,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Dani Kleidon",
+        "fpo3": "Lauren Butler"
+      },
+      {
+        "tournId": 21,
+        "mpo1": "Simon Lizotte",
+        "mpo2": "Bradley Williams",
+        "mpo3": "Ezra Aderhold",
+        "fpo1": "Missy Gannon",
+        "fpo2": "Dani Kleidon",
+        "fpo3": "Jennifer Allen"
+      }
+    ] }
   ]
 }
