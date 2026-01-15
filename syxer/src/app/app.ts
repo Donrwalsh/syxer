@@ -10,6 +10,9 @@ import {
   loadTournaments,
   loadTournamentsSuccess,
   loadTournamentsFailure,
+  loadAllPdgaData,
+  loadSinglePieceOfPdgaData,
+  loadSinglePieceOfPdgaDataFailure,
 } from './state/data.actions';
 
 @Component({
@@ -44,6 +47,17 @@ export class App {
       error: (err) => {
         console.error('Error loading tournaments', err);
         this.store.dispatch(loadTournamentsFailure({ error: err }));
+      },
+    });
+
+    this.store.dispatch(loadAllPdgaData());
+    this.dataService.getPdgaSupremeFlightData().subscribe({
+      next: (pdgaData) => {
+        this.store.dispatch(loadSinglePieceOfPdgaData({ pdgaData }));
+      },
+      error: (err) => {
+        console.error('Error loading pdga data', err);
+        this.store.dispatch(loadSinglePieceOfPdgaDataFailure({ error: err }));
       },
     });
   }

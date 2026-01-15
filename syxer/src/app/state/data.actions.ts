@@ -25,3 +25,15 @@ export const loadTournamentsFailure = createAction(
   '[Data] Load Tournaments Failure',
   props<{ error: any }>()
 );
+
+export const loadAllPdgaData = createAction('[Data] Load All PDGA Data');
+
+export const loadSinglePieceOfPdgaData = createAction(
+  '[Data] Load Single Piece of PDGA Data Success',
+  props<{ pdgaData: any }>()
+);
+
+export const loadSinglePieceOfPdgaDataFailure = createAction(
+  '[Data] Load Single Piece of PDGA Data Failure',
+  props<{ error: any }>()
+);
