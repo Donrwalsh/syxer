@@ -68,8 +68,8 @@ export const dataReducer = createReducer(
         division,
         round: 1, //unclear how to obtain this from raw data.
         strokes: {
-          doubleBogey: // pause here. I need both holebreakdown data and throwTimeLine data. Hmmm.
-        }
+          doubleBogey: 0, // pause here. I need both holebreakdown data and throwTimeLine data. Hmmm.
+        },
       })),
     };
 
