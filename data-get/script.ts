@@ -1,5 +1,9 @@
 import fetch from "node-fetch";
 import * as fs from "fs";
+import { readFile } from "fs/promises";
+import { readdir } from "fs/promises";
+import path from "path";
+import { writeFile } from "fs/promises";
 
 const tournaments = [
   {
@@ -189,6 +193,72 @@ async function obtainLayoutAndDivisionData() {
   }
 }
 
+async function saveJson(filePath: string, data: unknown): Promise<void> {
+  const json = JSON.stringify(data, null, 2);
+  await writeFile(filePath, json, "utf-8");
+  console.log(`Saved JSON to ${filePath}`);
+}
+
+async function readJsonFile<T>(filePath: string): Promise<T> {
+  const fileContents = await readFile(filePath, "utf-8");
+  return JSON.parse(fileContents) as T;
+}
+
+async function listDivisionFiles(dirPath: string): Promise<string[]> {
+  const entries = await readdir(dirPath, { withFileTypes: true });
+
+  return entries
+    .filter(
+      (entry) =>
+        entry.isFile() && !entry.name.toLowerCase().endsWith("layout.json")
+    )
+    .map((entry) => path.join(dirPath, entry.name));
+}
+
+async function produceManifest() {
+  let tournsToSave: any[] = [];
+  for (let tourn of tournaments) {
+    let newTourn = { ...tourn, athletes: [] as any[] };
+    const filenames = await listDivisionFiles(`./assets/${tourn.id}`);
+    for (const filename of filenames) {
+      const divMatch = filename.match(/[A-Z]{3}/);
+      const division = divMatch ? divMatch[0] : null;
+      const roundMatch = filename.match(/-(\d{1,2})\.json$/);
+      const round = roundMatch ? roundMatch[1] : null;
+
+      const data: any = await readJsonFile(filename);
+      const scores = Array.isArray(data.data)
+        ? data.data.reduce((acc, curr) => {
+            return acc.concat(curr.scores);
+          }, [])
+        : data.data.scores;
+      for (const score of scores) {
+        const roundEntry = {
+          scoreId: score.ScoreID,
+          round,
+          division,
+        };
+        const existing = newTourn.athletes.find(
+          (athlete) => athlete.PDGANum == score.PDGANum
+        );
+
+        if (existing) {
+          existing.rounds.push(roundEntry);
+        } else {
+          newTourn.athletes.push({
+            PDGANum: score.PDGANum,
+            Name: score.Name,
+            rounds: [roundEntry],
+          });
+        }
+      }
+    }
+    tournsToSave.push(newTourn);
+  }
+  await saveJson("manifest.json", tournsToSave);
+}
+
+await produceManifest();
 // script 2:
 
 // iterate over each tournament folder
@@ -208,3 +278,21 @@ async function obtainLayoutAndDivisionData() {
 
 // Division AND RunningPlace are held in score data block
 // Hold onto raw data in a separate place, do not port to prototype, but use it for tracking missing data and such.
+
+const potato = {
+  id: 88276,
+  name: "Supreme Flight Open",
+  athletes: [
+    {
+      Name: "Holyn Handley",
+      PDGANum: 107335,
+      rounds: [
+        {
+          scoreId: 23842426,
+          round: 2,
+          division: "FPO",
+        },
+      ],
+    },
+  ],
+};
