@@ -1,97 +1,7 @@
 import fetch from "node-fetch";
 import * as fs from "fs";
 
-function normalizeWindowsFolderName(input: string): string {
-  // Trim whitespace
-  let name = input.trim();
-
-  // Replace whitespace (spaces, tabs, newlines) with underscores
-  name = name.replace(/\s+/g, "_");
-
-  // Replace invalid characters with underscores
-  name = name.replace(/[<>:"/\\|?*]/g, "_");
-
-  // Windows does not allow folder names ending with a period or space
-  name = name.replace(/[. ]+$/g, "");
-
-  // If the name becomes empty, use a fallback
-  if (name.length === 0) {
-    name = "folder";
-  }
-
-  // Reserved Windows device names (case-insensitive)
-  const reserved = new Set([
-    "CON",
-    "PRN",
-    "AUX",
-    "NUL",
-    "COM1",
-    "COM2",
-    "COM3",
-    "COM4",
-    "COM5",
-    "COM6",
-    "COM7",
-    "COM8",
-    "COM9",
-    "LPT1",
-    "LPT2",
-    "LPT3",
-    "LPT4",
-    "LPT5",
-    "LPT6",
-    "LPT7",
-    "LPT8",
-    "LPT9",
-  ]);
-
-  if (reserved.has(name.toUpperCase())) {
-    name = name + "_";
-  }
-
-  return name;
-}
-
-function ensureFolderExists(folderPath: string): void {
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, { recursive: true });
-    console.log(`Folder created: ${folderPath}`);
-  } else {
-    console.log(`Folder already exists: ${folderPath}`);
-  }
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
-  try {
-    await sleep(500);
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status} for URL: ${url}`);
-    }
-
-    const data: any = await response.json();
-
-    // Convert the JavaScript object back into a JSON string
-    const jsonData = JSON.stringify(data, null, 2);
-
-    // Write the JSON string to a file using Node's File System module
-    fs.writeFile(filePath, jsonData, (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log(`JSON data is saved to ${filePath}`);
-    });
-  } catch (error) {
-    console.error("Error fetching or saving data:", error);
-  }
-}
-
-[
+const tournaments = [
   {
     id: 88276,
     name: "Supreme Flight Open",
@@ -176,22 +86,108 @@ async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
     id: 88296,
     name: "Discraft Great Lakes Open",
   },
-].forEach(async (tourn) => {
-  let folderPath = `data/${normalizeWindowsFolderName(tourn.name)}`;
-  ensureFolderExists(folderPath);
+];
 
-  let layoutUrl = `https://www.pdga.com/api/v1/live-tournaments/${tourn.id}/live-layouts?include=LiveLayoutDetails`;
+function ensureFolderExists(folderPath: string): void {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath, { recursive: true });
+    console.log(`Folder created: ${folderPath}`);
+  } else {
+    console.log(`Folder already exists: ${folderPath}`);
+  }
+}
 
-  await fetchAndSaveData(layoutUrl, `${folderPath}/layout.json`);
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-  ["FPO", "MPO"].forEach(async (division) => {
-    [1, 2, 3, 4, 5, 12].forEach(async (round) => {
-      let url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tourn.id}&Division=${division}&Round=${round}`;
-      await fetchAndSaveData(url, `${folderPath}/${division}-${round}.json`);
-    });
-  });
-});
+async function fetchData(url: string): Promise<any> {
+  const response = await fetch(url);
 
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status} for URL: ${url}`);
+  }
+
+  const data: any = await response.json();
+
+  return data;
+}
+
+async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
+  const maxRetries = 5;
+  let attempt = 0;
+
+  while (attempt < maxRetries) {
+    try {
+      const response = await fetch(url);
+
+      // --- Do NOT retry on 404 ---
+      if (response.status === 404) {
+        console.error(`404 Not Found for URL: ${url}. Skipping.`);
+        return;
+      }
+
+      // --- Retry on 429 with backoff or Retry-After ---
+      if (response.status === 429) {
+        const retryAfter = response.headers.get("Retry-After");
+        const waitTime = retryAfter
+          ? parseInt(retryAfter, 10) * 1000
+          : 1000 * Math.pow(2, attempt);
+
+        console.warn(`429 received. Waiting ${waitTime}ms before retrying...`);
+        await sleep(waitTime);
+        attempt++;
+        continue;
+      }
+
+      // --- Other non-OK statuses: throw and retry ---
+      if (!response.ok) {
+        throw new Error(
+          `HTTP error! status: ${response.status} for URL: ${url}`
+        );
+      }
+
+      // --- Success path ---
+      const data = await response.json();
+      const jsonData = JSON.stringify(data, null, 2);
+
+      fs.writeFile(filePath, jsonData, (err) => {
+        if (err) throw err;
+        console.log(`JSON data is saved to ${filePath}`);
+      });
+
+      return; // done
+    } catch (error) {
+      // Network errors, timeouts, etc.
+      attempt++;
+      const waitTime = 1000 * Math.pow(2, attempt);
+      console.warn(`Error on attempt ${attempt}. Waiting ${waitTime}ms...`);
+      await sleep(waitTime);
+    }
+  }
+
+  console.error(
+    `Failed to fetch data from ${url} after ${maxRetries} attempts.`
+  );
+}
+
+async function obtainLayoutAndDivisionData() {
+  for (const tourn of tournaments) {
+    let folderPath = `assets/${tourn.id}`;
+    ensureFolderExists(folderPath);
+
+    let layoutUrl = `https://www.pdga.com/api/v1/live-tournaments/${tourn.id}/live-layouts?include=LiveLayoutDetails`;
+
+    await fetchAndSaveData(layoutUrl, `${folderPath}/layout.json`);
+
+    for (const division of ["FPO", "MPO"]) {
+      for (const round of [1, 2, 3, 4, 5, 12]) {
+        let url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tourn.id}&Division=${division}&Round=${round}`;
+        await fetchAndSaveData(url, `${folderPath}/${division}-${round}.json`);
+      }
+    }
+  }
+}
 
 // script 2:
 
