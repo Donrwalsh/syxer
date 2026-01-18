@@ -21,3 +21,5 @@ So the task is to construct a single file that distills all the stuff from the u
 This is something like a 97.5% data compression, hell yeah.
 
 Well, let's keep it going. I need a map of athlete names to PDGANums next.
+
+Cool, that was simple. I think that I'm in a good spot to transition over to porting this data into the frontend and seeing what I can do with it. But first, I'm going to go be a human for a while! I spent the last 4.5 hours putting all this together and I'm feeling very satisfied with where it's at.

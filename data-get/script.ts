@@ -507,7 +507,25 @@ async function dataTransform() {
   await saveJson("output.json", output);
 }
 
-await dataTransform();
+async function getAthleteMap() {
+  let output: any[] = [];
+  const manifest: any = await readJsonFile("./manifest.json");
+  for (const tournament of manifest) {
+    for (const athlete of tournament.athletes) {
+      const existing = output.find((entry) => entry.pdgaNum == athlete.PDGANum);
+      if (existing == undefined) {
+        output.push({
+          pdgaNum: athlete.PDGANum,
+          name: athlete.Name,
+        });
+      }
+    }
+  }
+  output.sort((a, b) => a.pdgaNum - b.pdgaNum);
+  await saveJson("athleteMap.json", output);
+}
+
+await getAthleteMap();
 
 // script 2:
 
