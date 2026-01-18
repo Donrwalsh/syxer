@@ -15,3 +15,9 @@ Cool, got that to work with some reduce action. There's a 'pool' thing going on 
 Note that I should probably kill the top-level MPO-1, FPO-2, etc. data because it's duplicative. Or maybe it doesn't matter, idk.
 
 Haha, my plans to just drop the assets folder into the angular assets spot is foiled by the sheer amount of data. ~350MB across 32k files and 14k folders. Not a chance.
+
+So the task is to construct a single file that distills all the stuff from the ugly, unwieldy collection of 32k files. I wrote a script that does it by repurposing my gas and after I got the first tournament working, I removed the break for all tournaments and it worked!
+
+This is something like a 97.5% data compression, hell yeah.
+
+Well, let's keep it going. I need a map of athlete names to PDGANums next.
