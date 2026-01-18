@@ -191,3 +191,24 @@ async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
     });
   });
 });
+
+
+// script 2:
+
+// iterate over each tournament folder
+// ignore layout inside
+// for each division-round json file
+//  > move to folder with same name
+//  > produce a holeBreakdown + throwTimeline for each athlete
+//    > MPO-1/holeBreakdowns/{pdga-id}/
+
+// take this script and expand it to fetch data, hold onto a copy and then save it.
+// using the copy, I can expand out and produce the additional calls for all the specific athleteData
+//        > need to here account for what happens when a piece is missing
+// then the structure becomes:
+// {tournId}/{division}/{round}/{athleteId}/ there are three files here: score, holebreakdown, throwTimeline.
+
+// {tournId}/{athleteId}/{round}/
+
+// Division AND RunningPlace are held in score data block
+// Hold onto raw data in a separate place, do not port to prototype, but use it for tracking missing data and such.
