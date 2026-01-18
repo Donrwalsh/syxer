@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import * as fs from "fs";
-import { readFile } from "fs/promises";
+import { access, readFile } from "fs/promises";
 import { readdir } from "fs/promises";
 import path from "path";
 import { writeFile } from "fs/promises";
@@ -258,7 +258,74 @@ async function produceManifest() {
   await saveJson("manifest.json", tournsToSave);
 }
 
-await produceManifest();
+async function fileExists(path: string): Promise<boolean> {
+  try {
+    await access(path, fs.constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function ultimateDataRetrieval() {
+  const manifest: any = await readJsonFile("./manifest.json");
+  for (const tournament of manifest) {
+    const tournId = tournament.id;
+
+    for (const athlete of tournament.athletes) {
+      ensureFolderExists(`./assets/${tournId}/${athlete.PDGANum}`);
+      for (const round of athlete.rounds) {
+        if (round.scoreId) {
+          ensureFolderExists(
+            `./assets/${tournId}/${athlete.PDGANum}/${round.round}`
+          );
+
+          const scoreDataFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/scoreData.json`;
+          if (!(await fileExists(scoreDataFileName))) {
+            const scoreData: any = await readJsonFile(
+              `./assets/${tournId}/${round.division}-${round.round}.json`
+            );
+
+            const normalizedScoreData = Array.isArray(scoreData.data)
+              ? scoreData.data.reduce((acc, curr) => {
+                  return acc.concat(curr.scores);
+                }, [])
+              : scoreData.data.scores;
+
+            const scoreDataToSave = normalizedScoreData.find(
+              (score) => score.PDGANum == athlete.PDGANum
+            );
+            await saveJson(scoreDataFileName, scoreDataToSave);
+          } else {
+            console.log(`File already exists: ${scoreDataFileName}`);
+          }
+
+          const holeBreakdownFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/holeBreakdownData.json`;
+          if (!(await fileExists(holeBreakdownFileName))) {
+            const holeBreakdownDataUrl = `https://www.pdga.com/api/v1/feat/live-scores/${round.scoreId}/hole-breakdowns`;
+            await fetchAndSaveData(holeBreakdownDataUrl, holeBreakdownFileName);
+          } else {
+            console.log(`File already exists: ${holeBreakdownFileName}`);
+          }
+
+          const throwTimelineDataFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/throwTimelineData.json`;
+          if (!(await fileExists(throwTimelineDataFileName))) {
+            const throwTimelineDataUrl = `https://www.pdga.com/api/v1/feat/live-scores/${round.scoreId}/throw-timelines`;
+            await fetchAndSaveData(
+              throwTimelineDataUrl,
+              throwTimelineDataFileName
+            );
+          } else {
+            console.log(`File already exists: ${throwTimelineDataFileName}`);
+          }
+        }
+      }
+    }
+  }
+}
+
+ultimateDataRetrieval();
+
 // script 2:
 
 // iterate over each tournament folder
@@ -279,7 +346,7 @@ await produceManifest();
 // Division AND RunningPlace are held in score data block
 // Hold onto raw data in a separate place, do not port to prototype, but use it for tracking missing data and such.
 
-const potato = {
+const structure = {
   id: 88276,
   name: "Supreme Flight Open",
   athletes: [
