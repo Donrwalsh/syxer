@@ -1,6 +1,24 @@
-// v1.10
+// v2.10
+let layoutData;
+
+let athleteData = {
+  'MPO': {},
+  'FPO': {}
+};
+
+function syxerBot() {
+  const recipient = "donrwalsh@gmail.com"; // Replace with the actual email address
+  const subject = "Hello from Google Apps Script";
+  const body = "This is the body of the email message.";
+
+  MailApp.sendEmail(recipient, subject, body);
+
+  Logger.log("Email sent successfully to " + recipient);
+}
+
 function roundStandings() {
   ctrl = new ControlPanel();
+  // let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
   let playerSheets = [];
@@ -52,6 +70,10 @@ function calculatePointsAgainst(teamName, playerSheets) {
   var pointsAgainst = 0;
 
   for (let i = 0; i < pastTournaments.length; i++) {
+    console.log(`${i}`)
+    if (i == 14 ) {
+      console.log("potato")
+    }
     const opponentScore = playerSheets.find((playerSheet) => playerSheet.name == matchups[i]).sheet.getEventTotalByEventName(pastTournaments[i].name);
     // console.log(`For team ${teamName} tournament # ${i}, opposing team ${matchups[i]} scored ${opponentScore} points`)
     pointsAgainst += parseFloat(opponentScore);
@@ -63,13 +85,15 @@ function calculatePointsAgainst(teamName, playerSheets) {
 function main() {
   ctrl = new ControlPanel();
   ctrl.clearErrors();
-  let tourn = new Tournament(ctrl.config.tournamentId);
+  // let spreadsheetIds = DEV_PLAYER_SPREADSHEET_IDS;
   let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
 
   for (const psi of spreadsheetIds) {
     const ps = new PlayerSheet(psi.id);
     ps.getAthleteLineup().forEach((lineup) => {
       ctrl.config.rounds.forEach((round) => {
+        mpoAthleteData = null;
+        fpoAthleteData = null;
         let shouldGetData = false;
 
         if (ctrl.config.emptyOut) {
@@ -81,11 +105,11 @@ function main() {
         }
 
         try {
-          if (shouldGetData) { // HERE I actually want 4 methods: strokes/stats/makes/ranking and then I'll better be able to control for no stats
-            const numbers = tourn.obtainAthleteNumbers(lineup.division.substring(0, 3), round, lineup.athlete);
-            return
-            const athleteStats = obtainAthleteStats(lineup.athlete, ctrl.config.tournamentId, round, lineup.division.substring(0, 3));
-            const properRound = ctrl.config.tournamentId == 88282 && round == 12 ? 3 : round;
+          if (shouldGetData) {
+            const athleteStats = obtainAthleteStats(lineup.athlete, ctrl.config.tournamentId, round, lineup.div);
+            // this is annoying:
+            let properRound = ctrl.config.tournamentId == 88282 && round == 12  ? 3 : round;
+            properRound = ctrl.config.tournamentId == 90947 && round == 12 ? 5 : round; // likely breaks the previous one and so on.
             ps.writeStatsToScorecard(athleteStats, lineup.division, properRound);
             ps.writeFieldSizeAndPlayerRanking(athleteStats, lineup.division);
           } else {
@@ -102,8 +126,23 @@ function main() {
 }
 
 function obtainAthleteStats(athleteName, tournamentId, round, division) {
-  const athleteData = obtainAthleteData(athleteName, tournamentId, round, division);
-
+  let athleteData;
+  if (division == "???") {
+    try {
+      athleteData = obtainAthleteData(athleteName, tournamentId, round, "MPO");
+      division = "MPO";
+    } catch (error) {
+      try {
+        athleteData = obtainAthleteData(athleteName, tournamentId, round, "FPO");
+        division = "FPO";
+      } catch (error) {
+        throw `I can't seem to find ${athleteName} anywhere.`;
+      }
+    } 
+  } else {
+    athleteData = obtainAthleteData(athleteName, tournamentId, round, division);
+  }
+  
   if (athleteData.ScoreID == null) {
     throw `${athleteName} does not have an ID for round ${round}. Have they been cut?`;
   }
@@ -119,11 +158,6 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
 
   if (holeBreakdownData.some((hole) => hole.holeBreakdown == null)
     && !holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
-      // TODON 00:
-      // Rather than throwing an error here, consider this as part of no stats.
-      // But in this case do a partial calc (this may need some logic considerations below)
-      // Then compare the output of this partial calc to this round's noStats value.
-      // Award the player the higher of those two values
     throw `Found incomplete data for ${athleteName}, skipping for now`;
   } else {
     if (holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
@@ -157,12 +191,13 @@ function obtainAthleteStats(athleteName, tournamentId, round, division) {
         eagle: diffs.filter(d => d === -2).length,
         albatross: diffs.filter(d => d <= -3).length
       },
-      stats: noStats ? { c1r: 0, c2r: 0, parked: 0, ob: 0, ace: 0, noStats: 1 } : {
+      stats: noStats ? { c1r: 0, c2r: 0, parked: 0, ob: 0, ace: 0, hotRound: athleteData.hotRound, noStats: 1 } : {
         c1r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c1" || hole.holeBreakdown.green == "parked").length,
         c2r: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "c2").length,
         parked: holeBreakdownData.filter((hole) => hole.holeBreakdown.green == "parked").length,
         ob: holeBreakdownData.map((hole) => hole.holeBreakdown.ob).reduce((sum, num) => sum + num),
         ace: acesCount,
+        hotRound: athleteData.hotRound,
         noStats: 0
       },
       makes: noStats ? { c1x: 0, c1xBonus: 0, c2: 0, c2Bonus: 0, throwIns: 0 } : {
@@ -200,22 +235,40 @@ function obtainLayoutData(tournamentId, layoutId) {
 }
 
 function getTournamentFieldSize(division, round) {
+  //TODON: Scores nonsense with concat for worlds
   return athleteData[division][round].scores.length;
 }
 
 function obtainAthleteData(athleteName, tournId, round, division) {
-  if (!athleteData[division][round]) {
+  if (!athleteData[division][round]) { 
     //TODON: Ugly magic number cowboy-coded bullshit:
-    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${(round == 4 && tournId == 88286) ? 12 : round}`;
+    var url = `https://www.pdga.com/apps/tournament/live-api/live_results_fetch_round?TournID=${tournId}&Division=${division}&Round=${(round == 4 && (tournId == 88286 || tournId == 89546 || tournId == 88293 || tournId == 86684 || tournId == 88296 || tournId == 97336 || tournId == 96407 || tournId == 96408) || round == 3 && tournId == 96407) ? 12 : round}`;
     var response = UrlFetchApp.fetch(url, { 'muteHttpExceptions': true });
     freshData = JSON.parse(response.getContentText()).data;
-    athleteData[division][round] = freshData
+
+    //TODON: Scores nonsense with concat for worlds
+    //athleteData[division][round] = freshData[0].scores.concat(freshData[1].scores);
+
+    athleteData[division][round] = freshData;
+    
   }
+
+  var numOfRounds = tournId == 96407 ? 9 : 18;
+  
+
+  var athletesThatHaveFinished = athleteData[division][round].scores.filter(scores => scores.Played == numOfRounds)
+  var minimumScoreOfAthletesThatHaveFinished = athletesThatHaveFinished.reduce((min, item) => item.HoleScores.reduce((sum, s) => sum + Number(s), 0) < min && item.HoleScores.reduce((sum, s) => sum + Number(s), 0) > 18 ? item.HoleScores.reduce((sum, s) => sum + Number(s), 0) : min , Infinity);
+  var athletesWithMinimumScore = athletesThatHaveFinished.filter((athlete => athlete.HoleScores.reduce((sum, s) => sum + Number(s), 0) == minimumScoreOfAthletesThatHaveFinished));
+  
+
   
   targetAthlete = athleteData[division][round].scores.find((athlete) => athlete.Name == athleteName);
+  
 
   if (targetAthlete == null) {
     throw `Athlete ${athleteName} missing from tournament data. Are they competing?`;
+  } else {
+    targetAthlete.hotRound = athletesWithMinimumScore.find((athlete) => athlete.Name == athleteName) != undefined ? '1' : '0';
   }
 
   return targetAthlete;
@@ -236,3 +289,4 @@ function obtainThrowTimelineData(athleteScoreId) {
 
   return json;
 }
+

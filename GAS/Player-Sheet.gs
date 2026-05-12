@@ -1,34 +1,60 @@
-// v1.09c - cowboy coded bullshit
+// v1.09c - cowboy coded bullshit const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
 
 class PlayerSheet {
   constructor(id) {
     this.ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${id}}`);
     this.matchup = this.ss.getSheetByName('Matchup');
     this.roster = this.ss.getSheetByName('Roster');
+    this.stats = this.ss.getSheetByName('Stats');
+  }
+
+  getSheet(division) {
+    if (division.includes("BENCH")) {
+      return this.ss.getSheetByName(division.substring(0, 5));
+    } else {
+      return this.ss.getSheetByName(division);
+    }
   }
 
   emptyScorecard(division, round) {
-    var sheet = this.ss.getSheetByName(division);
+    var sheet = this.getSheet(division);
+    var magicNumbers = ['4', '5', '6', '7', '8', '9', '12', '13', '14', '15', '16', '17', '18', '21', '22', '23', '24', '25'];
+    var benchPos = 0;
 
-    ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
-      .forEach((int) => sheet.getRange(`${ROUND_ALPHA[round - 1]}${int}`).setValues([[0]]))
+    if (division.includes("BENCH")) {
+      benchPos = parseInt(division.charAt(6));
+      magicNumbers = magicNumbers.map((m => parseInt(m) + (28 * benchPos)));
+    }
 
-    sheet.getRange('V12').setValues([['']]);
+    magicNumbers.forEach((int) => sheet.getRange(`${ROUND_ALPHA[round == 12 ? 4 : round - 1]}${int}`).setValues([[0]]))
+
+    sheet.getRange(`V${9 + 28 * benchPos}`).setValues([['']]);
+    sheet.getRange(`V${12 + 28 * benchPos}`).setValues([['']]);
+  }
+
+  getAthleteFromStats(tourn, slot) {
+    return this.stats.getRange(`K${13 * tourn + slot + 1}`).getDisplayValue();
   }
 
   getAthleteLineup() {
     return [
-      { division: "MPO #1", athlete: this.roster.getRange('B3').getDisplayValue() },
-      { division: "MPO #2", athlete: this.roster.getRange('B4').getDisplayValue() },
-      { division: "MPO #3", athlete: this.roster.getRange('B5').getDisplayValue() },
-      { division: "FPO #1", athlete: this.roster.getRange('C3').getDisplayValue() },
-      { division: "FPO #2", athlete: this.roster.getRange('C4').getDisplayValue() },
-      { division: "FPO #3", athlete: this.roster.getRange('C5').getDisplayValue() }
+      { div: "MPO", division: "MPO #1", athlete: this.roster.getRange('B3').getDisplayValue() },
+      { div: "MPO", division: "MPO #2", athlete: this.roster.getRange('B4').getDisplayValue() },
+      { div: "MPO", division: "MPO #3", athlete: this.roster.getRange('B5').getDisplayValue() },
+      { div: "FPO", division: "FPO #1", athlete: this.roster.getRange('C3').getDisplayValue() },
+      { div: "FPO", division: "FPO #2", athlete: this.roster.getRange('C4').getDisplayValue() },
+      { div: "???", division: "FLEX", athlete: this.roster.getRange('B8').getDisplayValue() },
+      { div: "???", division: "BENCH-0", athlete: this.roster.getRange('B10').getDisplayValue() },
+      { div: "???", division: "BENCH-1", athlete: this.roster.getRange('B11').getDisplayValue() },
+      { div: "???", division: "BENCH-2", athlete: this.roster.getRange('C10').getDisplayValue() },
+      { div: "???", division: "BENCH-3", athlete: this.roster.getRange('C11').getDisplayValue() },
     ]
   }
 
   getCurrentPointsSum(tab, round) {
-    let range = this.ss.getSheetByName(tab).getRange(`${ROUND_ALPHA[round - 1]}4:${ROUND_ALPHA[round - 1]}23`).getValues();
+    // TODON: idk why the other fix isn't working, but this exists now:
+    const annoying = round == 12 ? 5 : round;
+    let range = this.ss.getSheetByName(tab).getRange(`${ROUND_ALPHA[annoying - 1]}4:${ROUND_ALPHA[annoying - 1]}23`).getValues();
     return range.reduce(
       (acc, cv) => acc + (parseInt(cv) || 0), 0
     )
@@ -61,9 +87,11 @@ class PlayerSheet {
   }
 
   writeFieldSizeAndPlayerRanking(stats, division) {
-    var sheet = this.ss.getSheetByName(division);
-    sheet.getRange(`V9`).setValues([[stats.ranking.fieldSize.toString()]]);
-    sheet.getRange(`V12`).setValues([[stats.ranking.place.toString()]]);
+    var sheet = this.getSheet(division);
+    var benchPos = division.includes("BENCH") ? parseInt(division.charAt(6)) : 0;
+    var benchOffset = benchPos * 28;
+    sheet.getRange(`V${9 + benchOffset}`).setValues([[stats.ranking.fieldSize.toString()]]);
+    sheet.getRange(`V${12 + benchOffset}`).setValues([[stats.ranking.place.toString()]]);
   }
 
   writeRank(rank) {
@@ -71,31 +99,34 @@ class PlayerSheet {
   }
 
   writeStatsToScorecard(stats, division, round) {
-    var sheet = this.ss.getSheetByName(division);
+    var sheet = this.getSheet(division);
     var roundAlpha = ROUND_ALPHA[round - 1];
+    var benchPos = division.includes("BENCH") ? parseInt(division.charAt(6)) : 0;
+    var benchOffset = benchPos * 28;
 
     // Strokes
-    sheet.getRange(`${roundAlpha}4`).setValues([[stats.strokes.doubleBogey.toString()]]);
-    sheet.getRange(`${roundAlpha}5`).setValues([[stats.strokes.bogey.toString()]]);
-    sheet.getRange(`${roundAlpha}6`).setValues([[stats.strokes.par.toString()]]);
-    sheet.getRange(`${roundAlpha}7`).setValues([[stats.strokes.birdie.toString()]]);
-    sheet.getRange(`${roundAlpha}8`).setValues([[stats.strokes.eagle.toString()]]);
-    sheet.getRange(`${roundAlpha}9`).setValues([[stats.strokes.albatross.toString()]]);
+    sheet.getRange(`${roundAlpha}${4 + benchOffset }`).setValues([[stats.strokes.doubleBogey.toString()]]);
+    sheet.getRange(`${roundAlpha}${5 + benchOffset }`).setValues([[stats.strokes.bogey.toString()]]);
+    sheet.getRange(`${roundAlpha}${6 + benchOffset }`).setValues([[stats.strokes.par.toString()]]);
+    sheet.getRange(`${roundAlpha}${7 + benchOffset }`).setValues([[stats.strokes.birdie.toString()]]);
+    sheet.getRange(`${roundAlpha}${8 + benchOffset }`).setValues([[stats.strokes.eagle.toString()]]);
+    sheet.getRange(`${roundAlpha}${9 + benchOffset }`).setValues([[stats.strokes.albatross.toString()]]);
 
     // Stats
-    sheet.getRange(`${roundAlpha}12`).setValues([[stats.stats.c1r.toString()]]);
-    sheet.getRange(`${roundAlpha}13`).setValues([[stats.stats.c2r.toString()]]);
-    sheet.getRange(`${roundAlpha}14`).setValues([[stats.stats.parked.toString()]]);
-    sheet.getRange(`${roundAlpha}15`).setValues([[stats.stats.ob.toString()]]);
-    sheet.getRange(`${roundAlpha}16`).setValues([[stats.stats.ace.toString()]]);
-    sheet.getRange(`${roundAlpha}17`).setValues([[stats.stats.noStats.toString()]]);
+    sheet.getRange(`${roundAlpha}${12 + benchOffset }`).setValues([[stats.stats.c1r.toString()]]);
+    sheet.getRange(`${roundAlpha}${13 + benchOffset }`).setValues([[stats.stats.c2r.toString()]]);
+    sheet.getRange(`${roundAlpha}${14 + benchOffset }`).setValues([[stats.stats.parked.toString()]]);
+    sheet.getRange(`${roundAlpha}${15 + benchOffset }`).setValues([[stats.stats.ob.toString()]]);
+    sheet.getRange(`${roundAlpha}${16 + benchOffset }`).setValues([[stats.stats.ace.toString()]]);
+    sheet.getRange(`${roundAlpha}${17 + benchOffset }`).setValues([[stats.stats.hotRound.toString()]]);
+    sheet.getRange(`${roundAlpha}${18 + benchOffset }`).setValues([[stats.stats.noStats.toString()]]);
 
     // Makes
-    sheet.getRange(`${roundAlpha}20`).setValues([[stats.makes.c1x.toString()]]);
-    sheet.getRange(`${roundAlpha}21`).setValues([[stats.makes.c1xBonus.toString()]]);
-    sheet.getRange(`${roundAlpha}22`).setValues([[stats.makes.c2.toString()]]);
-    sheet.getRange(`${roundAlpha}23`).setValues([[stats.makes.c2Bonus.toString()]]);
-    sheet.getRange(`${roundAlpha}24`).setValues([[stats.makes.throwIns.toString()]]);
+    sheet.getRange(`${roundAlpha}${21 + benchOffset }`).setValues([[stats.makes.c1x.toString()]]);
+    sheet.getRange(`${roundAlpha}${22 + benchOffset }`).setValues([[stats.makes.c1xBonus.toString()]]);
+    sheet.getRange(`${roundAlpha}${23 + benchOffset }`).setValues([[stats.makes.c2.toString()]]);
+    sheet.getRange(`${roundAlpha}${24 + benchOffset }`).setValues([[stats.makes.c2Bonus.toString()]]);
+    sheet.getRange(`${roundAlpha}${25 + benchOffset }`).setValues([[stats.makes.throwIns.toString()]]);
   }
 
   writeWaiver(rank) {

@@ -21,7 +21,7 @@ class RosterWaivers {
   }
   
   writeToWaiverPrio(place, teamName) {
-    this.sheet.getRange(`O${14 - place}`).setValues([[teamName]]);
+    this.sheet.getRange(`K${19 - place}`).setValues([[teamName]]);
   }
 }
 
@@ -39,13 +39,14 @@ class ControlPanel {
         ...(this.homeSheet.getRange("D3").getValue() ? [2] : []),
         ...(this.homeSheet.getRange("E3").getValue() ? [this.homeSheet.getRange("G3").getValue() == 'Music City Open' ? 12 : 3] : []),
         ...(this.homeSheet.getRange("F3").getValue() ? [4] : []),
+        ...(this.homeSheet.getRange("G3").getValue() ? [12] : []),
       ],
-      tournamentId: TOURNAMENTS.find((tournament) => tournament.name == this.homeSheet.getRange("G3").getValue()).id
+      tournamentId: TOURNAMENTS.find((tournament) => tournament.name == this.homeSheet.getRange("H3").getValue()).id
     }
 
     // Errors List Cell
     this.elc = { x: 'A', y: 7 };
-    this.errorsListRange = `${this.elc.x}${this.elc.y}:${this.elc.x}${this.elc.y + 30}`
+    this.errorsListRange = `${this.elc.x}${this.elc.y}:${this.elc.x}${this.elc.y + 300}`
   }
 
   clearErrors() {
