@@ -1,1 +1,10 @@
-<p>scores works!</p>
+<div class="switcher-container">
+  <div class="switcher-buttons">
+    <button 
+      *ngFor="let option of options" 
+      (click)="selectDivision(option)"
+      [class.active]="selectedDivision === option">
+      {{ option }}
+    </button>
+  </div>
+</div>

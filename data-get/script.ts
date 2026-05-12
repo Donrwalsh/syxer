@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import * as fs from "fs";
-import { readFile } from "fs/promises";
+import { access, readFile } from "fs/promises";
 import { readdir } from "fs/promises";
 import path from "path";
 import { writeFile } from "fs/promises";
@@ -147,7 +147,7 @@ async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
       // --- Other non-OK statuses: throw and retry ---
       if (!response.ok) {
         throw new Error(
-          `HTTP error! status: ${response.status} for URL: ${url}`
+          `HTTP error! status: ${response.status} for URL: ${url}`,
         );
       }
 
@@ -171,7 +171,7 @@ async function fetchAndSaveData(url: string, filePath: string): Promise<void> {
   }
 
   console.error(
-    `Failed to fetch data from ${url} after ${maxRetries} attempts.`
+    `Failed to fetch data from ${url} after ${maxRetries} attempts.`,
   );
 }
 
@@ -210,7 +210,7 @@ async function listDivisionFiles(dirPath: string): Promise<string[]> {
   return entries
     .filter(
       (entry) =>
-        entry.isFile() && !entry.name.toLowerCase().endsWith("layout.json")
+        entry.isFile() && !entry.name.toLowerCase().endsWith("layout.json"),
     )
     .map((entry) => path.join(dirPath, entry.name));
 }
@@ -239,7 +239,7 @@ async function produceManifest() {
           division,
         };
         const existing = newTourn.athletes.find(
-          (athlete) => athlete.PDGANum == score.PDGANum
+          (athlete) => athlete.PDGANum == score.PDGANum,
         );
 
         if (existing) {
@@ -258,7 +258,275 @@ async function produceManifest() {
   await saveJson("manifest.json", tournsToSave);
 }
 
-await produceManifest();
+async function fileExists(path: string): Promise<boolean> {
+  try {
+    await access(path, fs.constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function ultimateDataRetrieval() {
+  const manifest: any = await readJsonFile("./manifest.json");
+  for (const tournament of manifest) {
+    const tournId = tournament.id;
+
+    for (const athlete of tournament.athletes) {
+      ensureFolderExists(`./assets/${tournId}/${athlete.PDGANum}`);
+      for (const round of athlete.rounds) {
+        if (round.scoreId) {
+          ensureFolderExists(
+            `./assets/${tournId}/${athlete.PDGANum}/${round.round}`,
+          );
+
+          const scoreDataFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/scoreData.json`;
+          if (!(await fileExists(scoreDataFileName))) {
+            const scoreData: any = await readJsonFile(
+              `./assets/${tournId}/${round.division}-${round.round}.json`,
+            );
+
+            const normalizedScoreData = Array.isArray(scoreData.data)
+              ? scoreData.data.reduce((acc, curr) => {
+                  return acc.concat(curr.scores);
+                }, [])
+              : scoreData.data.scores;
+
+            const scoreDataToSave = normalizedScoreData.find(
+              (score) => score.PDGANum == athlete.PDGANum,
+            );
+            await saveJson(scoreDataFileName, scoreDataToSave);
+          } else {
+            console.log(`File already exists: ${scoreDataFileName}`);
+          }
+
+          const holeBreakdownFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/holeBreakdownData.json`;
+          if (!(await fileExists(holeBreakdownFileName))) {
+            const holeBreakdownDataUrl = `https://www.pdga.com/api/v1/feat/live-scores/${round.scoreId}/hole-breakdowns`;
+            await fetchAndSaveData(holeBreakdownDataUrl, holeBreakdownFileName);
+          } else {
+            console.log(`File already exists: ${holeBreakdownFileName}`);
+          }
+
+          const throwTimelineDataFileName = `./assets/${tournId}/${athlete.PDGANum}/${round.round}/throwTimelineData.json`;
+          if (!(await fileExists(throwTimelineDataFileName))) {
+            const throwTimelineDataUrl = `https://www.pdga.com/api/v1/feat/live-scores/${round.scoreId}/throw-timelines`;
+            await fetchAndSaveData(
+              throwTimelineDataUrl,
+              throwTimelineDataFileName,
+            );
+          } else {
+            console.log(`File already exists: ${throwTimelineDataFileName}`);
+          }
+        }
+      }
+    }
+  }
+}
+
+async function dataTransform() {
+  let output: any[] = [];
+  const manifest: any = await readJsonFile("./manifest.json");
+  for (const tournament of manifest) {
+    let newEntry = {
+      id: tournament.id,
+      name: tournament.name,
+      data: [] as any[],
+    };
+
+    for (const athlete of tournament.athletes) {
+      let newData = {
+        name: athlete.Name,
+        pdgaNum: athlete.PDGANum,
+        rounds: [] as any[],
+      };
+      for (const round of athlete.rounds) {
+        if (round.scoreId) {
+          const pathPrefix = `assets/${tournament.id}/${athlete.PDGANum}/${round.round}/`;
+
+          const fieldData: any = await readJsonFile(
+            `./assets/${tournament.id}/${round.division}-${round.round}.json`,
+          );
+
+          const normalizedFieldData = Array.isArray(fieldData.data)
+            ? fieldData.data.reduce((acc, curr) => {
+                return acc.concat(curr.scores);
+              }, [])
+            : fieldData.data.scores;
+
+          const layoutData: any = await readJsonFile(
+            `assets/${tournament.id}/layout.json`,
+          );
+          const scoreData: any = await readJsonFile(
+            `${pathPrefix}scoreData.json`,
+          );
+          const holeBreakdownData: any[] = await readJsonFile(
+            `${pathPrefix}holeBreakdownData.json`,
+          );
+          const throwTimelineData: any = await readJsonFile(
+            `${pathPrefix}throwTimelineData.json`,
+          );
+
+          let diffs: any[] = [];
+          let distputts: any[] = [];
+          let acesCount = 0;
+          let noStats = false;
+          let newRound: any = {
+            scoreId: round.scoreId,
+            round: round.round,
+            division: round.division,
+          };
+          if (
+            holeBreakdownData.some((hole) => hole.holeBreakdown == null) &&
+            !holeBreakdownData.every((hole) => hole.holeBreakdown == null)
+          ) {
+            newRound.result = null;
+          } else {
+            if (holeBreakdownData.every((hole) => hole.holeBreakdown == null)) {
+              noStats = true;
+            }
+            for (
+              var counter = 1;
+              counter <= holeBreakdownData.length;
+              counter = counter + 1
+            ) {
+              const score = scoreData.HoleScores[counter - 1];
+              if (score == 1) {
+                acesCount++;
+              } else if (score != 0) {
+                const par = layoutData[0].liveLayoutDetails[counter - 1].par;
+                diffs.push(score - par);
+              }
+              distputts.push(
+                ...throwTimelineData.scoreThrows[counter - 1].holeThrows
+                  .map((distThrow) => {
+                    if (
+                      distThrow.liveScoreThrow.distanceToTarget == null &&
+                      (distThrow.liveScoreThrow.zoneId == 4 ||
+                        (distThrow.liveScoreThrow.zoneId == 6 &&
+                          distThrow.liveScoreThrow.dropZoneId == 4))
+                    ) {
+                      return 65; // dummy value to trigger being counted as circle 2 later
+                    } else if (
+                      distThrow.liveScoreThrow.distanceToTarget == null &&
+                      (distThrow.liveScoreThrow.zoneId == 3 ||
+                        ((distThrow.liveScoreThrow.zoneId == 6 ||
+                          distThrow.liveScoreThrow.zoneId == 7) &&
+                          distThrow.liveScoreThrow.dropZoneId == 3))
+                    ) {
+                      return (
+                        distThrow.liveScoreThrow.dropDistanceToTarget || 25
+                      ); // dummy value to trigger being counted as circle 1 later
+                    } else {
+                      return distThrow.liveScoreThrow.distanceToTarget;
+                    }
+                  })
+                  .filter((distPutt) => distPutt != null),
+              );
+            }
+
+            newRound.result = {
+              strokes: {
+                doubleBogey: diffs.filter((d) => d >= 2).length,
+                bogey: diffs.filter((d) => d === 1).length,
+                par: diffs.filter((d) => d === 0).length,
+                birdie: diffs.filter((d) => d === -1).length,
+                eagle: diffs.filter((d) => d === -2).length,
+                albatross: diffs.filter((d) => d <= -3).length,
+              },
+              stats: noStats
+                ? { c1r: 0, c2r: 0, parked: 0, ob: 0, ace: 0, noStats: 1 }
+                : {
+                    c1r: holeBreakdownData.filter(
+                      (hole) =>
+                        hole.holeBreakdown.green == "c1" ||
+                        hole.holeBreakdown.green == "parked",
+                    ).length,
+                    c2r: holeBreakdownData.filter(
+                      (hole) => hole.holeBreakdown.green == "c2",
+                    ).length,
+                    parked: holeBreakdownData.filter(
+                      (hole) => hole.holeBreakdown.green == "parked",
+                    ).length,
+                    ob: holeBreakdownData
+                      .map((hole) => hole.holeBreakdown.ob)
+                      .reduce((sum, num) => sum + num),
+                    ace: acesCount,
+                    noStats: 0,
+                  },
+              makes: noStats
+                ? { c1x: 0, c1xBonus: 0, c2: 0, c2Bonus: 0, throwIns: 0 }
+                : {
+                    c1x: holeBreakdownData.filter(
+                      (hole) =>
+                        hole.holeBreakdown.throwIn > 10 &&
+                        hole.holeBreakdown.throwIn <= 32,
+                    ).length,
+                    c1xBonus: 0,
+                    c2: holeBreakdownData.filter(
+                      (hole) =>
+                        hole.holeBreakdown.throwIn > 32 &&
+                        hole.holeBreakdown.throwIn < 66,
+                    ).length,
+                    c2Bonus: 0,
+                    throwIns: holeBreakdownData.filter(
+                      (hole) => hole.holeBreakdown.throwIn > 66,
+                    ).length,
+                  },
+              ranking: {
+                place: scoreData.RunningPlace,
+                fieldSize: normalizedFieldData.length,
+              },
+            };
+
+            if (!noStats) {
+              var c1xPossible = distputts.filter(
+                (attempt) => attempt > 10 && attempt <= 32,
+              ).length;
+              var c2Possible = distputts.filter(
+                (attempt) => attempt > 32 && attempt < 66,
+              ).length;
+              newRound.result.makes.c1xBonus =
+                c1xPossible == newRound.result.makes.c1x
+                  ? newRound.result.makes.c1x
+                  : 0;
+              newRound.result.makes.c2Bonus =
+                c2Possible == newRound.result.makes.c2
+                  ? newRound.result.makes.c2
+                  : 0;
+            }
+          }
+
+          newData.rounds.push(newRound);
+        }
+      }
+      newEntry.data.push(newData);
+    }
+    output.push(newEntry);
+  }
+  await saveJson("output.json", output);
+}
+
+async function getAthleteMap() {
+  let output: any[] = [];
+  const manifest: any = await readJsonFile("./manifest.json");
+  for (const tournament of manifest) {
+    for (const athlete of tournament.athletes) {
+      const existing = output.find((entry) => entry.pdgaNum == athlete.PDGANum);
+      if (existing == undefined) {
+        output.push({
+          pdgaNum: athlete.PDGANum,
+          name: athlete.Name,
+        });
+      }
+    }
+  }
+  output.sort((a, b) => a.pdgaNum - b.pdgaNum);
+  await saveJson("athleteMap.json", output);
+}
+
+await getAthleteMap();
+
 // script 2:
 
 // iterate over each tournament folder
@@ -279,7 +547,7 @@ await produceManifest();
 // Division AND RunningPlace are held in score data block
 // Hold onto raw data in a separate place, do not port to prototype, but use it for tracking missing data and such.
 
-const potato = {
+const structure = {
   id: 88276,
   name: "Supreme Flight Open",
   athletes: [
