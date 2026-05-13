@@ -5,7 +5,7 @@ const GOOGLE_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 const ROUND_ALPHA = ["D", "G", "J", "M", "P"]
 
 const DEV_PLAYER_SPREADSHEET_IDS = [
-  { id: '1ved59LizeTL3E1i0OCUUSuUXydDVMDU9s_CFGTuLi90/edit?gid=1623859890', name: "Dev Don" },
+  { id: '1XsbUX0_PDw7SG61AAT8HdU4JMrr7YtbZp-kHktgQuuE/edit?gid=376178760', name: "Dev Don" },
 ];
 
 //TODON: See if I can get rid of names
@@ -18,7 +18,7 @@ const PLAYER_SPREADSHEET_IDS = [
   { id: '18Wo5jUl1JR5xwNOcpUBcA29RDfkYPQqnE-3q4hnAj00/edit?gid=1623859890', name: "Captain Crush" },
   { id: '1hLq0TtT-W6DhnpU7YdtFpzpLSzNsTChh_a10WprvhCg/edit?gid=1623859890', name: "Mrrcan HydroYEETing" },
   { id: '1fWoib94BDZLdgmoffFwqRax96z6jsu62XyKzA1FGVoQ/edit?gid=1623859890', name: "Jisc Joctah" },
-  { id: '1FKuhBkm0rJr5kNejUSgP-exax2E7qnCA-njrEseX4a8/edit?gid=1623859890', name: "A Regular Guy" },
+  { id: '1FKuhBkm0rJr5kNejUSgP-exax2E7qnCA-njrEseX4a8/edit?gid=1623859890', name: "Tony Barela" },
   { id: '1PvSExPb-La7pAxzMT11Val19A0yV6E0lBft_i6sX_tU/edit?gid=1623859890', name: "#BoostIT" },
   { id: '1AEvudBQLD73fbona9VTDPBG-2Rh3idw_HbmOSIPa46M/edit?gid=1623859890', name: "Hits Cage, OB!" },
   { id: '1sjvesZyywckADJHMoiXcWep2tfokQNNVH-oZ8Ng4CJU/edit?gid=1623859890', name: "Burger King" },

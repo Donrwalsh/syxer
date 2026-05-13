@@ -12,6 +12,77 @@ class Standings {
     this.sheet.getRange(`T${4 + place}`).setValues([[pointsFor]]);
     this.sheet.getRange(`U${4 + place}`).setValues([[pointsAgainst]]);
   }
+
+  markResultsForTourn(tournN) {
+    let scoreRowLetter = ["D", "I", "N"][tournN % 3];
+    let nameRowLetter = ["C", "H", "M"][tournN % 3];
+    let endRowLetter = ["E", "J", "O"][tournN % 3];
+
+    let rowNum = Math.floor(tournN/3) * 16 + 5;
+
+    let theWinners = [];
+
+    for (let i = 0; i < 6; i++) {
+      let scoreA = this.sheet.getRange(`${scoreRowLetter}${rowNum+(i*2)}`).getValue();
+      let scoreB = this.sheet.getRange(`${scoreRowLetter}${rowNum+(i*2)+1}`).getValue();
+
+      const winningRange = scoreA >= scoreB ? this.sheet.getRange(`${nameRowLetter}${rowNum+(i*2)}:${endRowLetter}${rowNum+(i*2)}`) : this.sheet.getRange(`${nameRowLetter}${rowNum+(i*2+1)}:${endRowLetter}${rowNum+(i*2+1)}`);
+
+      const losingRange = scoreA >= scoreB ? this.sheet.getRange(`${nameRowLetter}${rowNum+(i*2+1)}:${endRowLetter}${rowNum+(i*2+1)}`) : this.sheet.getRange(`${nameRowLetter}${rowNum+(i*2)}:${endRowLetter}${rowNum+(i*2)}`);
+  
+      theWinners.push(this.sheet.getRange(`${nameRowLetter}${scoreA >= scoreB ? rowNum +(i*2) : rowNum + (i*2) +1}`).getValue())
+
+      winningRange.setFontWeight("bold");
+      losingRange.setFontStyle("italic");
+    }
+
+    return theWinners;
+  }
+
+  setupMatchupsForTourn(tournN) {
+    function getRandomItem(array) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+    }
+    let scoreRowLetter = ["D", "I", "N"][tournN % 3];
+    let nameRowLetter = ["C", "H", "M"][tournN % 3];
+    let endRowLetter = ["E", "J", "O"][tournN % 3];
+    let rowNum = Math.floor(tournN/3) * 16 + 5;
+
+    let psi = [...PLAYER_SPREADSHEET_IDS];
+
+    for (let i = 0; i < 6; i++) {
+      let player = getRandomItem(psi);
+      this.sheet.getRange(`${nameRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${player.id}","'Roster'!B1")`);
+      this.sheet.getRange(`${scoreRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${player.id}","'Matchup'!J18")`);
+      this.sheet.getRange(`${endRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${player.id}","'Matchup'!G4")`);
+
+      psi = psi.filter((ps) => ps.id != player.id);
+      rowNum++;
+
+      let playerSheet = new PlayerSheet(player.id);
+      let opponentName = playerSheet.getOpponentForTourn(tournN);
+
+      let opponent = psi.find((ps) => ps.name == opponentName);
+      this.sheet.getRange(`${nameRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${opponent.id}","'Roster'!B1")`);
+      this.sheet.getRange(`${scoreRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${opponent.id}","'Matchup'!J18")`);
+      this.sheet.getRange(`${endRowLetter}${rowNum}`).setValue(`=IMPORTRANGE("${GOOGLE_URL_PREFIX}${opponent.id}","'Matchup'!G4")`);
+      psi = psi.filter((ps) => ps.id != opponent.id);
+      rowNum++;
+    }    
+  }
+
+  markStandingsStaticForTourn(tournN) {
+    let nameRowLetter = ["C", "H", "M"][tournN % 3];
+    let endRowLetter = ["E", "J", "O"][tournN % 3];
+
+    let rowNum = Math.floor(tournN/3) * 16 + 5;
+
+    for (let i = 0; i < 13; i++) {
+      let range = this.sheet.getRange(`${nameRowLetter}${rowNum+i}:${endRowLetter}${rowNum+i}`);
+      range.setValues(range.getValues());
+    }
+  }
 }
 
 class RosterWaivers {

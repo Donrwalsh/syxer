@@ -2,10 +2,36 @@
 
 class PlayerSheet {
   constructor(id) {
-    this.ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${id}}`);
+    this.ss = SpreadsheetApp.openByUrl(`${GOOGLE_URL_PREFIX}${id}`);
     this.matchup = this.ss.getSheetByName('Matchup');
     this.roster = this.ss.getSheetByName('Roster');
     this.stats = this.ss.getSheetByName('Stats');
+  }
+
+  makeScoreboardForTournament(tournId) {
+    var sheet = this.getSheet('Matchup');
+    const tournament = TOURNAMENTS.find((tourn) => tourn.id == tournId);
+    if (!tournament) {
+      throw Error ("Couldn't find tournamnet");
+    }
+
+    const n = TOURNAMENTS.findIndex((tourn) => tourn.name == tournament.name);
+    const hPosition = 36 + 31 * (n-1); // This will break if n is 0
+
+    // Define the source range you want to copy
+    var source = sheet.getRange(`H2:O32`)
+
+    // Define the destination start cell
+    // The destination only needs the top-left cell; the rest fills automatically
+
+    var destination = sheet.getRange(`H${hPosition}`); 
+
+    // 1. Paste the formatting only
+    source.copyTo(destination, SpreadsheetApp.CopyPasteType.PASTE_FORMAT, false);
+
+    // 2. Paste the values only (overwrites formulas with their results)
+    source.copyTo(destination, SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+
   }
 
   getSheet(division) {
@@ -131,5 +157,17 @@ class PlayerSheet {
 
   writeWaiver(rank) {
     this.matchup.getRange('G13').setValues([[rank]])
+  }
+
+  writeLoss(tournN) {
+    this.matchup.getRange(`E${5+tournN}`).setValue("L");
+  }
+
+  writeWin(tournN) {
+    this.matchup.getRange(`E${5+tournN}`).setValue("W");
+  }
+
+  getOpponentForTourn(tournN) {
+    return this.matchup.getRange(`D${5+tournN}`).getDisplayValue();
   }
 }
