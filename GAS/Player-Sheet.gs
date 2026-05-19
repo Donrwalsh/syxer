@@ -8,14 +8,70 @@ class PlayerSheet {
     this.stats = this.ss.getSheetByName('Stats');
   }
 
-  makeScoreboardForTournament(tournId) {
-    var sheet = this.getSheet('Matchup');
+  doTheCopyThing(sheet, sourceRange, destinationRange) {
+    var source = sheet.getRange(sourceRange);
+    var destination = sheet.getRange(destinationRange);
+
+    // const destinationValues = destination.getValues();
+    // const hasValue = destinationValues.flat().some(cell => cell !== "");
+
+    // if (hasValue) {
+    //   console.log("I found values");
+    // } else {
+      source.copyTo(destination, SpreadsheetApp.CopyPasteType.PASTE_FORMULA, false);
+      source.copyTo(source, SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+    // }
+
+
+
+  }
+
+  getTournIndex(tournId) {
     const tournament = TOURNAMENTS.find((tourn) => tourn.id == tournId);
     if (!tournament) {
       throw Error ("Couldn't find tournamnet");
     }
-
     const n = TOURNAMENTS.findIndex((tourn) => tourn.name == tournament.name);
+    return n;
+  }
+
+  updateOpponentMatchupTab(tournId) {
+    var sheet = this.getSheet('Matchup');
+    var tournN = this.getTournIndex(tournId);
+    var oppoName = this.getOpponentForTourn(tournN);
+    var opponent = PLAYER_SPREADSHEET_IDS.find((player) => player.name == oppoName);
+    var commonStart = `=IMPORTRANGE("https://docs.google.com/spreadsheets/d/${opponent.id}"`;
+
+    [
+      ["L4", `"'Roster'!B1"`],
+      ["L5", `"'Roster'!B3"`],
+      ["M5", `"'Matchup'!J5"`],
+      ["L7", `"'Roster'!B4"`],  
+      ["M7", `"'Matchup'!J7"`],
+      ["L9", `"'Roster'!B5"`],
+      ["M9", `"'Matchup'!J9"`],
+      ["L11", `"'Roster'!C3"`],
+      ["M11", `"'Matchup'!J11"`],
+      ["L13", `"'Roster'!C4"`],
+      ["M13", `"'Matchup'!J13"`],
+      ["L15", `"'Roster'!B8"`],
+      ["M15", `"'Matchup'!J15"`],
+      ["M18", `"'Matchup'!J18"`],
+      ["L24", `"'Roster'!B10"`],
+      ["M24", `"'Matchup'!J24"`],
+      ["L26", `"'Roster'!B11"`],
+      ["M26", `"'Matchup'!J26"`],
+      ["L28", `"'Roster'!C10"`],
+      ["M28", `"'Matchup'!J28"`],
+      ["L30", `"'Roster'!C11"`],
+      ["M30", `"'Matchup'!J30"`],
+    ].map(
+      (kvp) => sheet.getRange(kvp[0]).setValue(`${commonStart},${kvp[1]})`))
+  }
+
+  makeScoreboardForTournament(tournId) {
+    var sheet = this.getSheet('Matchup');
+    const n = this.getTournIndex(tournId);
     const hPosition = 36 + 31 * (n-1); // This will break if n is 0
 
     // Define the source range you want to copy
@@ -31,7 +87,50 @@ class PlayerSheet {
 
     // 2. Paste the values only (overwrites formulas with their results)
     source.copyTo(destination, SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+  }
 
+  statsTabRollover(tournId) {
+    var sheet = this.getSheet('Stats');
+    const n = this.getTournIndex(tournId);
+
+    this.doTheCopyThing(sheet, `H${15 + 13 * (n - 1)}:AA${20 + 13 * (n-1)}`, `H${15 + 13 * n}:AA${20 + 13 * n}`)
+  }
+
+  eventTotalsTabRollover(tournId) {
+    var sheet = this.getSheet('Event Totals');
+    const n = this.getTournIndex(tournId);
+
+    function stuff(n) {
+      if (n == 16 | n == 17) {
+        return `${n == 16 ? 'F' : 'J'}67:${n == 16 ? 'G' : 'O'}72`
+      }
+
+      if (n > 17) {
+        n = n + 2;
+      }
+
+      let startRowLetter = ["B", "F", "J", "N"][n % 4];
+      let endRowLetter = ["C", "G", "K", "O"][n % 4];
+      return `${startRowLetter}${7 + 15 * Math.floor(n / 4)}:${endRowLetter}${12 + 15 * Math.floor(n / 4)}`
+    }
+
+    this.doTheCopyThing(sheet, stuff(n-1), stuff(n));
+
+    // 0 ~ B7:C12
+    // 1 ~ F7:G12
+    // 2 ~ J7:K12
+    // 3 ~ N7:O12
+    // 4 ~ B22:C27
+
+    // 7 ~ N22:O27
+    // ~~~
+
+    // 16 ~ F67:G72
+    // 17 ~ J67:O72
+
+    // 18 ~ as 20
+    // 19 ~ as 21
+    // 20 ~ as 22
   }
 
   getSheet(division) {

@@ -4,6 +4,7 @@
 
 function rolloverToTourn(tournId) {
   tournId = 96409;
+
   ctrl = new ControlPanel();
   // let spreadsheetIds = ctrl.config.isDev ? DEV_PLAYER_SPREADSHEET_IDS : PLAYER_SPREADSHEET_IDS;
   let spreadsheetIds = PLAYER_SPREADSHEET_IDS;
@@ -36,8 +37,17 @@ function rolloverToTourn(tournId) {
     } else {
       sheet.sheet.writeLoss(toTournN-1);
     }
+    // - Individual player spreadsheets: Stats subsheet same 2x steps as FC standings for data harvest
+    // - Individual player spreadsheets: Event Totals tab does it again
     sheet.sheet.makeScoreboardForTournament(tournId);
+    sheet.sheet.updateOpponentMatchupTab(tournId);
+    sheet.sheet.statsTabRollover(tournId);   
+    sheet.sheet.eventTotalsTabRollover(tournId);
   }
+
+  // - FC Rosters/Waivers Event Cell links to event so name and Id. Change three other cells nearby too.
+  let rosterWaivers = new RosterWaivers();
+  rosterWaivers.updateTournamentDetails(tournId);
 
 
   // playerSheet = new PlayerSheet(spreadsheetIds[0].id);
@@ -46,10 +56,10 @@ function rolloverToTourn(tournId) {
 }
 
 
-// - FC Rosters/Waivers Event Cell links to event so name and Id. Change three other cells nearby too.
+
 // - 2026 Fantasy Points Analysis - No stats number note
-// - Individual player spreadsheets: Stats subsheet same 2x steps as FC standings for data harvest
-// - Individual player spreadsheets: Event Totals tab does it again
+
+
 // - Manual step of removing certain zero values for no stats calc
 // - Individual player spreadsheets: Matchup Tab create spot for and populate round numbers for MPO/FPO/BENCH
 // - Individual player spreadsheets: Matchup Tab swap out current info with upcoming matchup info. This is the live stats block that's updating with other player choices as the new tournament progresses. Only the right side changes, neat.
